@@ -10,6 +10,8 @@ using System.Windows.Forms;
 
 namespace DoAnLon
 {
+
+
     public partial class client : Form
     {
         private bool isDrawing = false;
@@ -20,7 +22,9 @@ namespace DoAnLon
         private Bitmap drawingBitmap; // Bitmap để vẽ lên
         private Graphics drawingGraphics; // Graphics liên kết với Bitmap
         private Stack<Bitmap> undoStack = new Stack<Bitmap>();
+        private Stack<Bitmap> redoStack = new Stack<Bitmap>(); // Stack để lưu các trạng thái Redo
         private Panel panelDraw;
+
 
 
         public client()
@@ -41,6 +45,8 @@ namespace DoAnLon
             panelDraw.Paint += PanelDraw_Paint;
             panelDraw.Resize += panelDraw_Resize;
         }
+
+
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -75,11 +81,15 @@ namespace DoAnLon
         {
             pen.Color = panelDraw.BackColor;
             pen.Width = 10; // Tăng kích thước của tẩy
+            redoStack.Clear(); // Xóa redoStack khi người dùng vẽ mới
+
         }
         private void panelDraw_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left) // Kiểm tra nút chuột
             {
+                SaveState(); 
+                redoStack.Clear();
                 isDrawing = true;
                 lastPoint = e.Location;
             }
@@ -112,10 +122,12 @@ namespace DoAnLon
         {
             drawingGraphics.Clear(panelDraw.BackColor); // Xóa toàn bộ Bitmap
             panelDraw.Invalidate(); // Vẽ lại panel
-        }
-   
+            redoStack.Clear(); // Xóa redoStack khi người dùng vẽ mới
 
-  
+        }
+
+
+
         public class DoubleBufferedPanel : Panel
         {
             public DoubleBufferedPanel()
@@ -179,6 +191,7 @@ namespace DoAnLon
         {
             if (undoStack.Count > 0)
             {
+                redoStack.Push((Bitmap)drawingBitmap.Clone()); // Lưu trạng thái hiện tại vào redoStack trước khi Undo
                 drawingBitmap = undoStack.Pop();
                 drawingGraphics = Graphics.FromImage(drawingBitmap);
                 panelDraw.Invalidate(); // Vẽ lại panel
@@ -193,5 +206,18 @@ namespace DoAnLon
                     e.Graphics.DrawImage(drawingBitmap, Point.Empty);
                 }
             }
+
+        private void btnReundo_Click(object sender, EventArgs e)
+        {
+            if (redoStack.Count > 0)
+            {
+                undoStack.Push((Bitmap)drawingBitmap.Clone()); // Lưu trạng thái hiện tại vào undoStack trước khi Redo
+                drawingBitmap = redoStack.Pop(); // Khôi phục trạng thái từ redoStack
+                drawingGraphics = Graphics.FromImage(drawingBitmap);
+                panelDraw.Invalidate(); // Vẽ lại panel
+            }
+        }
+
+       
     }
 }

@@ -46,10 +46,9 @@ namespace DoAnLon
             // 
             // btn_eraser
             // 
-            this.btn_eraser.Location = new System.Drawing.Point(183, 10);
-            this.btn_eraser.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_eraser.Location = new System.Drawing.Point(274, 15);
             this.btn_eraser.Name = "btn_eraser";
-            this.btn_eraser.Size = new System.Drawing.Size(50, 49);
+            this.btn_eraser.Size = new System.Drawing.Size(75, 75);
             this.btn_eraser.TabIndex = 2;
             this.btn_eraser.Text = "cục gôm";
             this.btn_eraser.UseVisualStyleBackColor = true;
@@ -57,10 +56,9 @@ namespace DoAnLon
             // 
             // btn_Pen
             // 
-            this.btn_Pen.Location = new System.Drawing.Point(129, 10);
-            this.btn_Pen.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_Pen.Location = new System.Drawing.Point(194, 15);
             this.btn_Pen.Name = "btn_Pen";
-            this.btn_Pen.Size = new System.Drawing.Size(50, 49);
+            this.btn_Pen.Size = new System.Drawing.Size(75, 75);
             this.btn_Pen.TabIndex = 3;
             this.btn_Pen.Text = "bút";
             this.btn_Pen.UseVisualStyleBackColor = true;
@@ -68,19 +66,17 @@ namespace DoAnLon
             // 
             // trackBar1
             // 
-            this.trackBar1.Location = new System.Drawing.Point(297, 14);
-            this.trackBar1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.trackBar1.Location = new System.Drawing.Point(446, 22);
             this.trackBar1.Name = "trackBar1";
-            this.trackBar1.Size = new System.Drawing.Size(69, 45);
+            this.trackBar1.Size = new System.Drawing.Size(104, 69);
             this.trackBar1.TabIndex = 4;
             this.trackBar1.Scroll += new System.EventHandler(this.trackBar1_Scroll);
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(75, 14);
-            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button1.Location = new System.Drawing.Point(112, 22);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(50, 45);
+            this.button1.Size = new System.Drawing.Size(75, 69);
             this.button1.TabIndex = 5;
             this.button1.Text = "clear";
             this.button1.UseVisualStyleBackColor = true;
@@ -88,10 +84,9 @@ namespace DoAnLon
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(14, 23);
-            this.btnSave.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSave.Location = new System.Drawing.Point(21, 35);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(50, 45);
+            this.btnSave.Size = new System.Drawing.Size(75, 69);
             this.btnSave.TabIndex = 7;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
@@ -99,10 +94,9 @@ namespace DoAnLon
             // 
             // btnLoad
             // 
-            this.btnLoad.Location = new System.Drawing.Point(14, 81);
-            this.btnLoad.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnLoad.Location = new System.Drawing.Point(21, 125);
             this.btnLoad.Name = "btnLoad";
-            this.btnLoad.Size = new System.Drawing.Size(45, 45);
+            this.btnLoad.Size = new System.Drawing.Size(68, 69);
             this.btnLoad.TabIndex = 8;
             this.btnLoad.Text = "Load";
             this.btnLoad.UseVisualStyleBackColor = true;
@@ -110,10 +104,9 @@ namespace DoAnLon
             // 
             // btnUndo
             // 
-            this.btnUndo.Location = new System.Drawing.Point(495, 16);
-            this.btnUndo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnUndo.Location = new System.Drawing.Point(742, 25);
             this.btnUndo.Name = "btnUndo";
-            this.btnUndo.Size = new System.Drawing.Size(50, 45);
+            this.btnUndo.Size = new System.Drawing.Size(75, 69);
             this.btnUndo.TabIndex = 10;
             this.btnUndo.Text = "Undo";
             this.btnUndo.UseVisualStyleBackColor = true;
@@ -121,28 +114,27 @@ namespace DoAnLon
             // 
             // btnReundo
             // 
-            this.btnReundo.Location = new System.Drawing.Point(549, 16);
-            this.btnReundo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnReundo.Location = new System.Drawing.Point(824, 25);
             this.btnReundo.Name = "btnReundo";
-            this.btnReundo.Size = new System.Drawing.Size(50, 45);
+            this.btnReundo.Size = new System.Drawing.Size(75, 69);
             this.btnReundo.TabIndex = 11;
             this.btnReundo.Text = "Reundo";
             this.btnReundo.UseVisualStyleBackColor = true;
+            this.btnReundo.Click += new System.EventHandler(this.btnReundo_Click);
             // 
             // PanelDraw
             // 
-            this.PanelDraw.Location = new System.Drawing.Point(95, 16);
-            this.PanelDraw.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.PanelDraw.Location = new System.Drawing.Point(142, 25);
             this.PanelDraw.Name = "PanelDraw";
-            this.PanelDraw.Size = new System.Drawing.Size(13, 11);
+            this.PanelDraw.Size = new System.Drawing.Size(20, 17);
             this.PanelDraw.TabIndex = 12;
             this.PanelDraw.Paint += new System.Windows.Forms.PaintEventHandler(this.PanelDraw_Paint);
             // 
             // client
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(617, 420);
+            this.ClientSize = new System.Drawing.Size(926, 646);
             this.Controls.Add(this.PanelDraw);
             this.Controls.Add(this.btnReundo);
             this.Controls.Add(this.btnUndo);
@@ -152,7 +144,6 @@ namespace DoAnLon
             this.Controls.Add(this.trackBar1);
             this.Controls.Add(this.btn_Pen);
             this.Controls.Add(this.btn_eraser);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "client";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);

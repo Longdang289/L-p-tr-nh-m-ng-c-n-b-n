@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\Admin\\source\\repos\\DoAnLon\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{C1EE3B7A-C83B-4E16-9AC6-B38A3CF88D62}|DoAnLon\\DoAnLon.csproj|c:\\users\\admin\\source\\repos\\doanlon\\doanlon\\client.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{C1EE3B7A-C83B-4E16-9AC6-B38A3CF88D62}|DoAnLon\\DoAnLon.csproj|solutionrelative:doanlon\\client.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{C1EE3B7A-C83B-4E16-9AC6-B38A3CF88D62}|DoAnLon\\DoAnLon.csproj|c:\\users\\admin\\source\\repos\\doanlon\\doanlon\\client.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C1EE3B7A-C83B-4E16-9AC6-B38A3CF88D62}|DoAnLon\\DoAnLon.csproj|solutionrelative:doanlon\\client.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C1EE3B7A-C83B-4E16-9AC6-B38A3CF88D62}|DoAnLon\\DoAnLon.csproj|C:\\Users\\Admin\\source\\repos\\DoAnLon\\doanlon\\client.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C1EE3B7A-C83B-4E16-9AC6-B38A3CF88D62}|DoAnLon\\DoAnLon.csproj|solutionrelative:doanlon\\client.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C1EE3B7A-C83B-4E16-9AC6-B38A3CF88D62}|DoAnLon\\DoAnLon.csproj|C:\\Users\\Admin\\source\\repos\\DoAnLon\\doanlon\\client.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{C1EE3B7A-C83B-4E16-9AC6-B38A3CF88D62}|DoAnLon\\DoAnLon.csproj|solutionrelative:doanlon\\client.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,7 +18,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
@@ -26,32 +26,36 @@
             },
             {
               "$type": "Bookmark",
-              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
+              "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "client.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\DoAnLon\\DoAnLon\\client.cs",
               "RelativeDocumentMoniker": "DoAnLon\\client.cs",
-              "ToolTip": "C:\\Users\\Admin\\source\\repos\\DoAnLon\\DoAnLon\\client.cs*",
-              "RelativeToolTip": "DoAnLon\\client.cs*",
-              "ViewState": "AgIAACYAAAAAAAAAAAAAADAAAAAzAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\DoAnLon\\DoAnLon\\client.cs",
+              "RelativeToolTip": "DoAnLon\\client.cs",
+              "ViewState": "AgIAADsAAAAAAAAAAAAQwEcAAAAlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-03T02:58:37.709Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "client.cs [Design]",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\DoAnLon\\DoAnLon\\client.cs",
               "RelativeDocumentMoniker": "DoAnLon\\client.cs",
-              "ToolTip": "C:\\Users\\Admin\\source\\repos\\DoAnLon\\DoAnLon\\client.cs [Design]*",
-              "RelativeToolTip": "DoAnLon\\client.cs [Design]*",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\DoAnLon\\DoAnLon\\client.cs [Design]",
+              "RelativeToolTip": "DoAnLon\\client.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-09-27T01:18:27.9Z",
               "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
             }
           ]
         }
