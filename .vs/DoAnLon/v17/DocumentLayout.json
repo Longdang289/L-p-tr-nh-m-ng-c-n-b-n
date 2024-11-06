@@ -3,12 +3,20 @@
   "WorkspaceRootPath": "C:\\Users\\Admin\\source\\repos\\DoAnLon\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{C1EE3B7A-C83B-4E16-9AC6-B38A3CF88D62}|DoAnLon\\DoAnLon.csproj|c:\\users\\admin\\source\\repos\\doanlon\\doanlon\\client.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{C1EE3B7A-C83B-4E16-9AC6-B38A3CF88D62}|DoAnLon\\DoAnLon.csproj|C:\\Users\\Admin\\source\\repos\\DoAnLon\\doanlon\\client.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C1EE3B7A-C83B-4E16-9AC6-B38A3CF88D62}|DoAnLon\\DoAnLon.csproj|solutionrelative:doanlon\\client.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C1EE3B7A-C83B-4E16-9AC6-B38A3CF88D62}|DoAnLon\\DoAnLon.csproj|C:\\Users\\Admin\\source\\repos\\DoAnLon\\doanlon\\client.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{C1EE3B7A-C83B-4E16-9AC6-B38A3CF88D62}|DoAnLon\\DoAnLon.csproj|solutionrelative:doanlon\\client.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C1EE3B7A-C83B-4E16-9AC6-B38A3CF88D62}|DoAnLon\\DoAnLon.csproj|c:\\users\\admin\\source\\repos\\doanlon\\doanlon\\sticky_note.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C1EE3B7A-C83B-4E16-9AC6-B38A3CF88D62}|DoAnLon\\DoAnLon.csproj|solutionrelative:doanlon\\sticky_note.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C1EE3B7A-C83B-4E16-9AC6-B38A3CF88D62}|DoAnLon\\DoAnLon.csproj|C:\\Users\\Admin\\source\\repos\\DoAnLon\\doanlon\\client.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C1EE3B7A-C83B-4E16-9AC6-B38A3CF88D62}|DoAnLon\\DoAnLon.csproj|solutionrelative:doanlon\\client.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,16 +26,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 0,
           "Children": [
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
-            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
@@ -36,10 +36,59 @@
               "RelativeDocumentMoniker": "DoAnLon\\client.cs",
               "ToolTip": "C:\\Users\\Admin\\source\\repos\\DoAnLon\\DoAnLon\\client.cs",
               "RelativeToolTip": "DoAnLon\\client.cs",
-              "ViewState": "AgIAADsAAAAAAAAAAAAQwEcAAAAlAAAAAAAAAA==",
+              "ViewState": "AgIAAOcBAAAAAAAAAAAgwP0BAAAVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-03T02:58:37.709Z",
+              "IsPinned": true,
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "client.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\DoAnLon\\DoAnLon\\client.Designer.cs",
+              "RelativeDocumentMoniker": "DoAnLon\\client.Designer.cs",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\DoAnLon\\DoAnLon\\client.Designer.cs",
+              "RelativeToolTip": "DoAnLon\\client.Designer.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAOMAAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-11T05:13:49.484Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "sticky_note.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\DoAnLon\\DoAnLon\\sticky_note.cs",
+              "RelativeDocumentMoniker": "DoAnLon\\sticky_note.cs",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\DoAnLon\\DoAnLon\\sticky_note.cs",
+              "RelativeToolTip": "DoAnLon\\sticky_note.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAuwB4AAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-04T16:06:48.996Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:1:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
             },
             {
               "$type": "Document",
@@ -52,10 +101,6 @@
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-09-27T01:18:27.9Z",
               "EditorCaption": " [Design]"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
             }
           ]
         }
