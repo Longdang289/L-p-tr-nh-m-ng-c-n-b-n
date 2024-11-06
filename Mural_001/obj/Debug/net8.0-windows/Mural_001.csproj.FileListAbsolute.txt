@@ -17,3 +17,4 @@ D:\Bai Tap UIT\Mural_001\Mural_001\obj\Debug\net8.0-windows\refint\Mural_001.dll
 D:\Bai Tap UIT\Mural_001\Mural_001\obj\Debug\net8.0-windows\Mural_001.pdb
 D:\Bai Tap UIT\Mural_001\Mural_001\obj\Debug\net8.0-windows\Mural_001.genruntimeconfig.cache
 D:\Bai Tap UIT\Mural_001\Mural_001\obj\Debug\net8.0-windows\ref\Mural_001.dll
+D:\Bai Tap UIT\Mural_001\Mural_001\obj\Debug\net8.0-windows\Mural_001.sourcelink.json

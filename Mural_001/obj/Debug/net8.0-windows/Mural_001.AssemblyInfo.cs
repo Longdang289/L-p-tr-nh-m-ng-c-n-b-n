@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Mural_001")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+01fd1b8bd155a65bd4252b9922daf97eafe1b889")]
 [assembly: System.Reflection.AssemblyProductAttribute("Mural_001")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Mural_001")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
