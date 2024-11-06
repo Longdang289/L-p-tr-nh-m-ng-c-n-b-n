@@ -42,8 +42,7 @@
               "RelativeToolTip": "Mural_001\\User DEF.cs",
               "ViewState": "AgIAAAwAAAAAAAAAAAAowBoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-10T13:58:10.604Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-10T13:58:10.604Z"
             },
             {
               "$type": "Document",
@@ -55,8 +54,7 @@
               "RelativeToolTip": "Mural_001\\Room DEF.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-10T13:56:31.697Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-10T13:56:31.697Z"
             },
             {
               "$type": "Document",
@@ -80,8 +78,7 @@
               "RelativeToolTip": "Mural_001\\Manager DEF.cs",
               "ViewState": "AgIAAF4AAAAAAAAAAAAcwGIAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-10T13:56:19.051Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-10T13:56:19.051Z"
             },
             {
               "$type": "Document",
@@ -89,9 +86,9 @@
               "Title": "Server.cs",
               "DocumentMoniker": "D:\\Bai Tap UIT\\Mural_001\\Mural_001\\Server.cs",
               "RelativeDocumentMoniker": "Mural_001\\Server.cs",
-              "ToolTip": "D:\\Bai Tap UIT\\Mural_001\\Mural_001\\Server.cs*",
-              "RelativeToolTip": "Mural_001\\Server.cs*",
-              "ViewState": "AgIAAMEAAAAAAAAAAAAwwNIAAABJAAAAAAAAAA==",
+              "ToolTip": "D:\\Bai Tap UIT\\Mural_001\\Mural_001\\Server.cs",
+              "RelativeToolTip": "Mural_001\\Server.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFQAAAAjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-09T14:56:33.747Z",
               "EditorCaption": ""
