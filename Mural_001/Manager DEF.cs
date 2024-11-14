@@ -14,10 +14,22 @@ internal class Manager // Quản lý log server, thông tin phòng và người 
     // Prototype để sau này truyền 3 cái kia vào
     public Manager(ListView log, TextBox room_count, TextBox user_count)
     {
-        //Gán tham số vào biến thành viên nội bộ
-        this.Log = log; 
-        this.RoomCnt = room_count; 
+        // Gán tham số vào biến thành viên nội bộ
+        this.Log = log;
+        this.RoomCnt = room_count;
         this.UserCnt = user_count;
+
+        // Cấu hình ListView
+        Log.View = View.Details;
+        Log.FullRowSelect = true;
+        Log.HeaderStyle = ColumnHeaderStyle.None;
+
+        // Kiểm tra nếu chưa có cột, tạo một cột duy nhất tự động căn theo nội dung
+        if (Log.Columns.Count == 0)
+        {
+            Log.Columns.Add("", -2); // Tạo một cột duy nhất tự động căn theo nội dung
+            Log.Columns[0].Width = -2; // Căn chỉnh chiều rộng cột tự động
+        }
     }
     /*
      * Mấy cái hàm( phương thức hành vi) dưới sẽ có Invoke, nghĩa là khi ma UI của thread chính thay đổi
@@ -32,20 +44,24 @@ internal class Manager // Quản lý log server, thông tin phòng và người 
         // Kiểm tra nếu cần gọi Invoke (nếu UI được cập nhật từ thread khác).
         if (Log.InvokeRequired)
         {
-            // Nếu cần Invoke, thực hiện cập nhật ListView từ thread chính.
-            //Viết tham số hàm cho ngầu thôi chứ bình thường vẫn được, tức là cái new Action là cái lệnh kia
             Log.Invoke(new Action(() =>
             {
                 // Thêm dòng log vào ListView với định dạng giờ phút và nội dung dòng.
-                Log.Items.Add(string.Format("{0}: {1}", DateTime.Now.ToString("HH:mm"), line));
+                var listViewItem = new ListViewItem($"{DateTime.Now:HH:mm}: {line}");
+                Log.Items.Add(listViewItem);
+
+                // Cuộn xuống dòng mới nhất
+                Log.EnsureVisible(Log.Items.Count - 1);
             }));
         }
         else
         {
-            // Nếu không cần Invoke, thêm trực tiếp vào ListView.
-            Log.Items.Add(string.Format("{0}: {1}", DateTime.Now.ToString("HH:mm"), line));
+            var listViewItem = new ListViewItem($"{DateTime.Now:HH:mm}: {line}");
+            Log.Items.Add(listViewItem);
+            Log.EnsureVisible(Log.Items.Count - 1);
         }
     }
+
 
     // Hàm cập nhật số lượng phòng hiện tại vào TextBox RoomCnt
     public void UpdateRoomCount(int num)
