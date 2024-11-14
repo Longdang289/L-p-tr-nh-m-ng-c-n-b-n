@@ -13,8 +13,13 @@ namespace Mural_001
 
         public string Username { get; set; }// Tên người dùng gửi gói tin
 
-        public string RoomID { get; set; }// ID của phòng mà người dùng đang tham gia
+        public string IP {  get; set; }//IP client gửi
 
+        public string RoomID { get; set; }// ID của phòng mà người dùng đang tham gia
+        
+        // Chuỗi biểu diễn của bitmap,cái này chuyển ma trận pixel ra string qua bên kia chuyển lại ra thành ảnh
+        public string BitmapString { get; set; }
+        /*
         public string PenColor { get; set; }// Màu bút được người dùng chọn (trong trường hợp vẽ)
 
         public float PenWidth { get; set; }// Độ rộng của bút vẽ (trong trường hợp vẽ)
@@ -23,11 +28,19 @@ namespace Mural_001
 
         public List<Point> Points_1 { get; set; }// Danh sách các điểm điều khiển cho hình dạng đầu tiên (Points_1) trong bản vẽ
         public List<Point> Points_2 { get; set; }// Danh sách các điểm điều khiển cho hình dạng thứ hai (Points_2) trong bản vẽ
-
+        
         // Vị trí của đối tượng, được lưu dưới dạng mảng tọa độ (x, y, z...)
         public float[] Position { get; set; }
-
-        // Chuỗi biểu diễn của bitmap,cái này chuyển ma trận pixel ra string qua bên kia chuyển lại ra thành ảnh
-        public string BitmapString { get; set; }
+        */
+        // Constructor Packet
+        public Packet(int code, string username, string ip, string roomID)
+        {
+            Code = code;
+            Username = username;
+            IP = ip;
+            RoomID = roomID;
+        }
+        public Packet() { }
     }
+
 }

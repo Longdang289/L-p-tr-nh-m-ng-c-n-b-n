@@ -7,7 +7,7 @@ public class Room// Đại diện cho một phòng, chứa nhiều người dùn
 
     public List<User> userList = new List<User>();// Danh sách các người dùng (User) hiện tại trong phòng
 
-    
+    public string currentbitmap;
     public string GetUsernameListInString()// Trả về list tên người dùng trong phòng, ngăn cách bởi dấu phẩy
     {
         // Danh sách tạm thời để lưu tên người dùng (User.Username) bên class User
