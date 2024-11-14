@@ -7,8 +7,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms; 
 using Newtonsoft.Json; 
 using System.Net.NetworkInformation; 
-using Mural_001; 
-
+using Mural_001;
 namespace Mural_001
 {
     
@@ -27,6 +26,8 @@ namespace Mural_001
             InitializeComponent();
             //Gọi constructor Manager truyền listview và 2 textbox vô
             Manager = new Manager(lsvOne, tbRoom, tbUser);
+            tbRoom.Enabled = false;
+            tbUser.Enabled = false;
         }
 
         // Sự kiện khi nút "Start" được nhấn.
@@ -74,6 +75,10 @@ namespace Mural_001
                 {
                     // Chấp nhận kết nối từ client (bất đồng bộ) và trả về đối tượng TcpClient.
                     TcpClient client = await listener.AcceptTcpClientAsync();
+
+                    // Ghi log khi có client kết nối thành công
+                    Manager.WriteToLog("Co client moi tham gia");
+
                     // Bắt đầu một tác vụ mới để xử lý từng client.
                     _ = Task.Run(() => ReceiveAsync(client));
                 }
@@ -81,18 +86,19 @@ namespace Mural_001
             catch
             {
                 // Trong trường hợp gặp lỗi, khởi động lại listener.
-
                 Manager.WriteToLog("Try to hear again");
                 listener = new TcpListener(IPAddress.Any, 9999);
                 listener.Start();
             }
         }
 
+
         // Phương thức nhận và xử lý dữ liệu từ client (bất đồng bộ).
         //Tham số truyền vào constructor chính là một kết nối để khai thác luồng ghi đọc
         //Xem thêm ở file User DEF
         private async Task ReceiveAsync(TcpClient client)
         {
+
             User user = new User(client); // Tạo đối tượng `User` mới từ kết nối của client.
             userList.Add(user); // Thêm người dùng vào danh sách userList.
 
@@ -102,19 +108,6 @@ namespace Mural_001
                 while (true)
                 {
 
-                    /*
-                     *Về JSON, nôm na nó là string, là một đoạn văn bản đặt trong {}
-                     *Kiểu string dễ tải đi trong mạng giống như HTTP
-                     *Tuy kiểu nhị phân (BinaryFormatter- chuyển mọi thứ về 0,1 thay vì văn bản)
-                     *tiết kiệm dung lượng hơn nhưng có ngôn ngữ không hiểu được
-                     *Còn string thì chắc chắn là ngôn ngữ nào cũng hiểu
-                     *JSON không tự nó chunking được, nó phải gộp hết đủ thì nó mới giải mã được
-                     *Về cái này thì nó phế hơn BinaryFormatter
-                     *Mình phải tự làm cơ chế chunking nếu muốn gửi dữ liệu lớn
-                     *Nếu không thì tự cái dung lượng gói tin là đủ nghẽn rồi, Asyn cx cứu ko nổi
-                     *Tạm thời chúng ta sẽ chưa tính đến cái này, có sao xài vậy đi
-                     */
-
                     // Đọc dữ liệu từ client (bất đồng bộ).
                     requestInJson = await user.Reader.ReadLineAsync();
 
@@ -123,7 +116,7 @@ namespace Mural_001
                     // Chuyển đổi dữ liệu JSON mới nhận thành đối tượng Packet
                     //Chính là việc dịch string JSON lại thành thứ nó đã từng(Packet)
                     Packet request = JsonConvert.DeserializeObject<Packet>(requestInJson);
-
+                    Manager.WriteToLog($"Received Code: {request.Code}, RoomID: {request.RoomID}, Bitmap: {request.BitmapString}");
                     // Kiểm tra mã yêu cầu và gọi hàm xử lý tương ứng.
                     switch (request.Code)
                     {
@@ -164,14 +157,15 @@ namespace Mural_001
             Random r = new Random(); // Tạo đối tượng Random để tạo ID phòng.
             int roomID = r.Next(1000, 9999); // Tạo ID phòng ngẫu nhiên 4 số cho đẹp
             Room newRoom = new Room { roomID = roomID }; // Tạo đối tượng Room mới với ID phòng.
-
+            //newRoom.currentbitmap = request.BitmapString;
             newRoom.userList.Add(user); // Thêm người đòi tạo vào danh sách người dùng của phòng.
             roomList.Add(newRoom); // Thêm phòng mới vào danh sách phòng.
 
             Manager.WriteToLog(user.Username + " created new room. Room code: " + newRoom.roomID); // Ghi log về việc tạo phòng.
             Manager.UpdateRoomCount(roomList.Count); // Cập nhật số lượng phòng.
             Manager.UpdateUserCount(userList.Count); // Cập nhật số lượng người dùng.
-
+            Manager.WriteToLog("Nhận chuỗi bitmap là: " + request.BitmapString);
+            Manager.WriteToLog("Phòng " + newRoom.roomID + " có chuỗi bitmap là: " +newRoom.currentbitmap);
             // Tạo gói tin thông báo phòng mới cho người dùng.
             Packet message = new Packet
             {
@@ -179,7 +173,7 @@ namespace Mural_001
                 Username = request.Username, // Gửi lại tên người dùng.
                 RoomID = roomID.ToString() // Gửi lại ID phòng.
             };
-
+            Console.WriteLine("Sent packet to client: " + JsonConvert.SerializeObject(message));
             await sendSpecificAsync(user, message); // Gửi gói tin đến người dùng đã tạo phòng.
         }
 
@@ -187,7 +181,12 @@ namespace Mural_001
         private async Task join_room_handler_async(User user, Packet request)
         {
             bool roomExist = false; // Biến kiểm tra phòng có tồn tại hay không.
-            int id = int.Parse(request.RoomID.ToString()); // Lấy ID phòng từ yêu cầu.
+            if (!int.TryParse(request.RoomID, out int id))
+            {
+                Manager.WriteToLog("Invalid RoomID format");
+                return;
+            }
+            
             Room requestingRoom = null; // Biến sẽ chọn phòng nào phù hợp để gán vào và đưa người join vô
 
             // Tìm phòng theo ID trong danh sách phòng.
@@ -203,23 +202,24 @@ namespace Mural_001
 
             if (!roomExist) // Nếu phòng không tồn tại.
             {
-                request.Username = "error :this room does not exist"; // Gửi thông báo lỗi.
+                request.Code = 404; // Gửi thông báo lỗi.
                 await sendSpecificAsync(user, request); // Gửi thông báo lỗi đến client.
                 return;
             }
 
             user.Username = request.Username; // Cập nhật tên người dùng.
             requestingRoom.userList.Add(user); // Thêm người dùng vào danh sách của phòng.
-
+            
             request.Username = requestingRoom.GetUsernameListInString(); // Lấy danh sách tên người dùng trong phòng.
             // Gửi thông báo cho tất cả người dùng trong phòng về người mới.
-            foreach (User _user in requestingRoom.userList)
-            {
-                await sendSpecificAsync(_user, request);
-            }
-
+            //request.BitmapString = requestingRoom.currentbitmap;//Đồng bộ cho người mới
+            //await sendSpecificAsync(user, request);//Gửi đồng bộ
             Manager.WriteToLog("Room " + request.RoomID + ": " + user.Username + " joined"); // Ghi log về việc tham gia phòng.
             Manager.UpdateUserCount(userList.Count); // Cập nhật số lượng người dùng.
+            request.BitmapString = requestingRoom.currentbitmap;
+            request.Code = 1;
+            await sendSpecificAsync(user, request);
+            return;
         }
 
         // Phương thức xử lý yêu cầu đồng bộ bitmap từ client (bất đồng bộ).
@@ -229,13 +229,21 @@ namespace Mural_001
             Room targetRoom = roomList.Find(r => r.roomID == int.Parse(request.RoomID));
             if (targetRoom != null)
             {
-                foreach (User _user in targetRoom.userList)
+                targetRoom.currentbitmap = request.BitmapString;
+                Manager.WriteToLog("Phòng " + targetRoom.roomID + " có chuỗi bitmap là: " + targetRoom.currentbitmap);
+                if (targetRoom.userList.Count > 1)
                 {
-                    if (_user != user) // Gửi dữ liệu đồng bộ cho tất cả người dùng khác trong phòng.
+                    Manager.WriteToLog("Đã gửi gói cập nhật đồng bộ bitmap");
+                    foreach (User _user in targetRoom.userList)
                     {
-                        await sendSpecificAsync(_user, request);
+                        if (_user != user) // Gửi dữ liệu đồng bộ cho tất cả người dùng khác trong phòng.
+                        {
+                            await sendSpecificAsync(_user, request);
+                        }
+                        else continue;
                     }
                 }
+                else return;
             }
         }
 

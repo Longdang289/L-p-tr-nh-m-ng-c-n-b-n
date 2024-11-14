@@ -60,9 +60,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Bai Tap UIT\\Mural_001\\Mural_001\\Mural_001.csproj",
-      "projectName": "Mural_001",
-      "projectPath": "D:\\Bai Tap UIT\\Mural_001\\Mural_001\\Mural_001.csproj",
+      "projectUniqueName": "D:\\Bai Tap UIT\\Mural_001\\Mural_001\\Server.csproj",
+      "projectName": "Server",
+      "projectPath": "D:\\Bai Tap UIT\\Mural_001\\Mural_001\\Server.csproj",
       "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
       "outputPath": "D:\\Bai Tap UIT\\Mural_001\\Mural_001\\obj\\",
       "projectStyle": "PackageReference",
