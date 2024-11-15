@@ -116,7 +116,7 @@ namespace Mural_001
                     // Chuyển đổi dữ liệu JSON mới nhận thành đối tượng Packet
                     //Chính là việc dịch string JSON lại thành thứ nó đã từng(Packet)
                     Packet request = JsonConvert.DeserializeObject<Packet>(requestInJson);
-                    Manager.WriteToLog($"Received Code: {request.Code}, RoomID: {request.RoomID}, Bitmap: {request.BitmapString}");
+                    Manager.WriteToLog($"Received Code: {request.Code}, RoomID: {request.RoomID}, String: {request.DrawingData}");
                     // Kiểm tra mã yêu cầu và gọi hàm xử lý tương ứng.
                     switch (request.Code)
                     {
@@ -164,8 +164,7 @@ namespace Mural_001
             Manager.WriteToLog(user.Username + " created new room. Room code: " + newRoom.roomID); // Ghi log về việc tạo phòng.
             Manager.UpdateRoomCount(roomList.Count); // Cập nhật số lượng phòng.
             Manager.UpdateUserCount(userList.Count); // Cập nhật số lượng người dùng.
-            Manager.WriteToLog("Nhận chuỗi bitmap là: " + request.BitmapString);
-            Manager.WriteToLog("Phòng " + newRoom.roomID + " có chuỗi bitmap là: " +newRoom.currentbitmap);
+            
             // Tạo gói tin thông báo phòng mới cho người dùng.
             Packet message = new Packet
             {
@@ -187,7 +186,7 @@ namespace Mural_001
                 return;
             }
             
-            Room requestingRoom = null; // Biến sẽ chọn phòng nào phù hợp để gán vào và đưa người join vô
+            Room requestingRoom=null; // Biến sẽ chọn phòng nào phù hợp để gán vào và đưa người join vô
 
             // Tìm phòng theo ID trong danh sách phòng.
             foreach (Room room in roomList)
@@ -216,7 +215,7 @@ namespace Mural_001
             //await sendSpecificAsync(user, request);//Gửi đồng bộ
             Manager.WriteToLog("Room " + request.RoomID + ": " + user.Username + " joined"); // Ghi log về việc tham gia phòng.
             Manager.UpdateUserCount(userList.Count); // Cập nhật số lượng người dùng.
-            request.BitmapString = requestingRoom.currentbitmap;
+            request.DrawingData = requestingRoom.GetDrawingsAsJson();
             request.Code = 1;
             await sendSpecificAsync(user, request);
             return;
@@ -229,21 +228,25 @@ namespace Mural_001
             Room targetRoom = roomList.Find(r => r.roomID == int.Parse(request.RoomID));
             if (targetRoom != null)
             {
-                targetRoom.currentbitmap = request.BitmapString;
-                Manager.WriteToLog("Phòng " + targetRoom.roomID + " có chuỗi bitmap là: " + targetRoom.currentbitmap);
-                if (targetRoom.userList.Count > 1)
+                if (request.DrawingData != null)
                 {
-                    Manager.WriteToLog("Đã gửi gói cập nhật đồng bộ bitmap");
-                    foreach (User _user in targetRoom.userList)
+                    // Thêm nét vẽ mới vào danh sách Drawing của phòng
+                    targetRoom.AddNewDrawingByJSON(request.DrawingData);
+                    Manager.WriteToLog("Đã gửi gói cập nhật đồng bộ nét vẽ");
+
+                    if (targetRoom.userList.Count > 1)
                     {
-                        if (_user != user) // Gửi dữ liệu đồng bộ cho tất cả người dùng khác trong phòng.
+                        foreach (User _user in targetRoom.userList)
                         {
-                            await sendSpecificAsync(_user, request);
+                            if (_user != user) // Gửi dữ liệu đồng bộ cho tất cả người dùng khác trong phòng.
+                            {
+                                await sendSpecificAsync(_user, request);
+                            }
+                            else continue;
                         }
-                        else continue;
                     }
+                    else return;
                 }
-                else return;
             }
         }
 

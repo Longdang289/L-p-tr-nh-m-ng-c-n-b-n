@@ -16,29 +16,19 @@ namespace Mural_001
         public string IP { get; set; }//IP client gửi
 
         public string RoomID { get; set; }// ID của phòng mà người dùng đang tham gia
-        /*
-        public string PenColor { get; set; }// Màu bút được người dùng chọn (trong trường hợp vẽ)
-
-        public float PenWidth { get; set; }// Độ rộng của bút vẽ (trong trường hợp vẽ)
-
-        public int ShapeTag { get; set; }// Mã định danh cho hình dạng vẽ (ví dụ: hình tròn, hình vuông)
-
-        public List<Point> Points_1 { get; set; }// Danh sách các điểm điều khiển cho hình dạng đầu tiên (Points_1) trong bản vẽ
-        public List<Point> Points_2 { get; set; }// Danh sách các điểm điều khiển cho hình dạng thứ hai (Points_2) trong bản vẽ
-        
-        // Vị trí của đối tượng, được lưu dưới dạng mảng tọa độ (x, y, z...)
-        public float[] Position { get; set; }
-        */
+        public string DrawingData { get; set; } // Dữ liệu JSON của các nét vẽ
         // Chuỗi biểu diễn của bitmap,cái này chuyển ma trận pixel ra string qua bên kia chuyển lại ra thành ảnh
-        public string BitmapString { get; set; }
+        //public string BitmapString { get; set; }
         // Constructor Packet
-        public Packet(int code, string username, string ip, string roomID)
+        public Packet(int code, string username, string ip, string roomID, string drawingData=null)
         {
             Code = code;
             Username = username;
             IP = ip;
             RoomID = roomID;
+            DrawingData = drawingData;
         }
+
         public Packet() { }
     }
 
