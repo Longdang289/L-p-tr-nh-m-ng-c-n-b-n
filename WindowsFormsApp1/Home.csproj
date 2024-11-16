@@ -85,7 +85,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Mural Client\DoAnLon\Client.csproj">
+    <ProjectReference Include="..\Mural Client\DoAnLon\Client.csproj">
       <Project>{c1ee3b7a-c83b-4e16-9ac6-b38a3cf88d62}</Project>
       <Name>Client</Name>
     </ProjectReference>
