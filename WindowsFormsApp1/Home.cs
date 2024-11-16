@@ -33,8 +33,8 @@ namespace WindowsFormsApp1
             tbRoomID.Visible = false;
             // Đặt giá trị mặc định cho tbServerIP là localhost IP
             tbServerIP.Text = "127.0.0.1";
-            picMain.Image = Properties.Resources.picMain; 
-            picMain.SizeMode = PictureBoxSizeMode.Normal;
+            //picMain.Image = Properties.Resources.picMain; 
+            //picMain.SizeMode = PictureBoxSizeMode.Normal;
         }
 
         private void btnCreate_Click(object sender, EventArgs e)

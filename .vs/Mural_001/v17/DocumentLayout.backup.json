@@ -3,6 +3,18 @@
   "WorkspaceRootPath": "D:\\Bai Tap UIT\\Mural_001\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{8B01BB05-837A-4013-9295-C277F86FF306}|WindowsFormsApp1\\Home.csproj|d:\\bai tap uit\\mural_001\\windowsformsapp1\\home.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{8B01BB05-837A-4013-9295-C277F86FF306}|WindowsFormsApp1\\Home.csproj|solutionrelative:windowsformsapp1\\home.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8B01BB05-837A-4013-9295-C277F86FF306}|WindowsFormsApp1\\Home.csproj|d:\\bai tap uit\\mural_001\\windowsformsapp1\\home.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8B01BB05-837A-4013-9295-C277F86FF306}|WindowsFormsApp1\\Home.csproj|solutionrelative:windowsformsapp1\\home.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C1EE3B7A-C83B-4E16-9AC6-B38A3CF88D62}|..\\Mural Client\\DoAnLon\\Client.csproj|D:\\Bai Tap UIT\\Mural_001\\packet def.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C1EE3B7A-C83B-4E16-9AC6-B38A3CF88D62}|..\\Mural Client\\DoAnLon\\Client.csproj|solutionrelative:packet def.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{C1EE3B7A-C83B-4E16-9AC6-B38A3CF88D62}|..\\Mural Client\\DoAnLon\\Client.csproj|d:\\bai tap uit\\mural client\\doanlon\\client.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -15,10 +27,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{44FDE9DF-A59B-4C3D-99E7-5FC44FB7CBA6}|Mural_001\\Server.csproj|d:\\bai tap uit\\mural_001\\mural_001\\room def.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{44FDE9DF-A59B-4C3D-99E7-5FC44FB7CBA6}|Mural_001\\Server.csproj|solutionrelative:mural_001\\room def.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C1EE3B7A-C83B-4E16-9AC6-B38A3CF88D62}|..\\Mural Client\\DoAnLon\\Client.csproj|D:\\Bai Tap UIT\\Mural_001\\packet def.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C1EE3B7A-C83B-4E16-9AC6-B38A3CF88D62}|..\\Mural Client\\DoAnLon\\Client.csproj|solutionrelative:packet def.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -28,17 +36,17 @@
       "DocumentGroups": [
         {
           "DockedWidth": 350,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 3,
               "Title": "client.cs",
               "DocumentMoniker": "D:\\Bai Tap UIT\\Mural Client\\DoAnLon\\client.cs",
               "RelativeDocumentMoniker": "..\\Mural Client\\DoAnLon\\client.cs",
               "ToolTip": "D:\\Bai Tap UIT\\Mural Client\\DoAnLon\\client.cs",
               "RelativeToolTip": "..\\Mural Client\\DoAnLon\\client.cs",
-              "ViewState": "AgIAAKsBAAAAAAAAAAAYwK8BAAAZAAAAAAAAAA==",
+              "ViewState": "AgIAAPMCAAAAAAAAAAAUwDgDAAAbAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-08T14:22:31.642Z",
               "IsPinned": true,
@@ -62,7 +70,36 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 0,
+              "Title": "Home.cs [Design]",
+              "DocumentMoniker": "D:\\Bai Tap UIT\\Mural_001\\WindowsFormsApp1\\Home.cs",
+              "RelativeDocumentMoniker": "WindowsFormsApp1\\Home.cs",
+              "ToolTip": "D:\\Bai Tap UIT\\Mural_001\\WindowsFormsApp1\\Home.cs [Design]",
+              "RelativeToolTip": "WindowsFormsApp1\\Home.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-15T09:05:44.459Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{e5c86464-96be-4d7c-9a8b-abcb3bbf5f92}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Home.cs",
+              "DocumentMoniker": "D:\\Bai Tap UIT\\Mural_001\\WindowsFormsApp1\\Home.cs",
+              "RelativeDocumentMoniker": "WindowsFormsApp1\\Home.cs",
+              "ToolTip": "D:\\Bai Tap UIT\\Mural_001\\WindowsFormsApp1\\Home.cs",
+              "RelativeToolTip": "WindowsFormsApp1\\Home.cs",
+              "ViewState": "AgIAABMAAAAAAAAAAAAtwB0AAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-15T09:07:56.179Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "Packet DEF.cs",
               "DocumentMoniker": "D:\\Bai Tap UIT\\Mural_001\\Packet DEF.cs",
               "RelativeDocumentMoniker": "Packet DEF.cs",
@@ -70,11 +107,12 @@
               "RelativeToolTip": "Packet DEF.cs",
               "ViewState": "AgIAAAwAAAAAAAAAAAAmwBQAAAAKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-14T08:58:20.848Z"
+              "WhenOpened": "2024-11-14T08:58:20.848Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
               "Title": "Drawing.cs",
               "DocumentMoniker": "D:\\Bai Tap UIT\\Mural Client\\DoAnLon\\Drawing.cs",
               "RelativeDocumentMoniker": "..\\Mural Client\\DoAnLon\\Drawing.cs",
@@ -82,12 +120,11 @@
               "RelativeToolTip": "..\\Mural Client\\DoAnLon\\Drawing.cs",
               "ViewState": "AgIAAAcAAAAAAAAAAAAjwAwAAAA7AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-14T08:45:16.363Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-14T08:45:16.363Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 6,
               "Title": "Room DEF.cs",
               "DocumentMoniker": "D:\\Bai Tap UIT\\Mural_001\\Mural_001\\Room DEF.cs",
               "RelativeDocumentMoniker": "Mural_001\\Room DEF.cs",
@@ -99,7 +136,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 5,
               "Title": "Server.cs",
               "DocumentMoniker": "D:\\Bai Tap UIT\\Mural_001\\Mural_001\\Server.cs",
               "RelativeDocumentMoniker": "Mural_001\\Server.cs",

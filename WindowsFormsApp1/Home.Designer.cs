@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.lbServerIP = new System.Windows.Forms.Label();
-            this.picMain = new System.Windows.Forms.PictureBox();
             this.tbServerIP = new System.Windows.Forms.TextBox();
             this.btnCreate = new System.Windows.Forms.Button();
             this.btnConnect = new System.Windows.Forms.Button();
@@ -39,41 +38,35 @@
             this.tbName = new System.Windows.Forms.TextBox();
             this.tbRoomID = new System.Windows.Forms.TextBox();
             this.lbRoomID = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.picMain)).BeginInit();
             this.SuspendLayout();
             // 
             // lbServerIP
             // 
             this.lbServerIP.AutoSize = true;
-            this.lbServerIP.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbServerIP.Location = new System.Drawing.Point(32, 99);
+            this.lbServerIP.BackColor = System.Drawing.Color.Transparent;
+            this.lbServerIP.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbServerIP.ForeColor = System.Drawing.Color.Transparent;
+            this.lbServerIP.Location = new System.Drawing.Point(513, 113);
             this.lbServerIP.Name = "lbServerIP";
-            this.lbServerIP.Size = new System.Drawing.Size(62, 16);
+            this.lbServerIP.Size = new System.Drawing.Size(87, 18);
             this.lbServerIP.TabIndex = 0;
             this.lbServerIP.Text = "Server IP";
             // 
-            // picMain
-            // 
-            this.picMain.Location = new System.Drawing.Point(431, 0);
-            this.picMain.Name = "picMain";
-            this.picMain.Size = new System.Drawing.Size(372, 450);
-            this.picMain.TabIndex = 1;
-            this.picMain.TabStop = false;
-            // 
             // tbServerIP
             // 
+            this.tbServerIP.BackColor = System.Drawing.SystemColors.Window;
             this.tbServerIP.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbServerIP.Location = new System.Drawing.Point(136, 96);
+            this.tbServerIP.Location = new System.Drawing.Point(617, 110);
             this.tbServerIP.Name = "tbServerIP";
             this.tbServerIP.Size = new System.Drawing.Size(152, 22);
             this.tbServerIP.TabIndex = 3;
             // 
             // btnCreate
             // 
-            this.btnCreate.BackColor = System.Drawing.Color.LimeGreen;
+            this.btnCreate.BackColor = System.Drawing.Color.Salmon;
             this.btnCreate.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnCreate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCreate.Location = new System.Drawing.Point(136, 239);
+            this.btnCreate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCreate.Location = new System.Drawing.Point(617, 253);
             this.btnCreate.Name = "btnCreate";
             this.btnCreate.Size = new System.Drawing.Size(83, 120);
             this.btnCreate.TabIndex = 4;
@@ -83,11 +76,11 @@
             // 
             // btnConnect
             // 
-            this.btnConnect.BackColor = System.Drawing.Color.Lime;
+            this.btnConnect.BackColor = System.Drawing.Color.Coral;
             this.btnConnect.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnConnect.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnConnect.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnConnect.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnConnect.Location = new System.Drawing.Point(136, 365);
+            this.btnConnect.Location = new System.Drawing.Point(617, 379);
             this.btnConnect.Name = "btnConnect";
             this.btnConnect.Size = new System.Drawing.Size(172, 58);
             this.btnConnect.TabIndex = 5;
@@ -97,10 +90,10 @@
             // 
             // btnJoin
             // 
-            this.btnJoin.BackColor = System.Drawing.Color.LimeGreen;
+            this.btnJoin.BackColor = System.Drawing.Color.Salmon;
             this.btnJoin.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnJoin.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnJoin.Location = new System.Drawing.Point(225, 239);
+            this.btnJoin.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnJoin.Location = new System.Drawing.Point(706, 253);
             this.btnJoin.Name = "btnJoin";
             this.btnJoin.Size = new System.Drawing.Size(83, 120);
             this.btnJoin.TabIndex = 6;
@@ -110,10 +103,11 @@
             // 
             // btnOffline
             // 
-            this.btnOffline.BackColor = System.Drawing.Color.LimeGreen;
+            this.btnOffline.BackColor = System.Drawing.Color.Salmon;
             this.btnOffline.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnOffline.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnOffline.Location = new System.Drawing.Point(32, 239);
+            this.btnOffline.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnOffline.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnOffline.Location = new System.Drawing.Point(513, 253);
             this.btnOffline.Name = "btnOffline";
             this.btnOffline.Size = new System.Drawing.Size(98, 184);
             this.btnOffline.TabIndex = 7;
@@ -124,17 +118,19 @@
             // lbName
             // 
             this.lbName.AutoSize = true;
-            this.lbName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbName.Location = new System.Drawing.Point(32, 146);
+            this.lbName.BackColor = System.Drawing.Color.Transparent;
+            this.lbName.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbName.ForeColor = System.Drawing.Color.Transparent;
+            this.lbName.Location = new System.Drawing.Point(513, 160);
             this.lbName.Name = "lbName";
-            this.lbName.Size = new System.Drawing.Size(44, 16);
+            this.lbName.Size = new System.Drawing.Size(56, 18);
             this.lbName.TabIndex = 8;
             this.lbName.Text = "Name";
             // 
             // tbName
             // 
             this.tbName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbName.Location = new System.Drawing.Point(136, 143);
+            this.tbName.Location = new System.Drawing.Point(617, 157);
             this.tbName.Name = "tbName";
             this.tbName.Size = new System.Drawing.Size(152, 22);
             this.tbName.TabIndex = 9;
@@ -142,7 +138,7 @@
             // tbRoomID
             // 
             this.tbRoomID.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbRoomID.Location = new System.Drawing.Point(136, 194);
+            this.tbRoomID.Location = new System.Drawing.Point(617, 208);
             this.tbRoomID.Name = "tbRoomID";
             this.tbRoomID.Size = new System.Drawing.Size(152, 22);
             this.tbRoomID.TabIndex = 11;
@@ -150,10 +146,12 @@
             // lbRoomID
             // 
             this.lbRoomID.AutoSize = true;
-            this.lbRoomID.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbRoomID.Location = new System.Drawing.Point(32, 197);
+            this.lbRoomID.BackColor = System.Drawing.Color.Transparent;
+            this.lbRoomID.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbRoomID.ForeColor = System.Drawing.Color.Transparent;
+            this.lbRoomID.Location = new System.Drawing.Point(513, 211);
             this.lbRoomID.Name = "lbRoomID";
-            this.lbRoomID.Size = new System.Drawing.Size(60, 16);
+            this.lbRoomID.Size = new System.Drawing.Size(81, 18);
             this.lbRoomID.TabIndex = 10;
             this.lbRoomID.Text = "Room ID";
             // 
@@ -162,8 +160,9 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.PaleGreen;
-            this.BackgroundImage = global::WindowsFormsApp1.Properties.Resources.picMain;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.BackgroundImage = global::WindowsFormsApp1.Properties.Resources.sunlight_colorful_digital_art_sky_blue_background_hexagon_105873_wallhere_com;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.ClientSize = new System.Drawing.Size(844, 476);
             this.Controls.Add(this.tbRoomID);
             this.Controls.Add(this.lbRoomID);
             this.Controls.Add(this.tbName);
@@ -173,11 +172,9 @@
             this.Controls.Add(this.btnConnect);
             this.Controls.Add(this.btnCreate);
             this.Controls.Add(this.tbServerIP);
-            this.Controls.Add(this.picMain);
             this.Controls.Add(this.lbServerIP);
             this.Name = "Home";
             this.Text = "Form1";
-            ((System.ComponentModel.ISupportInitialize)(this.picMain)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -186,7 +183,6 @@
         #endregion
 
         private System.Windows.Forms.Label lbServerIP;
-        private System.Windows.Forms.PictureBox picMain;
         private System.Windows.Forms.TextBox tbServerIP;
         private System.Windows.Forms.Button btnCreate;
         private System.Windows.Forms.Button btnConnect;

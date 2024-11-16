@@ -93,5 +93,11 @@
   <ItemGroup>
     <None Include="Resources\d6e9bb0cd35560f5de561d8d7dcd265d.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\desktop-wallpaper-flat-design-flat-abstract.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sunlight-colorful-digital-art-sky-blue-background-hexagon-105873-wallhere.com.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

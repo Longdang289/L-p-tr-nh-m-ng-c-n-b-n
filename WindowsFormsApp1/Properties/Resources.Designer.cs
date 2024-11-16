@@ -63,9 +63,29 @@ namespace WindowsFormsApp1.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap desktop_wallpaper_flat_design_flat_abstract {
+            get {
+                object obj = ResourceManager.GetObject("desktop-wallpaper-flat-design-flat-abstract", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap picMain {
             get {
                 object obj = ResourceManager.GetObject("picMain", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap sunlight_colorful_digital_art_sky_blue_background_hexagon_105873_wallhere_com {
+            get {
+                object obj = ResourceManager.GetObject("sunlight-colorful-digital-art-sky-blue-background-hexagon-105873-wallhere.com", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
