@@ -5,7 +5,7 @@ VisualStudioVersion = 17.11.35222.181
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Server", "Mural_001\Server.csproj", "{44FDE9DF-A59B-4C3D-99E7-5FC44FB7CBA6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client", "..\Mural Client\DoAnLon\Client.csproj", "{C1EE3B7A-C83B-4E16-9AC6-B38A3CF88D62}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client", "Mural Client\DoAnLon\Client.csproj", "{C1EE3B7A-C83B-4E16-9AC6-B38A3CF88D62}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Home", "WindowsFormsApp1\Home.csproj", "{8B01BB05-837A-4013-9295-C277F86FF306}"
 EndProject
