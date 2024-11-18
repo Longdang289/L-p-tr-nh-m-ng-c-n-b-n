@@ -17,8 +17,8 @@ namespace Mural_001
 
         public string RoomID { get; set; }// ID của phòng mà người dùng đang tham gia
         public string DrawingData { get; set; } // Dữ liệu JSON của các nét vẽ
-        // Chuỗi biểu diễn của bitmap,cái này chuyển ma trận pixel ra string qua bên kia chuyển lại ra thành ảnh
-        public string BitmapString { get; set; }
+        
+        
         // Constructor Packet
         public Packet(int code, string username, string ip, string roomID, string drawingData=null)
         {

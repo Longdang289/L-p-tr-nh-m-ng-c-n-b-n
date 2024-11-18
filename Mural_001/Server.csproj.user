@@ -4,5 +4,8 @@
     <Compile Update="Server.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Sticky_note.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
   </ItemGroup>
 </Project>

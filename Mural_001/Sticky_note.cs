@@ -2,7 +2,7 @@
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace DoAnLon
+namespace Mural_001
 {
     public class sticky_note : UserControl
     {
