@@ -25,6 +25,10 @@ namespace DoAnLon
         private int controlStartCode=0;
         private string clientIP = "127.0.0.1";
         private string roomID;
+        private List<Image> imageList = new List<Image>();
+        private Image current_image;
+        private List<sticky_note> stickyNotes = new List<sticky_note>();
+        private sticky_note current_note;
         private TcpClient tcpClient;
         private NetworkStream networkStream;
         private StreamReader reader;
@@ -59,8 +63,6 @@ namespace DoAnLon
         private float zoomFactor = 1.0f; // Tỷ lệ phóng to/thu nhỏ hiện tại
         private const float zoomIncrement = 0.1f; // Số lượng phóng to/thu nhỏ mỗi lần cuộn chuột
         private int offsetX, offsetY;
-        private enum DrawShape { Line, Rectangle, Circle }
-        //private DrawShape currentShape = DrawShape.Line;
         #endregion
         #region Rác
         /*public class DoubleBufferedPanel : Panel
@@ -251,10 +253,6 @@ namespace DoAnLon
                 Console.WriteLine("Error sending packet: " + ex.Message);
             }
         }
-        
-
-        
-
         //Luồng nhận Receive
         private async Task ReceiveAsyn()
         {
@@ -294,6 +292,18 @@ namespace DoAnLon
                         case 2:
                             receive_currentDrawing(response);
                             break;
+                        case 3:
+                            receive_image(response);
+                            break;
+                        case 4:
+                            update_image(response);
+                            break;
+                        case 5:
+                            receive_currentNote(response);
+                            break;
+                        case 7:
+                            join_get_image(response);
+                            break;
                         default:
                             packetHandleElse(response);
                             break;
@@ -306,6 +316,42 @@ namespace DoAnLon
                 tcpClient.Close();
             }
         }
+        void receive_currentNote(Packet response)
+        {
+            Debug.WriteLine("Đã nhận note");
+            sticky_note temp = JsonConvert.DeserializeObject<sticky_note>(response.DrawingData);
+
+            if (clientName == response.Username)
+            {
+                current_note.noteID = temp.noteID;
+                stickyNotes.Add(current_note);
+                Debug.WriteLine("Đã nhận note của tôi");
+            }
+            else
+            {
+                // Tạo sticky_note mới từ dữ liệu nhận được
+                sticky_note newNote = new sticky_note
+                {
+                    noteID = temp.noteID,
+                    NoteText = temp.NoteText, // Lấy nội dung từ gói tin
+                    LocationPoint = temp.LocationPoint, // Tọa độ
+                    NoteSize = temp.NoteSize, // Kích thước
+                    BackgroundColor = temp.BackgroundColor // Màu nền
+                };
+
+                // Sử dụng Invoke để thêm control mới vào PanelDraw
+                this.Invoke(new Action(() =>
+                {
+                    this.PanelDraw.Controls.Add(newNote); // Hiển thị sticky_note mới
+                    newNote.BringToFront(); // Đảm bảo nó xuất hiện phía trên cùng
+                }));
+
+                // Thêm vào danh sách quản lý stickyNotes
+                stickyNotes.Add(newNote);
+                Debug.WriteLine("Đã nhận note của người khác");
+            }
+        }
+
         void packetHandleElse(Packet response)
         {
             if (response.Code == 404)
@@ -313,7 +359,6 @@ namespace DoAnLon
                 join_wrong_room();
             }
         }
-        
         void join_wrong_room()
         {
             MessageBox.Show("Phòng không tồn tại");
@@ -344,9 +389,50 @@ namespace DoAnLon
         }
         void join_room_status(Packet response) 
         {
-            //MessageBox.Show("Đã tham gia phòng " + response.RoomID);
             roomID = response.RoomID;
             receive_newDrawing(response);
+        }
+        void join_get_image(Packet response)
+        {
+            Debug.WriteLine("Da nhan image join");
+            // Giải mã danh sách Image từ JSON trong response.DrawingData
+            List<Image> images = JsonConvert.DeserializeObject<List<Image>>(response.DrawingData);
+
+            // Cập nhật tất cả Image vào danh sách imageList
+            foreach (var img in images)
+            {
+                imageList.Add(img);
+            }
+            Debug.WriteLine("Da them moi image vao danh sach");
+
+            // Sử dụng Invoke nếu cần thiết để đảm bảo thao tác UI thực hiện trên thread chính
+            if (PanelDraw.InvokeRequired)
+            {
+                Debug.WriteLine("Sử dụng Invoke để cập nhật giao diện.");
+                PanelDraw.Invoke(new Action(() => AddImagesToUI(images)));
+            }
+            else
+            {
+                Debug.WriteLine("Cập nhật giao diện trực tiếp.");
+                AddImagesToUI(images);
+            }
+
+            Debug.WriteLine("Danh sách Image đã được cập nhật vào imageList.");
+        }
+        // Hàm thực hiện thêm danh sách Image vào imageList và PanelDraw
+        private void AddImagesToUI(List<Image> images)
+        {
+            foreach (var img in images)
+            {
+                Debug.WriteLine($"Thêm ImageID: {img.ImageID}, Position: {img.Position}, Size: {img.ImageSize}");
+
+                // Gọi hàm AddPictureBoxToPanel để thêm từng PictureBox
+                AddPictureBoxToPanel(img);
+            }
+
+            // Làm mới PanelDraw
+            PanelDraw.Refresh();
+            Debug.WriteLine($"Đã thêm {images.Count} Image vào PanelDraw.");
         }
         void receive_currentDrawing(Packet response) 
         {
@@ -450,66 +536,128 @@ namespace DoAnLon
                 Console.WriteLine("Lỗi khi nhận nét vẽ: " + ex.Message);
             }
         }
-        /*void receive_newbitmap(Packet response)
+        void receive_image(Packet response)
         {
-            try
+            Image temp = JsonConvert.DeserializeObject<Image>(response.DrawingData);
+            if (response.Username == clientName)//Mai mốt xét IP nx
             {
-                if (string.IsNullOrEmpty(response.BitmapString))
+                
+                // Cập nhật ID cho `current_image` và thêm vào danh sách
+                current_image.ImageID = temp.ImageID;
+                imageList.Add(current_image);
+
+                // Tìm PictureBox tương ứng (nếu có)
+                PictureBox pictureBox = PanelDraw.Controls
+                    .OfType<PictureBox>()
+                    .FirstOrDefault(pb => pb.Tag == null || (int)pb.Tag == -1);
+
+                if (pictureBox != null)
                 {
-                    Console.WriteLine("Không có bitmap trong gói tin.");
-                    return;
+                    // Cập nhật Tag của PictureBox thành temp.ImageID
+                    pictureBox.Tag = temp.ImageID;
+
+                    Debug.WriteLine($"PictureBox đã được gán Tag: {temp.ImageID}");
                 }
-
-                byte[] bitmapBytes = Convert.FromBase64String(response.BitmapString);
-                var imageConverter = new ImageConverter();
-                Bitmap receivedBitmap = (Bitmap)imageConverter.ConvertFrom(bitmapBytes);
-
-                if (receivedBitmap == null)
+                else
                 {
-                    Console.WriteLine("Lỗi khi chuyển đổi dữ liệu byte thành bitmap.");
-                    return;
+                    Debug.WriteLine("Không tìm thấy PictureBox trống để gán Tag.");
                 }
-
-                // Vẽ transparent bitmap nhận được lên drawingBitmap
-                using (Graphics g = Graphics.FromImage(drawingBitmap))
-                {
-                    g.DrawImage(receivedBitmap, Point.Empty);
-                }
-
-                PanelDraw.Invalidate();
-                Console.WriteLine("Cập nhật bitmap thành công.");
             }
-            catch (Exception ex)
+            else
             {
-                Console.WriteLine("Lỗi khi nhận bitmap: " + ex.Message);
+                Debug.WriteLine("Nhan image cua client khac");
+
+                // Sử dụng Invoke để thêm PictureBox vào PanelDraw
+                if (PanelDraw.InvokeRequired)
+                {
+                    PanelDraw.Invoke(new Action(() =>
+                    {
+                        AddPictureBoxToPanel(temp);
+                    }));
+                }
+                else
+                {
+                    AddPictureBoxToPanel(temp);
+                }
+
+                // Thêm vào danh sách ảnh
+                imageList.Add(temp);
             }
         }
-        string convert_bitmap_to_server(Bitmap bitmap)
+        void update_image(Packet response)
         {
-            if (bitmap == null)
-            {
-                Console.WriteLine("Bitmap is null, cannot convert to server format.");
-                return null;
-            }
+            // Giải mã JSON từ response.DrawingData thành đối tượng Image
+            Image temp = JsonConvert.DeserializeObject<Image>(response.DrawingData);
 
-            try
+            // Kiểm tra xem cần gọi Invoke hay không
+            if (PanelDraw.InvokeRequired)
             {
-                using (MemoryStream ms = new MemoryStream())
-                {
-                    bitmap.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
-                    byte[] bitmapBytes = ms.ToArray();
-                    string bitmapString = Convert.ToBase64String(bitmapBytes);
-                    return bitmapString;
-                }
+                // Sử dụng Invoke để chạy hàm trên thread chính
+                PanelDraw.Invoke(new Action(() => UpdateUI(temp)));
             }
-            catch (Exception ex)
+            else
             {
-                Console.WriteLine("Error converting bitmap to server format: " + ex.Message);
-                return null;
+                // Nếu đang ở thread chính, cập nhật trực tiếp
+                UpdateUI(temp);
             }
         }
-        */
 
+        // Hàm xử lý logic cập nhật UI
+        private void UpdateUI(Image temp)
+        {
+            // Tìm PictureBox trên giao diện bằng cách sử dụng Tag
+            PictureBox pictureBox = PanelDraw.Controls
+                .OfType<PictureBox>()
+                .FirstOrDefault(pb => pb.Tag != null && (int)pb.Tag == temp.ImageID);
+
+            if (pictureBox != null)
+            {
+                Debug.WriteLine($"Cập nhật PictureBox có Tag (ImageID): {temp.ImageID}");
+
+                // Cập nhật vị trí và kích thước của PictureBox
+                pictureBox.Location = temp.Position;
+                pictureBox.Size = temp.ImageSize;
+
+                // Cập nhật thông tin Image trong imageList
+                var existingImage = imageList.FirstOrDefault(img => img.ImageID == temp.ImageID);
+                if (existingImage != null)
+                {
+                    existingImage.Position = temp.Position;
+                    existingImage.ImageSize = temp.ImageSize;
+                }
+                else
+                {
+                    // Nếu Image không tồn tại trong imageList, thêm mới
+                    imageList.Add(temp);
+                    Debug.WriteLine("Thêm mới Image vào danh sách.");
+                }
+            }
+            else
+            {
+                Debug.WriteLine($"Không tìm thấy PictureBox tương ứng với ImageID: {temp.ImageID}");
+            }
+        }
+        private void AddPictureBoxToPanel(Image temp)
+        {
+            PictureBox pictureBox = new PictureBox
+            {
+                Image = Image.DecodeBase64ToBitmap(temp.content),
+                SizeMode = PictureBoxSizeMode.Zoom,
+                Width = temp.ImageSize.Width,
+                Height = temp.ImageSize.Height,
+                Location = temp.Position,
+                Tag = temp.ImageID
+            };
+
+            // Thêm PictureBox vào PanelDraw
+            PanelDraw.Controls.Add(pictureBox);
+
+            // Đăng ký sự kiện chuột cho PictureBox (nếu cần)
+            pictureBox.MouseDown += PictureBox_MouseDown;
+            pictureBox.MouseMove += PictureBox_MouseMovePictureBox;
+            pictureBox.MouseUp += PictureBox_MouseUpPictureBox;
+            pictureBox.MouseWheel += PictureBox_MouseWheel;
+        }
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
             base.OnFormClosing(e);
@@ -780,43 +928,56 @@ namespace DoAnLon
             Point formOriginInScreen = this.PointToScreen(new Point(0, 0));
             int visibleX = formOriginInScreen.X - panelOriginInForm.X;
             int visibleY = formOriginInScreen.Y - panelOriginInForm.Y;
+
             OpenFileDialog openDialog = new OpenFileDialog();
             openDialog.Filter = "Tệp Hình Ảnh|*.png;*.jpg;*.bmp";
             if (openDialog.ShowDialog() == DialogResult.OK)
             {
-                Image loadedImage = new Bitmap(openDialog.FileName);
+                // Tải ảnh từ đường dẫn
+                System.Drawing.Image loadedImage = new Bitmap(openDialog.FileName);
 
                 // Tạo PictureBox với hình ảnh đã tải
                 PictureBox pictureBox = new PictureBox
                 {
                     Image = loadedImage,
                     SizeMode = PictureBoxSizeMode.Zoom,
-                    Width = loadedImage.Width, // Giới hạn chiều rộng theo chiều rộng của panel
-                    Height = loadedImage.Height, // Giới hạn chiều cao theo chiều cao của panel
-                  Location = new Point(visibleX, visibleY),
+                    Width = loadedImage.Width, // Giới hạn chiều rộng theo panel
+                    Height = loadedImage.Height, // Giới hạn chiều cao theo panel
+                    Location = new Point(visibleX, visibleY),
                 };
 
                 // Đảm bảo PictureBox nằm trong giới hạn của Panel
                 if (pictureBox.Right > PanelDraw.Width)
                 {
-                    pictureBox.Left = PanelDraw.Width - pictureBox.Width; // Căn phải
+                    pictureBox.Left = PanelDraw.Width - pictureBox.Width;
                 }
 
                 if (pictureBox.Bottom > PanelDraw.Height)
                 {
-                    pictureBox.Top = PanelDraw.Height - pictureBox.Height; // Căn dưới
+                    pictureBox.Top = PanelDraw.Height - pictureBox.Height;
                 }
+
+                // Thêm ảnh vào danh sách
+                var newImage = new Image(-1, pictureBox.Location, pictureBox.Size, loadedImage);
+                current_image = newImage;
+
+                // Chuyển đối tượng Image thành JSON
+                string jsonImage = JsonConvert.SerializeObject(newImage);
+
+                // Gửi packet tới server
+                SendPacket(3, clientName, clientIP, roomID, jsonImage);
+
+                // Thêm PictureBox vào panel
+                PanelDraw.Controls.Add(pictureBox);
 
                 // Đăng ký sự kiện chuột cho PictureBox
                 pictureBox.MouseDown += PictureBox_MouseDown;
                 pictureBox.MouseMove += PictureBox_MouseMovePictureBox;
                 pictureBox.MouseUp += PictureBox_MouseUpPictureBox;
                 pictureBox.MouseWheel += PictureBox_MouseWheel;
-
-                // Thêm PictureBox vào panel, không phải vào form
-                PanelDraw.Controls.Add(pictureBox);
             }
         }
+
         #endregion
         #region Lưu state panel hiện tại
         //--------------------------Lưu lại trạng thái panel hiện tại-------------------
@@ -887,12 +1048,13 @@ namespace DoAnLon
                 int newX = pictureBox.Left + (e.X - offsetX);
                 int newY = pictureBox.Top + (e.Y - offsetY);
 
-                // Đảm bảo PictureBox nằm trong panelDraw
+                // Đảm bảo PictureBox nằm trong PanelDraw
                 if (newX < 0) newX = 0;
                 if (newY < 0) newY = 0;
                 if (newX + pictureBox.Width > PanelDraw.Width) newX = PanelDraw.Width - pictureBox.Width;
                 if (newY + pictureBox.Height > PanelDraw.Height) newY = PanelDraw.Height - pictureBox.Height;
 
+                // Cập nhật vị trí mới
                 pictureBox.Left = newX;
                 pictureBox.Top = newY;
             }
@@ -901,26 +1063,62 @@ namespace DoAnLon
         //Nhả thôi không đồng bộ chuột và ảnh nữa
         private void PictureBox_MouseUpPictureBox(object sender, MouseEventArgs e)
         {
-            // Reset lại biến sau khi thả chuột
+            PictureBox pictureBox = (PictureBox)sender;
+
+            // Sử dụng ImageID từ Tag
+            int imageID = (int)pictureBox.Tag;
+            var image = imageList.FirstOrDefault(img => img.ImageID == imageID);
+
+            if (image != null)
+            {
+                // Cập nhật vị trí mới
+                image.UpdatePosition(pictureBox.Location);
+
+                // Mã hóa đối tượng thành JSON
+                string jsonImage = JsonConvert.SerializeObject(image);
+
+                // Gửi gói tin cập nhật tới server
+                SendPacket(4, clientName, clientIP, roomID, jsonImage);
+                Debug.WriteLine($"Gói tin đã gửi (di chuyển): {jsonImage}");
+            }
+            else
+            {
+                Debug.WriteLine($"Không tìm thấy Image với ImageID {imageID}");
+            }
             isResizing = false;
         }
-
+        
         //Lăn chuột thu phóng ảnh
         private void PictureBox_MouseWheel(object sender, MouseEventArgs e)
         {
             PictureBox pictureBox = (PictureBox)sender;
 
-            // Phóng to hoặc thu nhỏ PictureBox khi cuộn chuột
-            int zoomAmount = 30; // Tùy chỉnh mức phóng to/thu nhỏ
+            int zoomAmount = 30;
             int newWidth = pictureBox.Width + (e.Delta > 0 ? zoomAmount : -zoomAmount);
             int newHeight = pictureBox.Height + (e.Delta > 0 ? zoomAmount : -zoomAmount);
 
-            // Đảm bảo kích thước PictureBox không vượt quá giới hạn của PanelDraw
             if (newWidth > PanelDraw.Width) newWidth = PanelDraw.Width;
             if (newHeight > PanelDraw.Height) newHeight = PanelDraw.Height;
+            if (newWidth < 10) newWidth = 10;
+            if (newHeight < 10) newHeight = 10;
 
-            // Cập nhật kích thước PictureBox
             pictureBox.Size = new Size(newWidth, newHeight);
+
+            int imageID = (int)pictureBox.Tag;
+            var image = imageList.FirstOrDefault(img => img.ImageID == imageID);
+
+            if (image != null)
+            {
+                image.UpdateSize(pictureBox.Size);
+
+                string jsonImage = JsonConvert.SerializeObject(image);
+                SendPacket(4, clientName, clientIP, roomID, jsonImage);
+                Debug.WriteLine($"Gói tin đã gửi (thu phóng): {jsonImage}");
+            }
+            else
+            {
+                Debug.WriteLine($"Không tìm thấy Image với ImageID {imageID}");
+            }
         }
         #endregion
         #region Kéo thả Panel
@@ -1014,12 +1212,61 @@ namespace DoAnLon
                     int visibleX = formOriginInScreen.X - panelOriginInForm.X;
                     int visibleY = formOriginInScreen.Y - panelOriginInForm.Y;
 
-                    // Tạo sticky note mới và đặt màu nền
-                    sticky_note newStickyNote = new sticky_note();
-                    newStickyNote.BackColor = colorDialog.Color;
-                    newStickyNote.Location = new Point(visibleX, visibleY);
-                    this.PanelDraw.Controls.Add(newStickyNote);
-                    newStickyNote.BringToFront(); // Đảm bảo nó hiển thị trên các control khác
+                    // Tạo sticky_note logic
+                    sticky_note newStickyNote = new sticky_note
+                    {
+                        BackgroundColor = colorDialog.Color,
+                        LocationPoint = new Point(visibleX, visibleY)
+                    };
+
+                    // Tạo TextBox để hiển thị trên giao diện
+                    TextBox stickyTextBox = new TextBox
+                    {
+                        Multiline = true,
+                        BorderStyle = BorderStyle.FixedSingle,
+                        BackColor = newStickyNote.BackgroundColor,
+                        Location = newStickyNote.LocationPoint,
+                        Size = newStickyNote.NoteSize,
+                        Text = newStickyNote.NoteText,
+                        TextAlign = HorizontalAlignment.Center
+                    };
+
+                    // Xử lý sự kiện kéo thả và thay đổi nội dung
+                    stickyTextBox.MouseDown += (s, ev) =>
+                    {
+                        if (ev.Button == MouseButtons.Left)
+                        {
+                            newStickyNote.StartDragging(Cursor.Position);
+                        }
+                    };
+                    stickyTextBox.MouseMove += (s, ev) =>
+                    {
+                        if (ev.Button == MouseButtons.Left)
+                        {
+                            newStickyNote.Drag(Cursor.Position);
+                            stickyTextBox.Location = newStickyNote.LocationPoint; // Cập nhật vị trí TextBox
+                        }
+                    };
+                    stickyTextBox.MouseUp += (s, ev) =>
+                    {
+                        if (ev.Button == MouseButtons.Left)
+                        {
+                            newStickyNote.StopDragging();
+                        }
+                    };
+                    stickyTextBox.TextChanged += (s, ev) =>
+                    {
+                        newStickyNote.NoteText = stickyTextBox.Text; // Cập nhật dữ liệu
+                    };
+
+                    // Thêm TextBox vào Panel và hiển thị
+                    this.PanelDraw.Controls.Add(stickyTextBox);
+                    stickyTextBox.BringToFront(); // Đảm bảo nó hiển thị trên các control khác
+
+                    // Gửi dữ liệu JSON
+                    string jsonNote = JsonConvert.SerializeObject(newStickyNote);
+                    SendPacket(5, clientName, clientIP, roomID, jsonNote);
+                    Debug.WriteLine("Đã gửi gói 5, note");
                 }
             }
         }

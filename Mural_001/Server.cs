@@ -133,12 +133,16 @@ namespace Mural_001
                         case 2: // Mã 2: Đồng bộ bitmap.
                             await sync_bitmap_handler_async(user, request);
                             break;
-                        case 3: // Mã 3: Gửi bitmap.
-                            await send_bitmap_handler_async(user, request);
+                        case 3: // Mã 3: Nhận ảnh mới.
+                            await receive_new_image(user, request);
                             break;
-                        case 4: // Mã 4: Gửi đồ họa.
-                            await send_graphics_handler_async(user, request);
+                        case 4: // Mã 4: Nhận thay đổi size, tọa độ ảnh.
+                            await update_image(user, request);
                             break;
+                        case 5: //Mã 5: Nhận stickynote
+                            await receive_note(user, request);
+                            break;
+                        
                     }
                 }
             }
@@ -218,9 +222,13 @@ namespace Mural_001
             request.DrawingData = requestingRoom.GetDrawingsAsJson();
             request.Code = 1;
             await sendSpecificAsync(user, request);
+            Manager.WriteToLog("Đã gửi nét: code: " + request.Code);
+            request.DrawingData = requestingRoom.GetImagesAsJson();
+            request.Code = 7;
+            await sendSpecificAsync(user, request);
+            Manager.WriteToLog("Đã gửi ảnh: code: " + request.Code);
             return;
         }
-
         // Phương thức xử lý yêu cầu đồng bộ bitmap từ client (bất đồng bộ).
         private async Task sync_bitmap_handler_async(User user, Packet request)
         {
@@ -250,29 +258,30 @@ namespace Mural_001
             }
         }
 
-        // Phương thức xử lý yêu cầu gửi bitmap từ client (bất đồng bộ).
-        private async Task send_bitmap_handler_async(User user, Packet request)
+        // Phương thức 
+        private async Task receive_new_image(User user, Packet request)
         {
             Room targetRoom = roomList.Find(r => r.roomID == int.Parse(request.RoomID)); // Lấy phòng theo ID.
             if (targetRoom != null)
             {
-                // Gửi bitmap cho tất cả người dùng trong phòng, trừ người gửi.
+                Image newImage = JsonConvert.DeserializeObject<Image>(request.DrawingData);
+                targetRoom.AddImage(newImage);
+                newImage.ImageID = targetRoom.imageCount;
+                request.DrawingData= JsonConvert.SerializeObject(newImage);
                 foreach (User _user in targetRoom.userList)
                 {
-                    if (_user != user)
-                    {
-                        await sendSpecificAsync(_user, request);
-                    }
+                    await sendSpecificAsync(_user, request);
                 }
             }
         }
 
-        // Phương thức xử lý yêu cầu gửi đồ họa từ client (bất đồng bộ).
-        private async Task send_graphics_handler_async(User user, Packet request)
+        // Phương thức 
+        private async Task update_image(User user, Packet request)
         {
             Room targetRoom = roomList.Find(r => r.roomID == int.Parse(request.RoomID)); // Lấy phòng theo ID.
             if (targetRoom != null)
             {
+                targetRoom.ImageUpdate(request.DrawingData);
                 // Gửi dữ liệu đồ họa cho tất cả người dùng trong phòng, trừ người gửi.
                 foreach (User _user in targetRoom.userList)
                 {
@@ -284,6 +293,22 @@ namespace Mural_001
             }
         }
 
+        private async Task receive_note(User user, Packet request)
+        {
+            Room targetRoom = roomList.Find(r => r.roomID == int.Parse(request.RoomID)); // Lấy phòng theo ID.
+            if (targetRoom != null)
+            {
+                sticky_note note = JsonConvert.DeserializeObject<sticky_note>(request.DrawingData);
+                targetRoom.AddNote(note);
+                note.noteID = targetRoom.noteCount;
+                request.DrawingData = JsonConvert.SerializeObject(note);
+                request.Code = 5;
+                foreach (User _user in targetRoom.userList)
+                {
+                    await sendSpecificAsync(_user, request);
+                }
+            }
+        }
         // Phương thức đóng kết nối của người dùng.
         private void close_client(User user)
         {
