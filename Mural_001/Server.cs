@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using Newtonsoft.Json; 
 using System.Net.NetworkInformation; 
 using Mural_001;
+using System.Diagnostics;
 namespace Mural_001
 {
     
@@ -142,7 +143,9 @@ namespace Mural_001
                         case 5: //Mã 5: Nhận stickynote
                             await receive_note(user, request);
                             break;
-                        
+                        case 6: //Mã 6: Thay đổi tọa độ hoặc text của note
+                            await update_note(user, request);
+                            break;
                     }
                 }
             }
@@ -227,6 +230,10 @@ namespace Mural_001
             request.Code = 7;
             await sendSpecificAsync(user, request);
             Manager.WriteToLog("Đã gửi ảnh: code: " + request.Code);
+            request.DrawingData= requestingRoom.GetNotesAsJson();
+            request.Code = 8;
+            await sendSpecificAsync(user, request);
+            Manager.WriteToLog("Đã gửi notes: code: "+request.Code);
             return;
         }
         // Phương thức xử lý yêu cầu đồng bộ bitmap từ client (bất đồng bộ).
@@ -295,18 +302,64 @@ namespace Mural_001
 
         private async Task receive_note(User user, Packet request)
         {
-            Room targetRoom = roomList.Find(r => r.roomID == int.Parse(request.RoomID)); // Lấy phòng theo ID.
-            if (targetRoom != null)
+            try
             {
+                // Kiểm tra null hoặc rỗng
+                if (string.IsNullOrEmpty(request.DrawingData))
+                {
+                    Manager.WriteToLog("receive_note: DrawingData is null or empty.");
+                    return;
+                }
+
+                // Lấy phòng theo ID
+                Room targetRoom = roomList.Find(r => r.roomID == int.Parse(request.RoomID));
+                
+                // Deserialize dữ liệu
                 sticky_note note = JsonConvert.DeserializeObject<sticky_note>(request.DrawingData);
+                if (note == null)
+                {
+                    Manager.WriteToLog("receive_note: Failed to deserialize DrawingData into sticky_note.");
+                    return;
+                }
+
+                // Thêm ghi chú vào phòng
                 targetRoom.AddNote(note);
                 note.noteID = targetRoom.noteCount;
+                Manager.WriteToLog("Đã cấp ID cho note");
+                // Serialize lại note và cập nhật request
                 request.DrawingData = JsonConvert.SerializeObject(note);
-                request.Code = 5;
+                Manager.WriteToLog("Note: " + request.DrawingData);
+                // Gửi gói tin đến các người dùng trong phòng
                 foreach (User _user in targetRoom.userList)
                 {
                     await sendSpecificAsync(_user, request);
+                    Manager.WriteToLog("Đã gửi note");
                 }
+
+                Manager.WriteToLog("receive_note: Note processed and forwarded successfully.");
+            }
+            catch (Exception ex)
+            {
+                Manager.WriteToLog($"Error in receive_note: {ex.Message}");
+            }
+        }
+
+        private async Task update_note(User user, Packet request)
+        {
+            Room targetRoom = roomList.Find(r => r.roomID == int.Parse(request.RoomID)); // Lấy phòng theo ID.
+            if (targetRoom != null)
+            {
+                targetRoom.NoteUpdate(request.DrawingData);
+                // Gửi dữ liệu đồ họa cho tất cả người dùng trong phòng, trừ người gửi.
+                foreach (User _user in targetRoom.userList)
+                {
+                    if (_user != user)
+                    {
+                        await sendSpecificAsync(_user, request);
+                        
+                    }
+                }
+                Manager.WriteToLog("Đã chuyển tiếp gói note update");
             }
         }
         // Phương thức đóng kết nối của người dùng.

@@ -51,6 +51,31 @@ public class Room // Đại diện cho một phòng, chứa nhiều người dù
             Debug.WriteLine($"Không tìm thấy Image với ImageID: {newImage.ImageID} trong danh sách.");
         }
     }
+    public void NoteUpdate(string a)
+    {
+        // Giải mã JSON thành đối tượng note mới
+        sticky_note newnote = JsonConvert.DeserializeObject<sticky_note>(a);
+
+        // Tìm đối tượng trong danh sách theo noteID
+        var existingnote = notes.FirstOrDefault(nt => nt.noteID == newnote.noteID);
+
+        if (existingnote != null)
+        {
+            // Cập nhật các thuộc tính cần thiết của đối tượng hiện có
+            existingnote.NoteText = newnote.NoteText;
+            existingnote.NoteSize = newnote.NoteSize;
+            existingnote.LocationPoint = newnote.LocationPoint;
+            existingnote.BackgroundColor=newnote.BackgroundColor;
+
+            // Cập nhật jsonnotelist sau khi chỉnh sửa
+            UpdateJsonNoteList();
+            //Debug.WriteLine($"ImageID {existingImage.ImageID} đã được cập nhật: Position = {existingImage.Position}, Size = {existingImage.ImageSize}");
+        }
+        else
+        {
+            Debug.WriteLine($"Không tìm thấy note với noteID: {newnote.noteID} trong danh sách.");
+        }
+    }
     // Thêm một nét vẽ vào danh sách và cập nhật jsondrawlist
     public void AddDrawing(Drawing drawing)
     {

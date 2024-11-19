@@ -69,9 +69,7 @@
     </Compile>
     <Compile Include="Drawing.cs" />
     <Compile Include="Image.cs" />
-    <Compile Include="sticky_note.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="sticky_note.cs" />
     <Compile Include="client.cs">
       <SubType>Form</SubType>
     </Compile>
