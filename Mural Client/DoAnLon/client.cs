@@ -301,8 +301,14 @@ namespace DoAnLon
                         case 5:
                             receive_currentNote(response);
                             break;
+                        case 6:
+                            update_note(response);
+                            break;
                         case 7:
                             join_get_image(response);
+                            break;
+                        case 8:
+                            join_get_notes(response);
                             break;
                         default:
                             packetHandleElse(response);
@@ -316,42 +322,169 @@ namespace DoAnLon
                 tcpClient.Close();
             }
         }
+        
         void receive_currentNote(Packet response)
         {
             Debug.WriteLine("Đã nhận note");
-            sticky_note temp = JsonConvert.DeserializeObject<sticky_note>(response.DrawingData);
-
-            if (clientName == response.Username)
+            try
             {
-                current_note.noteID = temp.noteID;
-                stickyNotes.Add(current_note);
-                Debug.WriteLine("Đã nhận note của tôi");
+                if (string.IsNullOrEmpty(response.DrawingData))
+                {
+                    Debug.WriteLine("Gói tin bị thiếu DrawingData.");
+                    return;
+                }
+
+                sticky_note temp = JsonConvert.DeserializeObject<sticky_note>(response.DrawingData);
+                if (temp == null)
+                {
+                    Debug.WriteLine("Deserialization thất bại: DrawingData không hợp lệ.");
+                    return;
+                }
+
+                if (clientName == response.Username)
+                {
+                    Debug.WriteLine("Đã nhận note của tôi");
+                    lock (stickyNotes)
+                    {
+                        current_note.noteID = temp.noteID;
+                        foreach (Control control in PanelDraw.Controls)
+                        {
+                            if (control is TextBox textBox && textBox.Text == current_note.NoteText)
+                            {
+                                textBox.Tag = current_note.noteID;
+                                break;
+                            }
+                        }
+                        stickyNotes.Add(current_note);
+                    }
+                }
+                else
+                {
+                    Debug.WriteLine("Đã nhận note của người khác");
+                    Debug.WriteLine("Full JSON received: " + response.DrawingData);
+                    //TextBox stickynewTextBox = null;
+
+                    PanelDraw.Invoke(new Action(() =>
+                    {
+                        try
+                        {
+                            
+
+                            // Tạo TextBox
+                            TextBox stickynewTextBox = new TextBox
+                            {
+                                Multiline = true,
+                                BorderStyle = BorderStyle.FixedSingle,
+                                BackColor = temp.BackgroundColor,
+                                Location = temp.LocationPoint,
+                                Size = temp.NoteSize,
+                                Text = temp.NoteText,
+                                TextAlign = HorizontalAlignment.Center,
+                                Tag = temp.noteID,
+                                Font = new Font("Arial", 13, FontStyle.Regular)
+                            };
+
+                            bool isDragging = false;
+                            Point initialCursorPosition = Point.Empty; // Tọa độ chuột ban đầu
+
+                            // Gắn sự kiện chuột để kéo thả
+                            stickynewTextBox.MouseDown += (s, ev) =>
+                            {
+                                if (ev.Button == MouseButtons.Left)
+                                {
+                                    // Bắt đầu kéo thả
+                                    isDragging = true;
+                                    initialCursorPosition = ev.Location;
+                                }
+                            };
+
+                            stickynewTextBox.MouseMove += (s, ev) =>
+                            {
+                                if (isDragging && ev.Button == MouseButtons.Left)
+                                {
+                                    // Tính toán vị trí mới của TextBox
+                                    Point newLocation = new Point(
+                                        stickynewTextBox.Left + ev.X - initialCursorPosition.X,
+                                        stickynewTextBox.Top + ev.Y - initialCursorPosition.Y
+                                    );
+                                    stickynewTextBox.Location = newLocation;
+
+                                    // Tìm sticky_note tương ứng và cập nhật thông tin
+                                    sticky_note sticky = stickyNotes.Find(note => note.noteID == (int)stickynewTextBox.Tag);
+                                    if (sticky != null)
+                                    {
+                                        sticky.UpdateLocation(newLocation);
+                                    }
+                                }
+                            };
+
+                            stickynewTextBox.MouseUp += (s, ev) =>
+                            {
+                                if (isDragging && ev.Button == MouseButtons.Left)
+                                {
+                                    // Kết thúc kéo thả
+                                    isDragging = false;
+
+                                    // Tìm sticky_note tương ứng và gửi gói tin sau khi thả chuột
+                                    sticky_note sticky = stickyNotes.Find(note => note.noteID == (int)stickynewTextBox.Tag);
+                                    if (sticky != null)
+                                    {
+                                        // Serialize sticky_note thành JSON và gửi gói tin
+                                        string jsonnewNote = JsonConvert.SerializeObject(sticky);
+                                        SendPacket(6, clientName, clientIP, roomID, jsonnewNote);
+                                        Debug.WriteLine("Gửi gói 6, di chuyển hoàn tất");
+                                    }
+                                }
+                            };
+
+                            // Gắn sự kiện để cập nhật nội dung
+                            stickynewTextBox.TextChanged += (s, ev) =>
+                            {
+                                // Nếu đang kéo thả, bỏ qua việc cập nhật nội dung
+                                if (isDragging)
+                                    return;
+
+                                // Tìm sticky_note tương ứng và cập nhật thông tin
+                                sticky_note sticky = stickyNotes.Find(note => note.noteID == (int)stickynewTextBox.Tag);
+                                if (sticky != null)
+                                {
+                                    sticky.UpdateText(stickynewTextBox.Text);
+
+                                    // Serialize sticky_note thành JSON và gửi gói tin
+                                    string jsonnewNote = JsonConvert.SerializeObject(sticky);
+                                    SendPacket(6, clientName, clientIP, roomID, jsonnewNote);
+                                    Debug.WriteLine("Gửi gói 6, text");
+                                }
+                            };
+
+                            // Thêm TextBox vào PanelDraw
+                            PanelDraw.Controls.Add(stickynewTextBox);
+                            stickynewTextBox.BringToFront();
+
+                            // Thêm vào danh sách stickyNotes
+                            lock (stickyNotes)
+                            {
+                                stickyNotes.Add(temp);
+                            }
+
+                            Debug.WriteLine("TextBox created and events registered successfully.");
+                        }
+                        catch (Exception ex)
+                        {
+                            Debug.WriteLine($"Lỗi khi xử lý TextBox: {ex.Message}\n{ex.StackTrace}");
+                        }
+                    }));
+
+                    Debug.WriteLine("TextBox created successfully.");
+
+                    
+                }
             }
-            else
+            catch (Exception ex)
             {
-                // Tạo sticky_note mới từ dữ liệu nhận được
-                sticky_note newNote = new sticky_note
-                {
-                    noteID = temp.noteID,
-                    NoteText = temp.NoteText, // Lấy nội dung từ gói tin
-                    LocationPoint = temp.LocationPoint, // Tọa độ
-                    NoteSize = temp.NoteSize, // Kích thước
-                    BackgroundColor = temp.BackgroundColor // Màu nền
-                };
-
-                // Sử dụng Invoke để thêm control mới vào PanelDraw
-                this.Invoke(new Action(() =>
-                {
-                    this.PanelDraw.Controls.Add(newNote); // Hiển thị sticky_note mới
-                    newNote.BringToFront(); // Đảm bảo nó xuất hiện phía trên cùng
-                }));
-
-                // Thêm vào danh sách quản lý stickyNotes
-                stickyNotes.Add(newNote);
-                Debug.WriteLine("Đã nhận note của người khác");
+                Debug.WriteLine($"Lỗi trong receive_currentNote: {ex.Message}\n{ex.StackTrace}");
             }
         }
-
         void packetHandleElse(Packet response)
         {
             if (response.Code == 404)
@@ -395,29 +528,180 @@ namespace DoAnLon
         void join_get_image(Packet response)
         {
             Debug.WriteLine("Da nhan image join");
-            // Giải mã danh sách Image từ JSON trong response.DrawingData
-            List<Image> images = JsonConvert.DeserializeObject<List<Image>>(response.DrawingData);
-
-            // Cập nhật tất cả Image vào danh sách imageList
-            foreach (var img in images)
+            try
             {
-                imageList.Add(img);
-            }
-            Debug.WriteLine("Da them moi image vao danh sach");
+                if (string.IsNullOrEmpty(response.DrawingData))
+                {
+                    Console.WriteLine("Không có dữ liệu image trong gói tin.");
+                    return;
+                }
+                // Giải mã danh sách Image từ JSON trong response.DrawingData
+                List<Image> images = JsonConvert.DeserializeObject<List<Image>>(response.DrawingData);
 
-            // Sử dụng Invoke nếu cần thiết để đảm bảo thao tác UI thực hiện trên thread chính
-            if (PanelDraw.InvokeRequired)
-            {
-                Debug.WriteLine("Sử dụng Invoke để cập nhật giao diện.");
-                PanelDraw.Invoke(new Action(() => AddImagesToUI(images)));
-            }
-            else
-            {
-                Debug.WriteLine("Cập nhật giao diện trực tiếp.");
-                AddImagesToUI(images);
-            }
+                // Cập nhật tất cả Image vào danh sách imageList
+                foreach (var img in images)
+                {
+                    imageList.Add(img);
+                }
+                Debug.WriteLine("Da them moi image vao danh sach");
 
-            Debug.WriteLine("Danh sách Image đã được cập nhật vào imageList.");
+                // Sử dụng Invoke nếu cần thiết để đảm bảo thao tác UI thực hiện trên thread chính
+                if (PanelDraw.InvokeRequired)
+                {
+                    Debug.WriteLine("Sử dụng Invoke để cập nhật giao diện.");
+                    PanelDraw.Invoke(new Action(() => AddImagesToUI(images)));
+                }
+                else
+                {
+                    Debug.WriteLine("Cập nhật giao diện trực tiếp.");
+                    AddImagesToUI(images);
+                }
+            }
+            catch
+            {
+                Debug.WriteLine($"join_get_image: Lỗi không xác định");
+            }
+            
+        }
+        void join_get_notes(Packet response)
+        {
+            Debug.WriteLine("Đã nhận note join");
+            try
+            {
+                if (string.IsNullOrEmpty(response.DrawingData))
+                {
+                    Console.WriteLine("Không có dữ liệu note trong gói tin.");
+                    return;
+                }
+
+                // Deserialize gói tin thành danh sách sticky_note
+                List<sticky_note> Notes = JsonConvert.DeserializeObject<List<sticky_note>>(response.DrawingData);
+                if (Notes == null || Notes.Count == 0)
+                {
+                    Debug.WriteLine("Danh sách note rỗng hoặc không hợp lệ.");
+                    return;
+                }
+
+                // Cập nhật danh sách stickyNotes
+                lock (stickyNotes)
+                {
+                    stickyNotes.AddRange(Notes);
+                }
+                Debug.WriteLine("Đã thêm mới notes vào danh sách.");
+
+                // Thêm sticky_note lên giao diện
+                if (PanelDraw.InvokeRequired)
+                {
+                    Debug.WriteLine("Sử dụng Invoke để cập nhật giao diện.");
+                    PanelDraw.Invoke(new Action(() => AddStickyNotesToUI(Notes)));
+                }
+                else
+                {
+                    Debug.WriteLine("Cập nhật giao diện trực tiếp.");
+                    AddStickyNotesToUI(Notes);
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"join_get_notes: Lỗi không xác định - {ex.Message}\n{ex.StackTrace}");
+            }
+        }
+
+        // Hàm hỗ trợ để thêm sticky_note vào giao diện
+        void AddStickyNotesToUI(List<sticky_note> notes)
+        {
+            foreach (var note in notes)
+            {
+                TextBox stickyTextBox = new TextBox
+                {
+                    Multiline = true,
+                    BorderStyle = BorderStyle.FixedSingle,
+                    BackColor = note.BackgroundColor,
+                    Location = note.LocationPoint,
+                    Size = note.NoteSize,
+                    Text = note.NoteText,
+                    TextAlign = HorizontalAlignment.Center,
+                    Tag = note.noteID,
+                    Font = new Font("Arial", 13, FontStyle.Regular) // Thiết lập font chữ lớn
+                };
+
+                bool isDragging = false;
+                Point initialCursorPosition = Point.Empty; // Tọa độ chuột ban đầu
+
+                // Gắn sự kiện chuột để kéo thả
+                stickyTextBox.MouseDown += (s, ev) =>
+                {
+                    if (ev.Button == MouseButtons.Left)
+                    {
+                        // Bắt đầu kéo thả
+                        isDragging = true;
+                        initialCursorPosition = ev.Location;
+                    }
+                };
+
+                stickyTextBox.MouseMove += (s, ev) =>
+                {
+                    if (isDragging && ev.Button == MouseButtons.Left)
+                    {
+                        // Tính toán vị trí mới của TextBox
+                        Point newLocation = new Point(
+                            stickyTextBox.Left + ev.X - initialCursorPosition.X,
+                            stickyTextBox.Top + ev.Y - initialCursorPosition.Y
+                        );
+                        stickyTextBox.Location = newLocation;
+
+                        // Tìm sticky_note tương ứng và cập nhật thông tin
+                        sticky_note sticky = stickyNotes.Find(nt => nt.noteID == (int)stickyTextBox.Tag);
+                        if (sticky != null)
+                        {
+                            sticky.UpdateLocation(newLocation);
+                        }
+                    }
+                };
+
+                stickyTextBox.MouseUp += (s, ev) =>
+                {
+                    if (isDragging && ev.Button == MouseButtons.Left)
+                    {
+                        // Kết thúc kéo thả
+                        isDragging = false;
+
+                        // Tìm sticky_note tương ứng và gửi gói tin sau khi thả chuột
+                        sticky_note sticky = stickyNotes.Find(nt => nt.noteID == (int)stickyTextBox.Tag);
+                        if (sticky != null)
+                        {
+                            // Serialize sticky_note thành JSON và gửi gói tin
+                            string jsonnewNote = JsonConvert.SerializeObject(sticky);
+                            SendPacket(6, clientName, clientIP, roomID, jsonnewNote);
+                            Debug.WriteLine("Gửi gói 6, di chuyển hoàn tất");
+                        }
+                    }
+                };
+
+                // Gắn sự kiện để cập nhật nội dung
+                stickyTextBox.TextChanged += (s, ev) =>
+                {
+                    // Nếu đang kéo thả, bỏ qua việc cập nhật nội dung
+                    if (isDragging)
+                        return;
+
+                    // Tìm sticky_note tương ứng và cập nhật thông tin
+                    sticky_note sticky = stickyNotes.Find(nt => nt.noteID == (int)stickyTextBox.Tag);
+                    if (sticky != null)
+                    {
+                        sticky.UpdateText(stickyTextBox.Text);
+
+                        // Serialize sticky_note thành JSON và gửi gói tin
+                        string jsonnewNote = JsonConvert.SerializeObject(sticky);
+                        SendPacket(6, clientName, clientIP, roomID, jsonnewNote);
+                        Debug.WriteLine("Gửi gói 6, text");
+                    }
+                };
+
+                // Thêm TextBox vào PanelDraw
+                PanelDraw.Controls.Add(stickyTextBox);
+                stickyTextBox.BringToFront();
+            }
         }
         // Hàm thực hiện thêm danh sách Image vào imageList và PanelDraw
         private void AddImagesToUI(List<Image> images)
@@ -502,32 +786,42 @@ namespace DoAnLon
                     Console.WriteLine("Lỗi khi chuyển đổi dữ liệu JSON thành danh sách Drawing.");
                     return;
                 }
-                // Nếu PenColor không đúng, đặt lại thành màu đen
-                
-                // Vẽ từng nét vẽ trong danh sách lên `drawingBitmap`
-                using (Graphics g = Graphics.FromImage(drawingBitmap))
-                {
-                    g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
 
-                    foreach (var drawing in drawingList)
+                // Khóa bitmap để tránh truy cập đồng thời
+                lock (drawingBitmap)
+                {
+                    // Vẽ từng nét vẽ trong danh sách lên `drawingBitmap`
+                    using (Graphics g = Graphics.FromImage(drawingBitmap))
                     {
-                        // Nếu PenColor không đúng, đặt lại thành màu đen
-                        if (drawing.PenColor == 0)
+                        g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+
+                        foreach (var drawing in drawingList)
                         {
-                            drawing.PenColor = Color.Black.ToArgb();
-                        }
-                        using (Pen pen = new Pen(Color.FromArgb(drawing.PenColor), drawing.PenWidth))
-                        {
-                            for (int i = 1; i < drawing.Points.Count; i++)
+                            // Nếu PenColor không đúng, đặt lại thành màu đen
+                            if (drawing.PenColor == 0)
                             {
-                                g.DrawLine(pen, drawing.Points[i - 1], drawing.Points[i]);
+                                drawing.PenColor = Color.Black.ToArgb();
+                            }
+                            using (Pen pen = new Pen(Color.FromArgb(drawing.PenColor), drawing.PenWidth))
+                            {
+                                for (int i = 1; i < drawing.Points.Count; i++)
+                                {
+                                    g.DrawLine(pen, drawing.Points[i - 1], drawing.Points[i]);
+                                }
                             }
                         }
                     }
                 }
 
                 // Yêu cầu vẽ lại Panel để hiển thị các nét vẽ
-                PanelDraw.Invalidate();
+                if (PanelDraw.InvokeRequired)
+                {
+                    PanelDraw.Invoke(new Action(() => PanelDraw.Invalidate()));
+                }
+                else
+                {
+                    PanelDraw.Invalidate();
+                }
 
                 Console.WriteLine("Đã vẽ lại tất cả các nét vẽ từ dữ liệu nhận được.");
             }
@@ -601,6 +895,23 @@ namespace DoAnLon
                 UpdateUI(temp);
             }
         }
+        void update_note(Packet response)
+        {
+            // Giải mã JSON từ response.DrawingData thành đối tượng note
+            sticky_note temp = JsonConvert.DeserializeObject<sticky_note>(response.DrawingData);
+
+            // Kiểm tra xem cần gọi Invoke hay không
+            if (PanelDraw.InvokeRequired)
+            {
+                // Sử dụng Invoke để chạy hàm trên thread chính
+                PanelDraw.Invoke(new Action(() => UpdateNoteUI(temp)));
+            }
+            else
+            {
+                // Nếu đang ở thread chính, cập nhật trực tiếp
+                UpdateNoteUI(temp);
+            }
+        }
 
         // Hàm xử lý logic cập nhật UI
         private void UpdateUI(Image temp)
@@ -635,6 +946,44 @@ namespace DoAnLon
             else
             {
                 Debug.WriteLine($"Không tìm thấy PictureBox tương ứng với ImageID: {temp.ImageID}");
+            }
+        }
+        private void UpdateNoteUI(sticky_note temp)
+        {
+            // Tìm TextBox trên giao diện bằng cách sử dụng Tag
+            TextBox stickyTextBox = PanelDraw.Controls
+                .OfType<TextBox>()
+                .FirstOrDefault(tb => tb.Tag != null && (int)tb.Tag == temp.noteID);
+
+            if (stickyTextBox != null)
+            {
+                Debug.WriteLine($"Cập nhật TextBox có Tag (noteID): {temp.noteID}");
+
+                // Cập nhật vị trí, kích thước, nội dung, và màu nền của TextBox
+                stickyTextBox.Location = temp.LocationPoint;
+                stickyTextBox.Size = temp.NoteSize;
+                stickyTextBox.Text = temp.NoteText;
+                stickyTextBox.BackColor = temp.BackgroundColor;
+
+                // Cập nhật thông tin sticky_note trong danh sách StickyNotes
+                var existingNote = stickyNotes.FirstOrDefault(note => note.noteID == temp.noteID);
+                if (existingNote != null)
+                {
+                    existingNote.LocationPoint = temp.LocationPoint;
+                    existingNote.NoteSize = temp.NoteSize;
+                    existingNote.NoteText = temp.NoteText;
+                    existingNote.BackgroundColor = temp.BackgroundColor;
+                }
+                else
+                {
+                    // Nếu sticky_note không tồn tại trong danh sách, thêm mới
+                    stickyNotes.Add(temp);
+                    Debug.WriteLine("Thêm mới sticky_note vào danh sách.");
+                }
+            }
+            else
+            {
+                Debug.WriteLine($"Không tìm thấy TextBox tương ứng với noteID: {temp.noteID}");
             }
         }
         private void AddPictureBoxToPanel(Image temp)
@@ -1207,6 +1556,7 @@ namespace DoAnLon
             {
                 if (colorDialog.ShowDialog() == DialogResult.OK)
                 {
+                    // Xác định tọa độ hiển thị trong panel
                     Point panelOriginInForm = PanelDraw.PointToScreen(new Point(0, 0));
                     Point formOriginInScreen = this.PointToScreen(new Point(0, 0));
                     int visibleX = formOriginInScreen.X - panelOriginInForm.X;
@@ -1216,7 +1566,10 @@ namespace DoAnLon
                     sticky_note newStickyNote = new sticky_note
                     {
                         BackgroundColor = colorDialog.Color,
-                        LocationPoint = new Point(visibleX, visibleY)
+                        LocationPoint = new Point(visibleX, visibleY),
+                        NoteSize = new Size(150, 150),
+                        NoteText = "",
+                        noteID = -1
                     };
 
                     // Tạo TextBox để hiển thị trên giao diện
@@ -1228,48 +1581,102 @@ namespace DoAnLon
                         Location = newStickyNote.LocationPoint,
                         Size = newStickyNote.NoteSize,
                         Text = newStickyNote.NoteText,
-                        TextAlign = HorizontalAlignment.Center
+                        TextAlign = HorizontalAlignment.Center,
+                        Font = new Font("Arial", 13, FontStyle.Regular),
+                        Tag = -1
                     };
 
-                    // Xử lý sự kiện kéo thả và thay đổi nội dung
+                    // Cờ để kiểm soát hành động kéo thả
+                    bool isDragging = false;
+                    Point initialCursorPosition = Point.Empty; // Tọa độ chuột ban đầu
+
+                    // Gắn sự kiện chuột để kéo thả
                     stickyTextBox.MouseDown += (s, ev) =>
                     {
                         if (ev.Button == MouseButtons.Left)
                         {
-                            newStickyNote.StartDragging(Cursor.Position);
+                            // Bắt đầu kéo thả
+                            isDragging = true;
+                            initialCursorPosition = ev.Location;
                         }
                     };
+
                     stickyTextBox.MouseMove += (s, ev) =>
                     {
-                        if (ev.Button == MouseButtons.Left)
+                        if (isDragging && ev.Button == MouseButtons.Left)
                         {
-                            newStickyNote.Drag(Cursor.Position);
-                            stickyTextBox.Location = newStickyNote.LocationPoint; // Cập nhật vị trí TextBox
+                            // Tính toán vị trí mới của TextBox
+                            Point newLocation = new Point(
+                                stickyTextBox.Left + ev.X - initialCursorPosition.X,
+                                stickyTextBox.Top + ev.Y - initialCursorPosition.Y
+                            );
+                            stickyTextBox.Location = newLocation;
+
+                            // Tìm sticky_note tương ứng và cập nhật thông tin
+                            sticky_note sticky = stickyNotes.Find(note => note.noteID == (int)stickyTextBox.Tag);
+                            if (sticky != null)
+                            {
+                                sticky.UpdateLocation(newLocation);
+                            }
                         }
                     };
+
                     stickyTextBox.MouseUp += (s, ev) =>
                     {
-                        if (ev.Button == MouseButtons.Left)
+                        if (isDragging && ev.Button == MouseButtons.Left)
                         {
-                            newStickyNote.StopDragging();
+                            // Kết thúc kéo thả
+                            isDragging = false;
+
+                            // Tìm sticky_note tương ứng và gửi gói tin sau khi thả chuột
+                            sticky_note sticky = stickyNotes.Find(note => note.noteID == (int)stickyTextBox.Tag);
+                            if (sticky != null)
+                            {
+                                // Serialize sticky_note thành JSON và gửi gói tin
+                                string jsonnewNote = JsonConvert.SerializeObject(sticky);
+                                SendPacket(6, clientName, clientIP, roomID, jsonnewNote);
+                                Debug.WriteLine("Gửi gói 6, di chuyển hoàn tất");
+                            }
                         }
                     };
+
+                    // Gắn sự kiện để cập nhật nội dung
                     stickyTextBox.TextChanged += (s, ev) =>
                     {
-                        newStickyNote.NoteText = stickyTextBox.Text; // Cập nhật dữ liệu
+                        // Nếu đang kéo thả, bỏ qua việc cập nhật nội dung
+                        if (isDragging)
+                            return;
+
+                        // Tìm sticky_note tương ứng và cập nhật thông tin
+                        sticky_note sticky = stickyNotes.Find(note => note.noteID == (int)stickyTextBox.Tag);
+                        if (sticky != null)
+                        {
+                            sticky.UpdateText(stickyTextBox.Text);
+
+                            // Serialize sticky_note thành JSON và gửi gói tin
+                            string jsonnewNote = JsonConvert.SerializeObject(sticky);
+                            SendPacket(6, clientName, clientIP, roomID, jsonnewNote);
+                            Debug.WriteLine("Gửi gói 6, text");
+                        }
                     };
 
-                    // Thêm TextBox vào Panel và hiển thị
-                    this.PanelDraw.Controls.Add(stickyTextBox);
-                    stickyTextBox.BringToFront(); // Đảm bảo nó hiển thị trên các control khác
 
-                    // Gửi dữ liệu JSON
+                    // Thêm TextBox vào Panel
+                    PanelDraw.Controls.Add(stickyTextBox);
+                    stickyTextBox.BringToFront();
+                    // Gán current_note
+                    current_note = newStickyNote;
+
+                    // Gán Tag cho TextBox bằng với noteID mặc định (-1)
+                    stickyTextBox.Tag = current_note.noteID;
+                    // Serialize sticky_note thành JSON để gửi đi
                     string jsonNote = JsonConvert.SerializeObject(newStickyNote);
                     SendPacket(5, clientName, clientIP, roomID, jsonNote);
-                    Debug.WriteLine("Đã gửi gói 5, note");
+                    Debug.WriteLine($"Đã gửi gói 5: {jsonNote}");
                 }
             }
         }
+
         #endregion
         #region Độ to nét vẽ
         //-------------------------------Ấn Update to nhỏ nét vẽ--------------------------------

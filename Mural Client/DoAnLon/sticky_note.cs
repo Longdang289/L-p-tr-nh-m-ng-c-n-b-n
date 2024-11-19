@@ -4,18 +4,15 @@ using System.Windows.Forms;
 
 namespace DoAnLon
 {
-    public class sticky_note : UserControl
+    public class sticky_note
     {
-        private bool isDragging = false;
-        private Point dragCursorPoint;
-        private Point dragFormPoint;
+        public int noteID { get; set; } // ID duy nhất cho mỗi ghi chú
+        public string NoteText { get; set; } // Nội dung ghi chú
+        public Point LocationPoint { get; set; } // Tọa độ của ghi chú
+        public Size NoteSize { get; set; } // Kích thước ghi chú
+        public Color BackgroundColor { get; set; } // Màu nền ghi chú
 
-        public int noteID { get; set; }
-        public string NoteText { get; set; }
-        public Point LocationPoint { get; set; }
-        public Size NoteSize { get; set; }
-        public Color BackgroundColor { get; set; }
-
+        // Constructor mặc định
         public sticky_note()
         {
             noteID = -1;
@@ -23,40 +20,32 @@ namespace DoAnLon
             LocationPoint = new Point(0, 0);
             NoteSize = new Size(150, 150);
             BackgroundColor = Color.LightYellow;
-
-            this.Width = NoteSize.Width;
-            this.Height = NoteSize.Height;
-            this.BackColor = BackgroundColor;
-            this.Text = NoteText;
         }
 
-        public void StartDragging(Point cursorPosition)
+        // Hàm cập nhật vị trí
+        public void UpdateLocation(Point newLocation)
         {
-            isDragging = true;
-            dragCursorPoint = cursorPosition;
-            dragFormPoint = LocationPoint;
+            LocationPoint = newLocation;
         }
 
-        public void Drag(Point newCursorPosition)
+        // Hàm cập nhật kích thước
+        public void UpdateSize(Size newSize)
         {
-            if (isDragging)
-            {
-                int deltaX = newCursorPosition.X - dragCursorPoint.X;
-                int deltaY = newCursorPosition.Y - dragCursorPoint.Y;
-
-                LocationPoint = new Point(dragFormPoint.X + deltaX, dragFormPoint.Y + deltaY);
-            }
+            NoteSize = newSize;
         }
 
-        public void StopDragging()
+        // Hàm cập nhật nội dung text
+        public void UpdateText(string newText)
         {
-            isDragging = false;
+            NoteText = newText;
         }
 
-        public void HandleTextChanged()
+        // Hàm cập nhật màu nền
+        public void UpdateBackgroundColor(Color newColor)
         {
-            // Implement logic for text overflow or other behaviors
+            BackgroundColor = newColor;
         }
     }
+
 
 }
