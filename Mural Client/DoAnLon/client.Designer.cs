@@ -34,9 +34,6 @@ namespace DoAnLon
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(client));
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.PanelDraw = new System.Windows.Forms.Panel();
-            this.btnClear = new System.Windows.Forms.Button();
-            this.btnReundo = new System.Windows.Forms.Button();
-            this.btnUndo = new System.Windows.Forms.Button();
             this.btnLoad = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.btn_Pen = new System.Windows.Forms.Button();
@@ -45,12 +42,14 @@ namespace DoAnLon
             this.tbSize = new System.Windows.Forms.TextBox();
             this.btnUpdataSize = new System.Windows.Forms.Button();
             this.btnTpToPosition = new System.Windows.Forms.Button();
-            this.btnGetPosition = new System.Windows.Forms.Button();
             this.lbPosition = new System.Windows.Forms.Label();
             this.lbRoomID = new System.Windows.Forms.Label();
             this.tbRoomID = new System.Windows.Forms.TextBox();
             this.lbName = new System.Windows.Forms.Label();
             this.tbName = new System.Windows.Forms.TextBox();
+            this.tbNoteOne = new System.Windows.Forms.TextBox();
+            this.tbNoteTwo = new System.Windows.Forms.TextBox();
+            this.lbNoteSize = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // PanelDraw
@@ -68,43 +67,10 @@ namespace DoAnLon
             this.PanelDraw.TabIndex = 12;
             this.PanelDraw.Paint += new System.Windows.Forms.PaintEventHandler(this.PanelDraw_Paint);
             // 
-            // btnClear
-            // 
-            this.btnClear.Image = ((System.Drawing.Image)(resources.GetObject("btnClear.Image")));
-            this.btnClear.Location = new System.Drawing.Point(224, 16);
-            this.btnClear.Margin = new System.Windows.Forms.Padding(2);
-            this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(53, 51);
-            this.btnClear.TabIndex = 14;
-            this.btnClear.UseVisualStyleBackColor = true;
-            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
-            // 
-            // btnReundo
-            // 
-            this.btnReundo.Image = ((System.Drawing.Image)(resources.GetObject("btnReundo.Image")));
-            this.btnReundo.Location = new System.Drawing.Point(121, 16);
-            this.btnReundo.Margin = new System.Windows.Forms.Padding(2);
-            this.btnReundo.Name = "btnReundo";
-            this.btnReundo.Size = new System.Drawing.Size(49, 46);
-            this.btnReundo.TabIndex = 11;
-            this.btnReundo.UseVisualStyleBackColor = true;
-            this.btnReundo.Click += new System.EventHandler(this.btnReundo_Click);
-            // 
-            // btnUndo
-            // 
-            this.btnUndo.Image = ((System.Drawing.Image)(resources.GetObject("btnUndo.Image")));
-            this.btnUndo.Location = new System.Drawing.Point(66, 15);
-            this.btnUndo.Margin = new System.Windows.Forms.Padding(2);
-            this.btnUndo.Name = "btnUndo";
-            this.btnUndo.Size = new System.Drawing.Size(51, 46);
-            this.btnUndo.TabIndex = 10;
-            this.btnUndo.UseVisualStyleBackColor = true;
-            this.btnUndo.Click += new System.EventHandler(this.btnUndo_Click);
-            // 
             // btnLoad
             // 
             this.btnLoad.Image = ((System.Drawing.Image)(resources.GetObject("btnLoad.Image")));
-            this.btnLoad.Location = new System.Drawing.Point(8, 67);
+            this.btnLoad.Location = new System.Drawing.Point(66, 19);
             this.btnLoad.Margin = new System.Windows.Forms.Padding(2);
             this.btnLoad.Name = "btnLoad";
             this.btnLoad.Size = new System.Drawing.Size(54, 50);
@@ -115,7 +81,7 @@ namespace DoAnLon
             // btnSave
             // 
             this.btnSave.Image = ((System.Drawing.Image)(resources.GetObject("btnSave.Image")));
-            this.btnSave.Location = new System.Drawing.Point(8, 11);
+            this.btnSave.Location = new System.Drawing.Point(8, 17);
             this.btnSave.Margin = new System.Windows.Forms.Padding(2);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(54, 52);
@@ -148,7 +114,7 @@ namespace DoAnLon
             // btnStickyNote
             // 
             this.btnStickyNote.Image = ((System.Drawing.Image)(resources.GetObject("btnStickyNote.Image")));
-            this.btnStickyNote.Location = new System.Drawing.Point(167, 16);
+            this.btnStickyNote.Location = new System.Drawing.Point(124, 19);
             this.btnStickyNote.Margin = new System.Windows.Forms.Padding(2);
             this.btnStickyNote.Name = "btnStickyNote";
             this.btnStickyNote.Size = new System.Drawing.Size(53, 51);
@@ -178,25 +144,14 @@ namespace DoAnLon
             // 
             // btnTpToPosition
             // 
-            this.btnTpToPosition.Location = new System.Drawing.Point(579, 11);
+            this.btnTpToPosition.Location = new System.Drawing.Point(535, 15);
             this.btnTpToPosition.Margin = new System.Windows.Forms.Padding(2);
             this.btnTpToPosition.Name = "btnTpToPosition";
             this.btnTpToPosition.Size = new System.Drawing.Size(61, 52);
             this.btnTpToPosition.TabIndex = 19;
-            this.btnTpToPosition.Text = "Teleport To Position";
+            this.btnTpToPosition.Text = "Force View";
             this.btnTpToPosition.UseVisualStyleBackColor = true;
             this.btnTpToPosition.Click += new System.EventHandler(this.btnTpToPosition_Click);
-            // 
-            // btnGetPosition
-            // 
-            this.btnGetPosition.Location = new System.Drawing.Point(522, 11);
-            this.btnGetPosition.Margin = new System.Windows.Forms.Padding(2);
-            this.btnGetPosition.Name = "btnGetPosition";
-            this.btnGetPosition.Size = new System.Drawing.Size(53, 52);
-            this.btnGetPosition.TabIndex = 20;
-            this.btnGetPosition.Text = "Get Position";
-            this.btnGetPosition.UseVisualStyleBackColor = true;
-            this.btnGetPosition.Click += new System.EventHandler(this.btnGetPosition_Click);
             // 
             // lbPosition
             // 
@@ -244,25 +199,48 @@ namespace DoAnLon
             this.tbName.Size = new System.Drawing.Size(78, 21);
             this.tbName.TabIndex = 25;
             // 
+            // tbNoteOne
+            // 
+            this.tbNoteOne.Location = new System.Drawing.Point(182, 50);
+            this.tbNoteOne.Name = "tbNoteOne";
+            this.tbNoteOne.Size = new System.Drawing.Size(42, 20);
+            this.tbNoteOne.TabIndex = 26;
+            // 
+            // tbNoteTwo
+            // 
+            this.tbNoteTwo.Location = new System.Drawing.Point(230, 50);
+            this.tbNoteTwo.Name = "tbNoteTwo";
+            this.tbNoteTwo.Size = new System.Drawing.Size(42, 20);
+            this.tbNoteTwo.TabIndex = 27;
+            // 
+            // lbNoteSize
+            // 
+            this.lbNoteSize.AutoSize = true;
+            this.lbNoteSize.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbNoteSize.Location = new System.Drawing.Point(195, 21);
+            this.lbNoteSize.Name = "lbNoteSize";
+            this.lbNoteSize.Size = new System.Drawing.Size(65, 16);
+            this.lbNoteSize.TabIndex = 28;
+            this.lbNoteSize.Text = "Note Size";
+            // 
             // client
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1008, 477);
+            this.Controls.Add(this.lbNoteSize);
+            this.Controls.Add(this.tbNoteTwo);
+            this.Controls.Add(this.tbNoteOne);
             this.Controls.Add(this.tbName);
             this.Controls.Add(this.lbName);
             this.Controls.Add(this.tbRoomID);
             this.Controls.Add(this.lbRoomID);
             this.Controls.Add(this.lbPosition);
-            this.Controls.Add(this.btnGetPosition);
             this.Controls.Add(this.btnTpToPosition);
             this.Controls.Add(this.btnUpdataSize);
             this.Controls.Add(this.tbSize);
             this.Controls.Add(this.btnStickyNote);
-            this.Controls.Add(this.btnClear);
             this.Controls.Add(this.PanelDraw);
-            this.Controls.Add(this.btnReundo);
-            this.Controls.Add(this.btnUndo);
             this.Controls.Add(this.btnLoad);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btn_Pen);
@@ -282,20 +260,19 @@ namespace DoAnLon
         private ColorDialog colorDialog1;
         private Button btnSave;
         private Button btnLoad;
-        private Button btnUndo;
-        private Button btnReundo;
         private Panel PanelDraw;
-        private Button btnClear;
         private Button btnStickyNote;
         private TextBox tbSize;
         private Button btnUpdataSize;
         private Button btnTpToPosition;
-        private Button btnGetPosition;
         private Label lbPosition;
         private Label lbRoomID;
         private TextBox tbRoomID;
         private Label lbName;
         private TextBox tbName;
+        private TextBox tbNoteOne;
+        private TextBox tbNoteTwo;
+        private Label lbNoteSize;
     }
 }
 
