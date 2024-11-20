@@ -16,6 +16,8 @@ public class Room // Đại diện cho một phòng, chứa nhiều người dù
     public List<sticky_note> notes { get; private set; }
     public string jsonnotelist;
     public int noteCount;
+    public string jsonforceview;
+    public bool viewState;
     public Room()
     {
         Drawings = new List<Drawing>();
@@ -26,7 +28,10 @@ public class Room // Đại diện cho một phòng, chứa nhiều người dù
         notes = new List<sticky_note>();
         jsonnotelist = null;
         noteCount = 0;
+        jsonforceview = null;
+        viewState = false;
     }
+    
     public void ImageUpdate(string a)
     {
         // Giải mã JSON thành đối tượng Image mới

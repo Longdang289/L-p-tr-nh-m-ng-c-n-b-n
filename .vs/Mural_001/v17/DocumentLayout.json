@@ -7,6 +7,14 @@
       "RelativeMoniker": "D:0:0:{C1EE3B7A-C83B-4E16-9AC6-B38A3CF88D62}|Mural Client\\DoAnLon\\Client.csproj|solutionrelative:mural client\\doanlon\\client.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{C1EE3B7A-C83B-4E16-9AC6-B38A3CF88D62}|Mural Client\\DoAnLon\\Client.csproj|d:\\bai tap uit\\mural_001\\mural client\\doanlon\\client.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{C1EE3B7A-C83B-4E16-9AC6-B38A3CF88D62}|Mural Client\\DoAnLon\\Client.csproj|solutionrelative:mural client\\doanlon\\client.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C1EE3B7A-C83B-4E16-9AC6-B38A3CF88D62}|Mural Client\\DoAnLon\\Client.csproj|D:\\Bai Tap UIT\\Mural_001\\mural client\\doanlon\\sticky_note.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C1EE3B7A-C83B-4E16-9AC6-B38A3CF88D62}|Mural Client\\DoAnLon\\Client.csproj|solutionrelative:mural client\\doanlon\\sticky_note.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{44FDE9DF-A59B-4C3D-99E7-5FC44FB7CBA6}|Mural_001\\Server.csproj|d:\\bai tap uit\\mural_001\\mural_001\\server.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{44FDE9DF-A59B-4C3D-99E7-5FC44FB7CBA6}|Mural_001\\Server.csproj|solutionrelative:mural_001\\server.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -15,20 +23,8 @@
       "RelativeMoniker": "D:0:0:{44FDE9DF-A59B-4C3D-99E7-5FC44FB7CBA6}|Mural_001\\Server.csproj|solutionrelative:mural_001\\room def.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{44FDE9DF-A59B-4C3D-99E7-5FC44FB7CBA6}|Mural_001\\Server.csproj|d:\\bai tap uit\\mural_001\\mural_001\\sticky_note.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{44FDE9DF-A59B-4C3D-99E7-5FC44FB7CBA6}|Mural_001\\Server.csproj|solutionrelative:mural_001\\sticky_note.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C1EE3B7A-C83B-4E16-9AC6-B38A3CF88D62}|Mural Client\\DoAnLon\\Client.csproj|D:\\Bai Tap UIT\\Mural_001\\mural client\\doanlon\\sticky_note.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C1EE3B7A-C83B-4E16-9AC6-B38A3CF88D62}|Mural Client\\DoAnLon\\Client.csproj|solutionrelative:mural client\\doanlon\\sticky_note.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{44FDE9DF-A59B-4C3D-99E7-5FC44FB7CBA6}|Mural_001\\Server.csproj|d:\\bai tap uit\\mural_001\\mural_001\\packet def.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{44FDE9DF-A59B-4C3D-99E7-5FC44FB7CBA6}|Mural_001\\Server.csproj|solutionrelative:mural_001\\packet def.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C1EE3B7A-C83B-4E16-9AC6-B38A3CF88D62}|Mural Client\\DoAnLon\\Client.csproj|D:\\Bai Tap UIT\\Mural_001\\mural client\\doanlon\\image.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C1EE3B7A-C83B-4E16-9AC6-B38A3CF88D62}|Mural Client\\DoAnLon\\Client.csproj|solutionrelative:mural client\\doanlon\\image.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -38,7 +34,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 350,
-          "SelectedChildIndex": 10,
+          "SelectedChildIndex": 9,
           "Children": [
             {
               "$type": "Bookmark",
@@ -58,39 +54,28 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Image.cs",
-              "DocumentMoniker": "D:\\Bai Tap UIT\\Mural_001\\Mural Client\\DoAnLon\\Image.cs",
-              "RelativeDocumentMoniker": "Mural Client\\DoAnLon\\Image.cs",
-              "ToolTip": "D:\\Bai Tap UIT\\Mural_001\\Mural Client\\DoAnLon\\Image.cs",
-              "RelativeToolTip": "Mural Client\\DoAnLon\\Image.cs",
-              "ViewState": "AgIAADIAAAAAAAAAAAAuwEEAAAAFAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "client.cs [Design]",
+              "DocumentMoniker": "D:\\Bai Tap UIT\\Mural_001\\Mural Client\\DoAnLon\\client.cs",
+              "RelativeDocumentMoniker": "Mural Client\\DoAnLon\\client.cs",
+              "ToolTip": "D:\\Bai Tap UIT\\Mural_001\\Mural Client\\DoAnLon\\client.cs [Design]",
+              "RelativeToolTip": "Mural Client\\DoAnLon\\client.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-18T12:55:54.166Z"
+              "WhenOpened": "2024-11-20T00:51:38.166Z",
+              "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 2,
               "Title": "sticky_note.cs",
               "DocumentMoniker": "D:\\Bai Tap UIT\\Mural_001\\Mural Client\\DoAnLon\\sticky_note.cs",
               "RelativeDocumentMoniker": "Mural Client\\DoAnLon\\sticky_note.cs",
               "ToolTip": "D:\\Bai Tap UIT\\Mural_001\\Mural Client\\DoAnLon\\sticky_note.cs",
               "RelativeToolTip": "Mural Client\\DoAnLon\\sticky_note.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAQwC8AAAAFAAAAAAAAAA==",
+              "ViewState": "AgIAABkAAAAAAAAAAAAcwC8AAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-18T01:42:11.606Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Sticky_note.cs",
-              "DocumentMoniker": "D:\\Bai Tap UIT\\Mural_001\\Mural_001\\Sticky_note.cs",
-              "RelativeDocumentMoniker": "Mural_001\\Sticky_note.cs",
-              "ToolTip": "D:\\Bai Tap UIT\\Mural_001\\Mural_001\\Sticky_note.cs",
-              "RelativeToolTip": "Mural_001\\Sticky_note.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAkAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-17T15:16:08.709Z"
+              "WhenOpened": "2024-11-18T01:42:11.606Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -102,30 +87,31 @@
               "RelativeToolTip": "Mural_001\\Packet DEF.cs",
               "ViewState": "AgIAACMAAAAAAAAAAAAAABMAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-17T02:32:14.376Z"
+              "WhenOpened": "2024-11-17T02:32:14.376Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "Server.cs",
               "DocumentMoniker": "D:\\Bai Tap UIT\\Mural_001\\Mural_001\\Server.cs",
               "RelativeDocumentMoniker": "Mural_001\\Server.cs",
               "ToolTip": "D:\\Bai Tap UIT\\Mural_001\\Mural_001\\Server.cs",
               "RelativeToolTip": "Mural_001\\Server.cs",
-              "ViewState": "AgIAANoAAAAAAAAAAAAAAOEAAAAdAAAAAAAAAA==",
+              "ViewState": "AgIAABsBAAAAAAAAAAAAAB8BAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-16T15:01:17.678Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "Room DEF.cs",
               "DocumentMoniker": "D:\\Bai Tap UIT\\Mural_001\\Mural_001\\Room DEF.cs",
               "RelativeDocumentMoniker": "Mural_001\\Room DEF.cs",
               "ToolTip": "D:\\Bai Tap UIT\\Mural_001\\Mural_001\\Room DEF.cs",
               "RelativeToolTip": "Mural_001\\Room DEF.cs",
-              "ViewState": "AgIAAE8AAAAAAAAAAAAIwIEAAAAjAAAAAAAAAA==",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAgwBYAAAAfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-16T14:58:10.663Z",
               "EditorCaption": ""
@@ -138,7 +124,7 @@
               "RelativeDocumentMoniker": "Mural Client\\DoAnLon\\client.cs",
               "ToolTip": "D:\\Bai Tap UIT\\Mural_001\\Mural Client\\DoAnLon\\client.cs",
               "RelativeToolTip": "Mural Client\\DoAnLon\\client.cs",
-              "ViewState": "AgIAALwCAAAAAAAAAAAgwAMDAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAALAEAAAAAAAAAAAAALoEAAAzAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-16T14:55:55.35Z",
               "EditorCaption": ""
