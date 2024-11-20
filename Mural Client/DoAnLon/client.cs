@@ -29,6 +29,7 @@ namespace DoAnLon
         private Image current_image;
         private List<sticky_note> stickyNotes = new List<sticky_note>();
         private sticky_note current_note;
+        private bool isHost;
         private bool isForce = false;
         private bool beForced = false;
         private TcpClient tcpClient;
@@ -65,33 +66,7 @@ namespace DoAnLon
         private const float zoomIncrement = 0.1f; // Số lượng phóng to/thu nhỏ mỗi lần cuộn chuột
         private int offsetX, offsetY;
         #endregion
-        #region Rác
-        /*public class DoubleBufferedPanel : Panel
-        {
-            public DoubleBufferedPanel()
-            {
-                this.DoubleBuffered = true;
-                this.SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
-                this.SetStyle(ControlStyles.AllPaintingInWmPaint, true);
-                this.SetStyle(ControlStyles.UserPaint, true);
-                this.UpdateStyles();
-            }
-        }
-        */
-        /*private void InitializeOriginalSizes()
-        {
-            foreach (Control control in PanelDraw.Controls)
-            {
-                if (control is PictureBox pictureBox)
-                {
-                    if (!originalSizes.ContainsKey(pictureBox))
-                    {
-                        originalSizes[pictureBox] = pictureBox.Size; // Lưu kích thước gốc của PictureBox
-                    }
-                }
-            }
-        }*/
-        #endregion
+        
         // Constructor mặc định (không có tham số)
         public client()
         {
@@ -119,7 +94,7 @@ namespace DoAnLon
             this.roomID= roomID;
             tbNoteOne.Text = "150";
             tbNoteTwo.Text = "150";
-
+            isHost = false;
             // Ưu tiên lấy IP từ Wi-Fi
             clientIP = GetLocalIPv4(NetworkInterfaceType.Wireless80211);
 
@@ -378,7 +353,7 @@ namespace DoAnLon
                 {
                     Debug.WriteLine("Đã nhận note của người khác");
                     Debug.WriteLine("Full JSON received: " + response.DrawingData);
-                    //TextBox stickynewTextBox = null;
+                    
 
                     PanelDraw.Invoke(new Action(() =>
                     {
@@ -533,11 +508,13 @@ namespace DoAnLon
         }
         void generate_room_status(Packet response)
         {
+            isHost = true;
             roomID = response.RoomID;
             roomIDwrite(response);
         }
         void join_room_status(Packet response) 
         {
+            isHost = false;
             roomID = response.RoomID;
             receive_newDrawing(response);
         }
@@ -796,7 +773,7 @@ namespace DoAnLon
 
                 // Giải mã JSON thành danh sách các đối tượng Drawing
                 var drawingList = JsonConvert.DeserializeObject<List<Drawing>>(response.DrawingData);
-
+                
                 if (drawingList == null || drawingList.Count == 0)
                 {
                     Console.WriteLine("Lỗi khi chuyển đổi dữ liệu JSON thành danh sách Drawing.");
@@ -1027,7 +1004,94 @@ namespace DoAnLon
         {
             base.OnFormClosing(e);
 
-            // Nếu có kết nối TCP (tcpClient không null và đang kết nối), thì đóng kết nối.
+            // Kiểm tra nếu là host
+            if (isHost)
+            {
+                // Hiển thị hộp thoại xác nhận lưu trước khi thoát
+                var result = MessageBox.Show(
+                    "Bạn có muốn lưu trước khi thoát?",
+                    "Xác nhận thoát",
+                    MessageBoxButtons.YesNoCancel,
+                    MessageBoxIcon.Question);
+
+                if (result == DialogResult.Cancel)
+                {
+                    // Hủy đóng form
+                    e.Cancel = true;
+                    return;
+                }
+                else if (result == DialogResult.Yes)
+                {
+                    // Mở hộp thoại lưu file giống như trong btnSave
+                    SaveFileDialog saveDialog = new SaveFileDialog();
+                    saveDialog.Filter = "Tệp PNG|*.png|Tệp JPG|*.jpg";
+
+                    if (saveDialog.ShowDialog() == DialogResult.OK)
+                    {
+                        // Gọi logic lưu file
+                        bool isPng = saveDialog.FileName.EndsWith(".png", StringComparison.OrdinalIgnoreCase);
+                        Bitmap bitmap = new Bitmap(PanelDraw.Width, PanelDraw.Height, PixelFormat.Format32bppArgb);
+
+                        using (Graphics g = Graphics.FromImage(bitmap))
+                        {
+                            // Xử lý nền trong suốt hoặc màu nền
+                            if (isPng)
+                            {
+                                g.Clear(Color.Transparent);
+                            }
+                            else
+                            {
+                                g.Clear(PanelDraw.BackColor);
+                            }
+
+                            // Vẽ các đối tượng trong stickyNotes
+                            foreach (var note in stickyNotes)
+                            {
+                                using (Brush brush = new SolidBrush(note.BackgroundColor))
+                                {
+                                    g.FillRectangle(brush, new Rectangle(note.LocationPoint, note.NoteSize));
+                                }
+
+                                using (Font font = new Font("Arial", 13, FontStyle.Regular))
+                                using (Brush textBrush = new SolidBrush(Color.Black))
+                                {
+                                    StringFormat stringFormat = new StringFormat
+                                    {
+                                        Alignment = StringAlignment.Center,
+                                        LineAlignment = StringAlignment.Center
+                                    };
+                                    g.DrawString(note.NoteText, font, textBrush,
+                                        new RectangleF(note.LocationPoint.X, note.LocationPoint.Y, note.NoteSize.Width, note.NoteSize.Height),
+                                        stringFormat);
+                                }
+                            }
+
+                            // Vẽ các đối tượng trong imageList
+                            foreach (var img in imageList)
+                            {
+                                if (!string.IsNullOrEmpty(img.content))
+                                {
+                                    var decodedImage = Image.DecodeBase64ToBitmap(img.content);
+                                    g.DrawImage(decodedImage, new Rectangle(img.Position, img.ImageSize));
+                                }
+                            }
+
+                            // Vẽ các đường nét từ drawingBitmap
+                            if (drawingBitmap != null)
+                            {
+                                g.DrawImage(drawingBitmap, 0, 0);
+                            }
+                        }
+
+                        // Lưu bitmap ra tệp
+                        ImageFormat format = isPng ? ImageFormat.Png : ImageFormat.Jpeg;
+                        bitmap.Save(saveDialog.FileName, format);
+                        bitmap.Dispose();
+                    }
+                }
+            }
+
+            // Xử lý đóng kết nối TCP (áp dụng cho cả host và client)
             if (tcpClient != null && tcpClient.Connected)
             {
                 try
@@ -1039,12 +1103,10 @@ namespace DoAnLon
                 }
                 catch (Exception ex)
                 {
-                    // Bắt lỗi nếu có sự cố khi đóng kết nối, tránh gây ra lỗi khi đóng form.
+                    // Bắt lỗi nếu có sự cố khi đóng kết nối
                     Console.WriteLine("Error closing connection: " + ex.Message);
                 }
             }
-
-            // Giải phóng tài nguyên khác nếu cần, để đảm bảo form luôn đóng được.
         }
         #region ESC
         //---------------------------------ESC để thoát---------------------------------
@@ -1235,7 +1297,7 @@ namespace DoAnLon
         }
 
         //Nhả chuột thì không vẽ nữa
-        private async void PanelDraw_MouseUp(object sender, MouseEventArgs e)
+        private  void PanelDraw_MouseUp(object sender, MouseEventArgs e)
         {
             
             Debug.Write("\n");
@@ -1246,13 +1308,13 @@ namespace DoAnLon
                 {
                     // Chuyển nét vẽ hiện tại thành JSON và gửi tới server
                     string jsonData = JsonConvert.SerializeObject(currentDrawing);
-                    await SendPacketAsync(2, clientName, clientIP, roomID, jsonData);
+                    SendPacket(2, clientName, clientIP, roomID, jsonData);
 
                     currentDrawing = null; // Đặt lại sau khi gửi
                 }
                 PanelDraw.Invalidate();
                 Debug.WriteLine("Thông số nhả chuột:\n" + "isDrawing: " + isDrawing + "\n" + "isInDrawingMode: " + isInDrawingMode + "\n");
-                //await SendPacketAsync(2, clientName, clientIP, roomID, convert_bitmap_to_server(transparentBitmap));
+                
             }
         }
 
@@ -1284,10 +1346,66 @@ namespace DoAnLon
         private void btnSave_Click(object sender, EventArgs e)
         {
             SaveFileDialog saveDialog = new SaveFileDialog();
-            saveDialog.Filter = "Tệp PNG|*.png";
+            saveDialog.Filter = "Tệp JPG|*.jpg";
             if (saveDialog.ShowDialog() == DialogResult.OK)
             {
-                drawingBitmap.Save(saveDialog.FileName);
+                // Tạo một bitmap mới với kích thước và màu nền giống với PanelDraw
+                Bitmap bitmap = new Bitmap(PanelDraw.Width, PanelDraw.Height);
+
+                // Vẽ nội dung lên bitmap
+                using (Graphics g = Graphics.FromImage(bitmap))
+                {
+                    // Vẽ màu nền của PanelDraw
+                    g.Clear(PanelDraw.BackColor);
+
+                    // Vẽ các đối tượng trong stickyNotes
+                    foreach (var note in stickyNotes)
+                    {
+                        using (Brush brush = new SolidBrush(note.BackgroundColor))
+                        {
+                            g.FillRectangle(brush, new Rectangle(note.LocationPoint, note.NoteSize));
+                        }
+
+                        // Vẽ nội dung ghi chú
+                        using (Font font = new Font("Arial", 13, FontStyle.Regular))
+                        using (Brush textBrush = new SolidBrush(Color.Black))
+                        {
+                            StringFormat stringFormat = new StringFormat
+                            {
+                                Alignment = StringAlignment.Center,
+                                LineAlignment = StringAlignment.Center
+                            };
+                            g.DrawString(note.NoteText, font, textBrush,
+                                new RectangleF(note.LocationPoint.X, note.LocationPoint.Y, note.NoteSize.Width, note.NoteSize.Height),
+                                stringFormat);
+                        }
+                    }
+
+                    // Vẽ các đối tượng trong imageList
+                    foreach (var img in imageList)
+                    {
+                        if (!string.IsNullOrEmpty(img.content))
+                        {
+                            var decodedImage = Image.DecodeBase64ToBitmap(img.content);
+                            g.DrawImage(decodedImage, new Rectangle(img.Position, img.ImageSize));
+                        }
+                    }
+
+                    // Vẽ các đường nét từ drawingBitmap
+                    if (drawingBitmap != null)
+                    {
+                        g.DrawImage(drawingBitmap, 0, 0);
+                    }
+                }
+
+                // Lưu bitmap ra tệp
+                ImageFormat format = saveDialog.FileName.EndsWith(".jpg") ? ImageFormat.Jpeg : ImageFormat.Png;
+                bitmap.Save(saveDialog.FileName, format);
+
+                // Giải phóng bộ nhớ
+                bitmap.Dispose();
+
+                MessageBox.Show("Lưu thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
         #endregion
@@ -1563,7 +1681,7 @@ namespace DoAnLon
                     Point formOriginInScreen = this.PointToScreen(new Point(0, 0));
                     int visibleX = formOriginInScreen.X - panelOriginInForm.X;
                     int visibleY = formOriginInScreen.Y - panelOriginInForm.Y;
-
+                    
                     int One, Two;
                     // Thử chuyển đổi giá trị từ `tbNoteOne.Text` và `tbNoteTwo.Text` sang số nguyên
                     if (!int.TryParse(tbNoteOne.Text, out One))
@@ -1575,11 +1693,19 @@ namespace DoAnLon
                     {
                         Two = 150;
                     }
+                    // Lấy kích thước của panel và ghi chú
+                    int panelCenterX = PanelDraw.Width / 2; // Tọa độ X trung tâm của panel
+                    int panelCenterY = PanelDraw.Height / 2; // Tọa độ Y trung tâm của panel
+                    int stickyNoteX = panelCenterX - (One / 2); // Đảm bảo phần tử nằm chính giữa X của panel
+                    int stickyNoteY = panelCenterY - (Two / 2); // Đảm bảo phần tử nằm chính giữa Y của panel
+                     // Chuyển tọa độ trung tâm sang không gian form
+                    int finalX = stickyNoteX + offsetX;
+                    int finalY = stickyNoteY + offsetY;
                     // Tạo sticky_note logic
                     sticky_note newStickyNote = new sticky_note
                     {
                         BackgroundColor = colorDialog.Color,
-                        LocationPoint = new Point(visibleX, visibleY),
+                        LocationPoint = new Point(finalX,finalY),
                         NoteSize = new Size(One, Two),
                         NoteText = "",
                         noteID = -1
@@ -1815,7 +1941,7 @@ namespace DoAnLon
         }
         
         //Kéo giật tọa độ theo label
-        private void btnTpToPosition_Click(object sender, EventArgs e)
+        private async void btnTpToPosition_Click(object sender, EventArgs e)
         {
             // Lấy tọa độ hiện tại của góc trên bên trái của form
             Point panelOriginInForm = PanelDraw.PointToScreen(new Point(0, 0));
@@ -1835,7 +1961,7 @@ namespace DoAnLon
                     string jsonLocation = JsonConvert.SerializeObject(lbPosition.Text);
 
                     // Gửi gói tin với nội dung JSON hóa
-                    SendPacket(9, clientName, clientIP, roomID, jsonLocation);
+                    await SendPacketAsync(9, clientName, clientIP, roomID, jsonLocation);
 
                     Debug.WriteLine($"Gửi gói tin 9: {jsonLocation}");
 
@@ -1852,7 +1978,7 @@ namespace DoAnLon
             {
                 // Trạng thái khi "Cancel" được nhấn
                 // Gửi gói tin Release
-                SendPacket(10, clientName, clientIP, roomID, "Release");
+                await SendPacketAsync(10, clientName, clientIP, roomID, "Release");
                 Debug.WriteLine("Gửi gói tin 10: Release");
 
                 // Đổi trạng thái button và biến cờ
