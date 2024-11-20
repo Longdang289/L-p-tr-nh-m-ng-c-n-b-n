@@ -146,6 +146,12 @@ namespace Mural_001
                         case 6: //Mã 6: Thay đổi tọa độ hoặc text của note
                             await update_note(user, request);
                             break;
+                        case 9: //Mã 9: Giật tọa độ
+                            await force_view(user, request);
+                            break;
+                        case 10: //Mã 10: Kết thúc giật tọa độ
+                            await stop_force(user, request);
+                            break;
                     }
                 }
             }
@@ -155,7 +161,51 @@ namespace Mural_001
                 close_client(user); // Đóng kết nối của client nếu gặp lỗi.
             }
         }
-
+        private async Task stop_force(User user, Packet request)
+        {
+            Room targetRoom = roomList.Find(r => r.roomID == int.Parse(request.RoomID));
+            if (targetRoom != null)
+            {
+                targetRoom.viewState = false;
+                if (targetRoom.userList.Count > 1)
+                {
+                    foreach (User _user in targetRoom.userList)
+                    {
+                        if (_user != user) // Gửi dữ liệu đồng bộ cho tất cả người dùng khác trong phòng.
+                        {
+                            await sendSpecificAsync(_user, request);
+                        }
+                        else continue;
+                    }
+                }
+            }
+        }
+        private async Task force_view(User user, Packet request)
+        {
+            Room targetRoom = roomList.Find(r => r.roomID == int.Parse(request.RoomID));
+            if (targetRoom != null)
+            {
+                if (request.DrawingData != null)
+                {
+                    targetRoom.jsonforceview = request.DrawingData;
+                    targetRoom.viewState = true;
+                    Manager.WriteToLog("Phòng: "+request.RoomID+" forceview");
+                    
+                    if (targetRoom.userList.Count > 1)
+                    {
+                        foreach (User _user in targetRoom.userList)
+                        {
+                            if (_user != user) // Gửi dữ liệu đồng bộ cho tất cả người dùng khác trong phòng.
+                            {
+                                await sendSpecificAsync(_user, request);
+                            }
+                            else continue;
+                        }
+                    }
+                    else return;
+                }
+            }
+        }
         // Phương thức xử lý yêu cầu tạo phòng từ client (bất đồng bộ). Tức case 0
         private async Task generate_room_handler_async(User user, Packet request)
         {
@@ -234,6 +284,13 @@ namespace Mural_001
             request.Code = 8;
             await sendSpecificAsync(user, request);
             Manager.WriteToLog("Đã gửi notes: code: "+request.Code);
+            if (requestingRoom.viewState==true) 
+            {
+                request.DrawingData = requestingRoom.jsonforceview;
+                request.Code = 9;
+                await sendSpecificAsync(user, request);
+                Manager.WriteToLog("Đã gửi view: code: " + request.Code);
+            }
             return;
         }
         // Phương thức xử lý yêu cầu đồng bộ bitmap từ client (bất đồng bộ).

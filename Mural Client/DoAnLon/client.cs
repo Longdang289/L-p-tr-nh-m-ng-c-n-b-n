@@ -29,6 +29,8 @@ namespace DoAnLon
         private Image current_image;
         private List<sticky_note> stickyNotes = new List<sticky_note>();
         private sticky_note current_note;
+        private bool isForce = false;
+        private bool beForced = false;
         private TcpClient tcpClient;
         private NetworkStream networkStream;
         private StreamReader reader;
@@ -47,8 +49,7 @@ namespace DoAnLon
         private const int DISTANCE_THRESHOLD = 3;  // Ngưỡng khoảng cách cố định để tăng cường nội suy
         private const float INTERPOLATION_MULTIPLIER = 1.5f;  // Tăng cường hệ số nhân nội suy khi khoảng cách lớn
         private Graphics drawingGraphics; // Graphics liên kết với Bitmap
-        private Stack<Bitmap> undoStack = new Stack<Bitmap>();
-        private Stack<Bitmap> redoStack = new Stack<Bitmap>(); // Stack để lưu các trạng thái Redo
+        
 
         private List<PictureBox> pictureBoxes = new List<PictureBox>(); // Danh sách chứa các PictureBox
         private bool isResizing = false; // Kiểm tra có đang thay đổi kích thước hay không
@@ -116,6 +117,9 @@ namespace DoAnLon
             this.serverIP = serverIP;
             this.controlStartCode = controlStartCode;
             this.roomID= roomID;
+            tbNoteOne.Text = "150";
+            tbNoteTwo.Text = "150";
+
             // Ưu tiên lấy IP từ Wi-Fi
             clientIP = GetLocalIPv4(NetworkInterfaceType.Wireless80211);
 
@@ -137,10 +141,10 @@ namespace DoAnLon
             PanelDraw.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             btnSave.Anchor = AnchorStyles.Top | AnchorStyles.Left;
             btnLoad.Anchor = AnchorStyles.Top | AnchorStyles.Left;
-            btnUndo.Anchor = AnchorStyles.Top | AnchorStyles.Left;
+            
             btn_eraser.Anchor = AnchorStyles.Top | AnchorStyles.Left;
             btn_Pen.Anchor = AnchorStyles.Top | AnchorStyles.Left;
-            btnReundo.Anchor = AnchorStyles.Top | AnchorStyles.Left;
+            
             this.MinimumSize = new Size(300, 300);
             // Đăng ký sự kiện chuột cho panelDraw
             PanelDraw.MouseDown += PanelDraw_MouseDown;
@@ -159,6 +163,12 @@ namespace DoAnLon
             this.Load += new EventHandler(Form1_Load);
             this.roomID = roomID;
             #endregion
+            Point panelOriginInForm = PanelDraw.PointToScreen(new Point(0, 0));
+            Point formOriginInScreen = this.PointToScreen(new Point(0, 0));
+            int visibleX = formOriginInScreen.X - panelOriginInForm.X;
+            int visibleY = formOriginInScreen.Y - panelOriginInForm.Y;
+            // Đặt văn bản cho label với tọa độ của form
+            lbPosition.Text = $"{visibleX}, {visibleY}";
         }
         public string GetLocalIPv4(NetworkInterfaceType type)
         {
@@ -309,6 +319,12 @@ namespace DoAnLon
                             break;
                         case 8:
                             join_get_notes(response);
+                            break;
+                        case 9:
+                            be_in_Forced(response);
+                            break;
+                        case 10:
+                            stop_be_Forced(response);
                             break;
                         default:
                             packetHandleElse(response);
@@ -1045,12 +1061,12 @@ namespace DoAnLon
         private void Form1_Load(object sender, EventArgs e)
         {
             btnLoad.BringToFront();
-            btnUndo.BringToFront();
-            btnReundo.BringToFront();
+            
+            
             btnSave.BringToFront();
             btn_Pen.BringToFront();
             btn_eraser.BringToFront();
-            btnClear.BringToFront();
+            
             this.WindowState = FormWindowState.Maximized;
             if (PanelDraw.Width > 0 && PanelDraw.Height > 0)
             {
@@ -1090,7 +1106,7 @@ namespace DoAnLon
             isInDrawingMode = true;
             pen.Color = PanelDraw.BackColor;
             pen.Width = penSize;
-            redoStack.Clear(); // Xóa redoStack khi người dùng vẽ mới
+            
         }
         #endregion
         #region Sự kiện Vẽ
@@ -1178,9 +1194,15 @@ namespace DoAnLon
         //Kéo thả chuột tạo ra nét vẽ theo
         private void PanelDraw_MouseMove(object sender, MouseEventArgs e)
         {
-
             if (isDrawing)
             {
+                // Đảm bảo currentDrawing được khởi tạo
+                if (currentDrawing == null)
+                {
+                    currentDrawing = new Drawing(); // Thay `Drawing` bằng kiểu thực tế của `currentDrawing`
+                    currentDrawing.Points = new List<Point>();
+                }
+
                 Point currentPoint = e.Location;
 
                 // Tính toán khoảng cách giữa điểm hiện tại và điểm cuối
@@ -1328,39 +1350,9 @@ namespace DoAnLon
         }
 
         #endregion
-        #region Lưu state panel hiện tại
-        //--------------------------Lưu lại trạng thái panel hiện tại-------------------
-        private void SaveState()
-        {
-            undoStack.Push((Bitmap)drawingBitmap.Clone()); // Lưu trạng thái hiện tại
-        }
-        #endregion
-        #region Undo
-        //----------------------------------Nút UNDO----------------------------------
-        private void btnUndo_Click(object sender, EventArgs e)
-        {
-            if (undoStack.Count > 0)
-            {
-                redoStack.Push((Bitmap)drawingBitmap.Clone()); // Lưu trạng thái hiện tại vào redoStack trước khi Undo
-                drawingBitmap = undoStack.Pop();
-                drawingGraphics = Graphics.FromImage(drawingBitmap);
-                PanelDraw.Invalidate(); // Vẽ lại panel
-            }
-        }
-        #endregion
-        #region Redo
-        //-----------------------------------Nút Redo---------------------------------
-        private void btnReundo_Click(object sender, EventArgs e)
-        {
-            if (redoStack.Count > 0)
-            {
-                undoStack.Push((Bitmap)drawingBitmap.Clone()); // Lưu trạng thái hiện tại vào undoStack trước khi Redo
-                drawingBitmap = redoStack.Pop(); // Khôi phục trạng thái từ redoStack
-                drawingGraphics = Graphics.FromImage(drawingBitmap);
-                PanelDraw.Invalidate(); // Vẽ lại panel
-            }
-        }
-    #endregion
+        
+        
+        
     #region Vẽ bitmap lên panel
     //----------------------------Hàm vẽ cái bitmap lên cái Panel-----------------
     private void PanelDraw_Paint(object sender, PaintEventArgs e)
@@ -1476,6 +1468,7 @@ namespace DoAnLon
 
         private void panelMovable_MouseDown(object sender, MouseEventArgs e)
         {
+            if (beForced == true) return;
             if (e.Button == MouseButtons.Right)
             {
                 isDragging = true;
@@ -1486,6 +1479,7 @@ namespace DoAnLon
 
         private void panelMovable_MouseMove(object sender, MouseEventArgs e)
         {
+            if (beForced == true) return;
             if (isDragging)
             {
                 // Tính toán vị trí mới của panel
@@ -1500,7 +1494,23 @@ namespace DoAnLon
 
         private void panelMovable_MouseUp(object sender, MouseEventArgs e)
         {
+            if (beForced == true) return;
             isDragging = false; // Kết thúc kéo
+            if (isForce == true)
+            {
+                // Lấy tọa độ hiện tại của góc trên bên trái của form
+                Point panelOriginInForm = PanelDraw.PointToScreen(new Point(0, 0));
+                Point formOriginInScreen = this.PointToScreen(new Point(0, 0));
+                int visibleX = formOriginInScreen.X - panelOriginInForm.X;
+                int visibleY = formOriginInScreen.Y - panelOriginInForm.Y;
+                // Đặt văn bản cho label với tọa độ của form
+                lbPosition.Text = $"{visibleX}, {visibleY}";
+                // Serialize nội dung của lbPosition.Text trực tiếp thành JSON
+                string jsonLocation = JsonConvert.SerializeObject(lbPosition.Text);
+
+                // Gửi gói tin với nội dung JSON hóa
+                SendPacket(9, clientName, clientIP, roomID, jsonLocation);
+            }
         }
         #endregion
         #region Double Buffer
@@ -1521,15 +1531,7 @@ namespace DoAnLon
             }
         }
         #endregion
-        #region Nút Clear
-        //-----------------------Nút Clear hết panel trừ stickynote-------------------------
-        private void btnClear_Click(object sender, EventArgs e)
-        {
-            drawingGraphics.Clear(PanelDraw.BackColor); // Xóa toàn bộ Bitmap
-            PanelDraw.Invalidate(); // Vẽ lại panel
-            redoStack.Clear(); // Xóa redoStack khi người dùng vẽ mới
-        }
-        #endregion
+        
         #region Load panel căn giữa
         //-------------------Load PanelDraw căn giữa ko cần form load-----------------------
         protected override void OnLoad(EventArgs e)
@@ -1562,12 +1564,23 @@ namespace DoAnLon
                     int visibleX = formOriginInScreen.X - panelOriginInForm.X;
                     int visibleY = formOriginInScreen.Y - panelOriginInForm.Y;
 
+                    int One, Two;
+                    // Thử chuyển đổi giá trị từ `tbNoteOne.Text` và `tbNoteTwo.Text` sang số nguyên
+                    if (!int.TryParse(tbNoteOne.Text, out One))
+                    {
+                        One = 150;
+                    }
+
+                    if (!int.TryParse(tbNoteTwo.Text, out Two))
+                    {
+                        Two = 150;
+                    }
                     // Tạo sticky_note logic
                     sticky_note newStickyNote = new sticky_note
                     {
                         BackgroundColor = colorDialog.Color,
                         LocationPoint = new Point(visibleX, visibleY),
-                        NoteSize = new Size(150, 150),
+                        NoteSize = new Size(One, Two),
                         NoteText = "",
                         noteID = -1
                     };
@@ -1689,7 +1702,7 @@ namespace DoAnLon
                     if (newSize >= 1 && newSize <= 72)
                     {
                         penSize = newSize;
-                        if (pen != null && pen.Color != PanelDraw.BackColor) // Nếu bút không phải màu nền (tức là đang vẽ)
+                        if (pen != null) // Nếu bút không phải màu nền (tức là đang vẽ)
                         {
                             pen.Width = penSize; // Cập nhật kích thước bút ngay lập tức
                         }
@@ -1712,9 +1725,97 @@ namespace DoAnLon
         #endregion
         #region Giật tọa độ
         //----------------------------------Giật tọa độ--------------------------------------
+        void stop_be_Forced(Packet response)
+        {
+            beForced = false;
+            btnTpToPosition.Enabled = true;
+            // Phân tách chuỗi tọa độ "x,y"
+            var coordinates = lbPosition.Text.Split(',');
+            if (coordinates.Length == 2 &&
+                int.TryParse(coordinates[0].Trim(), out int x) &&
+                int.TryParse(coordinates[1].Trim(), out int y))
+            {
+                // Cập nhật tọa độ của PanelDraw
+                PanelDraw.Location = new Point(-x, -y);
+                Debug.WriteLine($"Cập nhật PanelDraw đến tọa độ: {x}, {y}");
+            }
+        }
+        void be_in_Forced(Packet response)
+        {
+            
+            try
+            {
+                if (beForced == false)
+                {
+                    // Lấy tọa độ hiện tại của góc trên bên trái của form
+                    Point panelOriginInForm = PanelDraw.PointToScreen(new Point(0, 0));
+                    Point formOriginInScreen = this.PointToScreen(new Point(0, 0));
+                    int visibleX = formOriginInScreen.X - panelOriginInForm.X;
+                    int visibleY = formOriginInScreen.Y - panelOriginInForm.Y;
+                    // Đặt văn bản cho label với tọa độ của form
+                    lbPosition.Text = $"{visibleX}, {visibleY}";
+                    beForced = true;
+                }
+                
+                btnTpToPosition.Enabled = false;
+                // Kiểm tra và xử lý dữ liệu từ response.DrawingData
+                if (!string.IsNullOrEmpty(response.DrawingData))
+                {
+                    // Gọi hàm View_to_view để xử lý chuỗi JSON và thay đổi tọa độ
+                    View_to_view(response.DrawingData);
+                }
+                else
+                {
+                    Debug.WriteLine("Dữ liệu DrawingData trống hoặc không hợp lệ.");
+                }
+            }
+            catch
+            {
+                Debug.WriteLine("Lỗi bị ép");
+            }
+        }
+        void View_to_view(string a)
+        {
+            try
+            {
+                if (!string.IsNullOrEmpty(a))
+                {
+                    // Deserialize chuỗi JSON để lấy tọa độ
+                    string positionText = JsonConvert.DeserializeObject<string>(a);
 
-        //Lấy tọa độ gán vô label 
-        private void btnGetPosition_Click(object sender, EventArgs e)
+                    if (!string.IsNullOrEmpty(positionText))
+                    {
+                        
+
+                        // Phân tách chuỗi tọa độ "x,y"
+                        var coordinates = positionText.Split(',');
+                        if (coordinates.Length == 2 &&
+                            int.TryParse(coordinates[0].Trim(), out int x) &&
+                            int.TryParse(coordinates[1].Trim(), out int y))
+                        {
+                            // Cập nhật tọa độ của PanelDraw
+                            PanelDraw.Location = new Point(-x, -y);
+                            Debug.WriteLine($"Cập nhật PanelDraw đến tọa độ: {x}, {y}");
+                        }
+                        else
+                        {
+                            Debug.WriteLine("Chuỗi tọa độ không hợp lệ.");
+                        }
+                    }
+                }
+                else
+                {
+                    Debug.WriteLine("Dữ liệu đầu vào View_to_view trống.");
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Lỗi trong View_to_view: {ex.Message}");
+            }
+        }
+        
+        //Kéo giật tọa độ theo label
+        private void btnTpToPosition_Click(object sender, EventArgs e)
         {
             // Lấy tọa độ hiện tại của góc trên bên trái của form
             Point panelOriginInForm = PanelDraw.PointToScreen(new Point(0, 0));
@@ -1723,32 +1824,40 @@ namespace DoAnLon
             int visibleY = formOriginInScreen.Y - panelOriginInForm.Y;
             // Đặt văn bản cho label với tọa độ của form
             lbPosition.Text = $"{visibleX}, {visibleY}";
-        }
-        //Kéo giật tọa độ theo label
-        private void btnTpToPosition_Click(object sender, EventArgs e)
-        {
-            // Kiểm tra xem lbPosition có chứa dữ liệu hay không
-            if (!string.IsNullOrEmpty(lbPosition.Text))
-            {
-                // Lấy vị trí đã lưu từ lbPosition
-                var selectedPosition = lbPosition.Text;
 
-                // Phân tách chuỗi vị trí (giả sử vị trí lưu dạng "X, Y")
-                var coordinates = selectedPosition.Split(',');
-                if (coordinates.Length == 2 &&
-                    int.TryParse(coordinates[0].Trim(), out int x) &&
-                    int.TryParse(coordinates[1].Trim(), out int y))
+
+            if(isForce==false)
+            {
+                // Trạng thái ban đầu: "Force View"
+                if (!string.IsNullOrEmpty(lbPosition.Text))
                 {
-                    PanelDraw.Location = new Point(-x, -y);
+                    // Serialize nội dung của lbPosition.Text trực tiếp thành JSON
+                    string jsonLocation = JsonConvert.SerializeObject(lbPosition.Text);
+
+                    // Gửi gói tin với nội dung JSON hóa
+                    SendPacket(9, clientName, clientIP, roomID, jsonLocation);
+
+                    Debug.WriteLine($"Gửi gói tin 9: {jsonLocation}");
+
+                    // Đổi trạng thái button và biến cờ
+                    btnTpToPosition.Text = "Cancel";
+                    isForce = true;
                 }
                 else
                 {
-                    MessageBox.Show("Vị trí không hợp lệ.");
+                    MessageBox.Show("Label không có vị trí để teleport.");
                 }
             }
-            else
+            else if(isForce==true)
             {
-                MessageBox.Show("Label không có vị trí để teleport.");
+                // Trạng thái khi "Cancel" được nhấn
+                // Gửi gói tin Release
+                SendPacket(10, clientName, clientIP, roomID, "Release");
+                Debug.WriteLine("Gửi gói tin 10: Release");
+
+                // Đổi trạng thái button và biến cờ
+                btnTpToPosition.Text = "Force View";
+                isForce = false;
             }
         }
         #endregion
