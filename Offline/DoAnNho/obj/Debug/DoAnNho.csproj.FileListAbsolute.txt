@@ -1,0 +1,10 @@
+D:\Bai Tap UIT\Mural_001\Offline\DoAnNho\obj\Debug\DoAnNho.csproj.AssemblyReference.cache
+D:\Bai Tap UIT\Mural_001\Offline\DoAnNho\obj\Debug\DoAnNho.csproj.GenerateResource.cache
+D:\Bai Tap UIT\Mural_001\Offline\DoAnNho\obj\Debug\DoAnNho.csproj.CoreCompileInputs.cache
+D:\Bai Tap UIT\Mural_001\Offline\DoAnNho\bin\Debug\DoAnNho.exe.config
+D:\Bai Tap UIT\Mural_001\Offline\DoAnNho\bin\Debug\DoAnNho.exe
+D:\Bai Tap UIT\Mural_001\Offline\DoAnNho\bin\Debug\DoAnNho.pdb
+D:\Bai Tap UIT\Mural_001\Offline\DoAnNho\obj\Debug\DoAnNho.Properties.Resources.resources
+D:\Bai Tap UIT\Mural_001\Offline\DoAnNho\obj\Debug\DoAnNho.exe
+D:\Bai Tap UIT\Mural_001\Offline\DoAnNho\obj\Debug\DoAnNho.pdb
+D:\Bai Tap UIT\Mural_001\Offline\DoAnNho\obj\Debug\DoAnLon.clientOffline.resources

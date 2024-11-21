@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client", "Mural Client\DoAn
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Home", "WindowsFormsApp1\Home.csproj", "{8B01BB05-837A-4013-9295-C277F86FF306}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DoAnNho", "Offline\DoAnNho\DoAnNho.csproj", "{1F74A827-7C7C-42F0-9EAD-602A4BE80A2A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{8B01BB05-837A-4013-9295-C277F86FF306}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8B01BB05-837A-4013-9295-C277F86FF306}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8B01BB05-837A-4013-9295-C277F86FF306}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1F74A827-7C7C-42F0-9EAD-602A4BE80A2A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F74A827-7C7C-42F0-9EAD-602A4BE80A2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F74A827-7C7C-42F0-9EAD-602A4BE80A2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F74A827-7C7C-42F0-9EAD-602A4BE80A2A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
