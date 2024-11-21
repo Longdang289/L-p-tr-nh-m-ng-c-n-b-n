@@ -121,5 +121,10 @@ namespace WindowsFormsApp1
             worked = false;
             this.Show();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            tbServerIP.Text = "13.76.28.212";
+        }
     }
 }

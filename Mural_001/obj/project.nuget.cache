@@ -1,10 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "H0VGSJ7AbXE=",
+  "dgSpecHash": "iVNem3T2XMs=",
   "success": true,
-  "projectFilePath": "D:\\Bai Tap UIT\\Mural_001\\Mural_001\\Server.csproj",
+  "projectFilePath": "C:\\Users\\ADMIN\\NT106-DOAN\\Mural_001\\Server.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\DELL\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
+    "C:\\Users\\ADMIN\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
   ],
   "logs": []
 }
