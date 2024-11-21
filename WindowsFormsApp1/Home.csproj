@@ -89,6 +89,10 @@
       <Project>{c1ee3b7a-c83b-4e16-9ac6-b38a3cf88d62}</Project>
       <Name>Client</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Offline\DoAnNho\DoAnNho.csproj">
+      <Project>{1f74a827-7c7c-42f0-9ead-602a4be80a2a}</Project>
+      <Name>DoAnNho</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\d6e9bb0cd35560f5de561d8d7dcd265d.jpg" />

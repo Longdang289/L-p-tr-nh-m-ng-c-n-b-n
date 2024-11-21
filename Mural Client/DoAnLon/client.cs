@@ -332,7 +332,7 @@ namespace DoAnLon
                     return;
                 }
 
-                if (clientName == response.Username)
+                if ((clientName == response.Username) && (clientIP==response.IP))
                 {
                     Debug.WriteLine("Đã nhận note của tôi");
                     lock (stickyNotes)
@@ -826,7 +826,7 @@ namespace DoAnLon
         void receive_image(Packet response)
         {
             Image temp = JsonConvert.DeserializeObject<Image>(response.DrawingData);
-            if (response.Username == clientName)//Mai mốt xét IP nx
+            if ((response.Username == clientName)&&(response.IP==clientIP))//Mai mốt xét IP nx
             {
                 
                 // Cập nhật ID cho `current_image` và thêm vào danh sách
