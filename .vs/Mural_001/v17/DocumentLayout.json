@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\Users\\Admin\\source\\repos\\NT106.P12-N25-DO-AN\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{8B01BB05-837A-4013-9295-C277F86FF306}|WindowsFormsApp1\\Home.csproj|C:\\Users\\Admin\\source\\repos\\NT106.P12-N25-DO-AN\\windowsformsapp1\\home.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{8B01BB05-837A-4013-9295-C277F86FF306}|WindowsFormsApp1\\Home.csproj|solutionrelative:windowsformsapp1\\home.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{8B01BB05-837A-4013-9295-C277F86FF306}|WindowsFormsApp1\\Home.csproj|c:\\users\\admin\\source\\repos\\nt106.p12-n25-do-an\\windowsformsapp1\\home.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8B01BB05-837A-4013-9295-C277F86FF306}|WindowsFormsApp1\\Home.csproj|solutionrelative:windowsformsapp1\\home.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -13,10 +17,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{8B01BB05-837A-4013-9295-C277F86FF306}|WindowsFormsApp1\\Home.csproj|C:\\Users\\Admin\\source\\repos\\NT106.P12-N25-DO-AN\\windowsformsapp1\\home.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8B01BB05-837A-4013-9295-C277F86FF306}|WindowsFormsApp1\\Home.csproj|solutionrelative:windowsformsapp1\\home.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8B01BB05-837A-4013-9295-C277F86FF306}|WindowsFormsApp1\\Home.csproj|C:\\Users\\Admin\\source\\repos\\NT106.P12-N25-DO-AN\\windowsformsapp1\\home.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{8B01BB05-837A-4013-9295-C277F86FF306}|WindowsFormsApp1\\Home.csproj|solutionrelative:windowsformsapp1\\home.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
       "AbsoluteMoniker": "D:0:0:{44FDE9DF-A59B-4C3D-99E7-5FC44FB7CBA6}|Mural_001\\Server.csproj|c:\\users\\admin\\source\\repos\\nt106.p12-n25-do-an\\mural_001\\server.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -34,7 +34,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 350,
-          "SelectedChildIndex": 8,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Bookmark",
@@ -54,7 +54,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "Home.Designer.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\NT106.P12-N25-DO-AN\\WindowsFormsApp1\\Home.Designer.cs",
               "RelativeDocumentMoniker": "WindowsFormsApp1\\Home.Designer.cs",
@@ -91,7 +91,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 0,
               "Title": "Home.cs [Design]",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\NT106.P12-N25-DO-AN\\WindowsFormsApp1\\Home.cs",
               "RelativeDocumentMoniker": "WindowsFormsApp1\\Home.cs",
@@ -103,20 +103,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "Home.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\NT106.P12-N25-DO-AN\\WindowsFormsApp1\\Home.cs",
               "RelativeDocumentMoniker": "WindowsFormsApp1\\Home.cs",
               "ToolTip": "C:\\Users\\Admin\\source\\repos\\NT106.P12-N25-DO-AN\\WindowsFormsApp1\\Home.cs",
               "RelativeToolTip": "WindowsFormsApp1\\Home.cs",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAAABEAAAAsAAAAAAAAAA==",
+              "ViewState": "AgIAAHsAAAAAAAAAAAAnwIYAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-21T03:46:53.834Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "client.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\NT106.P12-N25-DO-AN\\Mural Client\\DoAnLon\\client.cs",
               "RelativeDocumentMoniker": "Mural Client\\DoAnLon\\client.cs",

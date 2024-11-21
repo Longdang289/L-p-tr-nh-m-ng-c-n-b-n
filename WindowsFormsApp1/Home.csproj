@@ -103,5 +103,11 @@
   <ItemGroup>
     <None Include="Resources\sunlight-colorful-digital-art-sky-blue-background-hexagon-105873-wallhere.com.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\z6053807722133_f2cee84b869d29526acbec923a7027d6.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\z6053807722133_f2cee84b869d29526acbec923a7027d61.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

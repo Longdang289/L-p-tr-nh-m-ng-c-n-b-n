@@ -89,5 +89,25 @@ namespace WindowsFormsApp1.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap z6053807722133_f2cee84b869d29526acbec923a7027d6 {
+            get {
+                object obj = ResourceManager.GetObject("z6053807722133_f2cee84b869d29526acbec923a7027d6", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap z6053807722133_f2cee84b869d29526acbec923a7027d61 {
+            get {
+                object obj = ResourceManager.GetObject("z6053807722133_f2cee84b869d29526acbec923a7027d61", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }
