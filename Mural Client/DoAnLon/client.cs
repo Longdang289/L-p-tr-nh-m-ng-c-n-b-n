@@ -1432,7 +1432,7 @@ namespace DoAnLon
                     SizeMode = PictureBoxSizeMode.Zoom,
                     Width = loadedImage.Width, // Giới hạn chiều rộng theo panel
                     Height = loadedImage.Height, // Giới hạn chiều cao theo panel
-                    Location = new Point(visibleX, visibleY),
+                    Location = new Point(visibleX + 600, visibleY + 300),
                 };
 
                 // Đảm bảo PictureBox nằm trong giới hạn của Panel
@@ -1693,19 +1693,12 @@ namespace DoAnLon
                     {
                         Two = 150;
                     }
-                    // Lấy kích thước của panel và ghi chú
-                    int panelCenterX = PanelDraw.Width / 2; // Tọa độ X trung tâm của panel
-                    int panelCenterY = PanelDraw.Height / 2; // Tọa độ Y trung tâm của panel
-                    int stickyNoteX = panelCenterX - (One / 2); // Đảm bảo phần tử nằm chính giữa X của panel
-                    int stickyNoteY = panelCenterY - (Two / 2); // Đảm bảo phần tử nằm chính giữa Y của panel
-                     // Chuyển tọa độ trung tâm sang không gian form
-                    int finalX = stickyNoteX + offsetX;
-                    int finalY = stickyNoteY + offsetY;
+                    
                     // Tạo sticky_note logic
                     sticky_note newStickyNote = new sticky_note
                     {
                         BackgroundColor = colorDialog.Color,
-                        LocationPoint = new Point(finalX,finalY),
+                        LocationPoint = new Point(visibleX + 600,visibleY + 300),
                         NoteSize = new Size(One, Two),
                         NoteText = "",
                         noteID = -1

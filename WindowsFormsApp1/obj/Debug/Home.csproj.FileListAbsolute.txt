@@ -36,3 +36,22 @@ C:\Users\ADMIN\NT106\WindowsFormsApp1\obj\Debug\Home.csproj.Up2Date
 C:\Users\ADMIN\NT106\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
 C:\Users\ADMIN\NT106\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb
 >>>>>>> cebebfdffa300738317c2803191add47193785f2
+C:\Users\Admin\source\repos\NT106.P12-N25-DO-AN\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe.config
+C:\Users\Admin\source\repos\NT106.P12-N25-DO-AN\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe
+C:\Users\Admin\source\repos\NT106.P12-N25-DO-AN\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.pdb
+C:\Users\Admin\source\repos\NT106.P12-N25-DO-AN\WindowsFormsApp1\bin\Debug\DoAnLon.exe
+C:\Users\Admin\source\repos\NT106.P12-N25-DO-AN\WindowsFormsApp1\bin\Debug\DoAnNho.exe
+C:\Users\Admin\source\repos\NT106.P12-N25-DO-AN\WindowsFormsApp1\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Admin\source\repos\NT106.P12-N25-DO-AN\WindowsFormsApp1\bin\Debug\DoAnLon.pdb
+C:\Users\Admin\source\repos\NT106.P12-N25-DO-AN\WindowsFormsApp1\bin\Debug\DoAnLon.exe.config
+C:\Users\Admin\source\repos\NT106.P12-N25-DO-AN\WindowsFormsApp1\bin\Debug\DoAnNho.pdb
+C:\Users\Admin\source\repos\NT106.P12-N25-DO-AN\WindowsFormsApp1\bin\Debug\DoAnNho.exe.config
+C:\Users\Admin\source\repos\NT106.P12-N25-DO-AN\WindowsFormsApp1\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Admin\source\repos\NT106.P12-N25-DO-AN\WindowsFormsApp1\obj\Debug\Home.csproj.AssemblyReference.cache
+C:\Users\Admin\source\repos\NT106.P12-N25-DO-AN\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Home.resources
+C:\Users\Admin\source\repos\NT106.P12-N25-DO-AN\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Properties.Resources.resources
+C:\Users\Admin\source\repos\NT106.P12-N25-DO-AN\WindowsFormsApp1\obj\Debug\Home.csproj.GenerateResource.cache
+C:\Users\Admin\source\repos\NT106.P12-N25-DO-AN\WindowsFormsApp1\obj\Debug\Home.csproj.CoreCompileInputs.cache
+C:\Users\Admin\source\repos\NT106.P12-N25-DO-AN\WindowsFormsApp1\obj\Debug\Home.csproj.Up2Date
+C:\Users\Admin\source\repos\NT106.P12-N25-DO-AN\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
+C:\Users\Admin\source\repos\NT106.P12-N25-DO-AN\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb

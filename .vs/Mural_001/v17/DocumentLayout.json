@@ -1,101 +1,30 @@
 {
   "Version": 1,
-<<<<<<< HEAD
-  "WorkspaceRootPath": "C:\\Users\\ADMIN\\NT106-DOAN\\",
+  "WorkspaceRootPath": "C:\\Users\\Admin\\source\\repos\\NT106.P12-N25-DO-AN\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{C1EE3B7A-C83B-4E16-9AC6-B38A3CF88D62}|Mural Client\\DoAnLon\\Client.csproj|C:\\Users\\ADMIN\\NT106-DOAN\\mural client\\doanlon\\client.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C1EE3B7A-C83B-4E16-9AC6-B38A3CF88D62}|Mural Client\\DoAnLon\\Client.csproj|solutionrelative:mural client\\doanlon\\client.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8B01BB05-837A-4013-9295-C277F86FF306}|WindowsFormsApp1\\Home.csproj|c:\\users\\admin\\nt106-doan\\windowsformsapp1\\home.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{8B01BB05-837A-4013-9295-C277F86FF306}|WindowsFormsApp1\\Home.csproj|c:\\users\\admin\\source\\repos\\nt106.p12-n25-do-an\\windowsformsapp1\\home.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8B01BB05-837A-4013-9295-C277F86FF306}|WindowsFormsApp1\\Home.csproj|solutionrelative:windowsformsapp1\\home.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8B01BB05-837A-4013-9295-C277F86FF306}|WindowsFormsApp1\\Home.csproj|C:\\Users\\ADMIN\\NT106-DOAN\\windowsformsapp1\\home.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{C1EE3B7A-C83B-4E16-9AC6-B38A3CF88D62}|Mural Client\\DoAnLon\\Client.csproj|C:\\Users\\Admin\\source\\repos\\NT106.P12-N25-DO-AN\\mural client\\doanlon\\client.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C1EE3B7A-C83B-4E16-9AC6-B38A3CF88D62}|Mural Client\\DoAnLon\\Client.csproj|solutionrelative:mural client\\doanlon\\client.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8B01BB05-837A-4013-9295-C277F86FF306}|WindowsFormsApp1\\Home.csproj|C:\\Users\\Admin\\source\\repos\\NT106.P12-N25-DO-AN\\windowsformsapp1\\home.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8B01BB05-837A-4013-9295-C277F86FF306}|WindowsFormsApp1\\Home.csproj|solutionrelative:windowsformsapp1\\home.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8B01BB05-837A-4013-9295-C277F86FF306}|WindowsFormsApp1\\Home.csproj|C:\\Users\\Admin\\source\\repos\\NT106.P12-N25-DO-AN\\windowsformsapp1\\home.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{8B01BB05-837A-4013-9295-C277F86FF306}|WindowsFormsApp1\\Home.csproj|solutionrelative:windowsformsapp1\\home.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{44FDE9DF-A59B-4C3D-99E7-5FC44FB7CBA6}|Mural_001\\Server.csproj|c:\\users\\admin\\nt106-doan\\mural_001\\server.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{44FDE9DF-A59B-4C3D-99E7-5FC44FB7CBA6}|Mural_001\\Server.csproj|c:\\users\\admin\\source\\repos\\nt106.p12-n25-do-an\\mural_001\\server.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{44FDE9DF-A59B-4C3D-99E7-5FC44FB7CBA6}|Mural_001\\Server.csproj|solutionrelative:mural_001\\server.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C1EE3B7A-C83B-4E16-9AC6-B38A3CF88D62}|Mural Client\\DoAnLon\\Client.csproj|C:\\Users\\ADMIN\\NT106-DOAN\\mural_001\\packet def.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{C1EE3B7A-C83B-4E16-9AC6-B38A3CF88D62}|Mural Client\\DoAnLon\\Client.csproj|C:\\Users\\Admin\\source\\repos\\NT106.P12-N25-DO-AN\\mural_001\\packet def.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C1EE3B7A-C83B-4E16-9AC6-B38A3CF88D62}|Mural Client\\DoAnLon\\Client.csproj|solutionrelative:mural_001\\packet def.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-=======
-  "WorkspaceRootPath": "C:\\Users\\ADMIN\\NT106\\",
-  "Documents": [
-    {
-<<<<<<< HEAD
-      "AbsoluteMoniker": "D:0:0:{8B01BB05-837A-4013-9295-C277F86FF306}|WindowsFormsApp1\\Home.csproj|C:\\Users\\ADMIN\\NT106\\windowsformsapp1\\home.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{8B01BB05-837A-4013-9295-C277F86FF306}|WindowsFormsApp1\\Home.csproj|solutionrelative:windowsformsapp1\\home.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8B01BB05-837A-4013-9295-C277F86FF306}|WindowsFormsApp1\\Home.csproj|C:\\Users\\ADMIN\\NT106\\windowsformsapp1\\home.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8B01BB05-837A-4013-9295-C277F86FF306}|WindowsFormsApp1\\Home.csproj|solutionrelative:windowsformsapp1\\home.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C1EE3B7A-C83B-4E16-9AC6-B38A3CF88D62}|Mural Client\\DoAnLon\\Client.csproj|C:\\Users\\ADMIN\\NT106\\mural client\\doanlon\\client.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C1EE3B7A-C83B-4E16-9AC6-B38A3CF88D62}|Mural Client\\DoAnLon\\Client.csproj|solutionrelative:mural client\\doanlon\\client.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-=======
->>>>>>> a8a1ac975b3e868a28ac1a068fce7b4fae04ef57
-      "AbsoluteMoniker": "D:0:0:{44FDE9DF-A59B-4C3D-99E7-5FC44FB7CBA6}|Mural_001\\Server.csproj|c:\\users\\admin\\nt106\\mural_001\\server.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{44FDE9DF-A59B-4C3D-99E7-5FC44FB7CBA6}|Mural_001\\Server.csproj|solutionrelative:mural_001\\server.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-<<<<<<< HEAD
-=======
-      "AbsoluteMoniker": "D:0:0:{8B01BB05-837A-4013-9295-C277F86FF306}|WindowsFormsApp1\\Home.csproj|C:\\Users\\ADMIN\\NT106\\windowsformsapp1\\home.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8B01BB05-837A-4013-9295-C277F86FF306}|WindowsFormsApp1\\Home.csproj|solutionrelative:windowsformsapp1\\home.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8B01BB05-837A-4013-9295-C277F86FF306}|WindowsFormsApp1\\Home.csproj|C:\\Users\\ADMIN\\NT106\\windowsformsapp1\\home.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{8B01BB05-837A-4013-9295-C277F86FF306}|WindowsFormsApp1\\Home.csproj|solutionrelative:windowsformsapp1\\home.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C1EE3B7A-C83B-4E16-9AC6-B38A3CF88D62}|Mural Client\\DoAnLon\\Client.csproj|C:\\Users\\ADMIN\\NT106\\mural client\\doanlon\\client.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C1EE3B7A-C83B-4E16-9AC6-B38A3CF88D62}|Mural Client\\DoAnLon\\Client.csproj|solutionrelative:mural client\\doanlon\\client.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{44FDE9DF-A59B-4C3D-99E7-5FC44FB7CBA6}|Mural_001\\Server.csproj|c:\\users\\admin\\nt106\\mural_001\\server.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|",
-      "RelativeMoniker": "D:0:0:{44FDE9DF-A59B-4C3D-99E7-5FC44FB7CBA6}|Mural_001\\Server.csproj|solutionrelative:mural_001\\server.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{44FDE9DF-A59B-4C3D-99E7-5FC44FB7CBA6}|Mural_001\\Server.csproj|c:\\users\\admin\\nt106\\mural_001\\room def.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{44FDE9DF-A59B-4C3D-99E7-5FC44FB7CBA6}|Mural_001\\Server.csproj|solutionrelative:mural_001\\room def.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{44FDE9DF-A59B-4C3D-99E7-5FC44FB7CBA6}|Mural_001\\Server.csproj|c:\\users\\admin\\nt106\\mural_001\\sticky_note.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{44FDE9DF-A59B-4C3D-99E7-5FC44FB7CBA6}|Mural_001\\Server.csproj|solutionrelative:mural_001\\sticky_note.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
->>>>>>> a8a1ac975b3e868a28ac1a068fce7b4fae04ef57
-      "AbsoluteMoniker": "D:0:0:{C1EE3B7A-C83B-4E16-9AC6-B38A3CF88D62}|Mural Client\\DoAnLon\\Client.csproj|C:\\Users\\ADMIN\\NT106\\mural client\\doanlon\\sticky_note.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C1EE3B7A-C83B-4E16-9AC6-B38A3CF88D62}|Mural Client\\DoAnLon\\Client.csproj|solutionrelative:mural client\\doanlon\\sticky_note.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-<<<<<<< HEAD
-      "AbsoluteMoniker": "D:0:0:{C1EE3B7A-C83B-4E16-9AC6-B38A3CF88D62}|Mural Client\\DoAnLon\\Client.csproj|C:\\Users\\ADMIN\\NT106\\mural client\\doanlon\\client.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{C1EE3B7A-C83B-4E16-9AC6-B38A3CF88D62}|Mural Client\\DoAnLon\\Client.csproj|solutionrelative:mural client\\doanlon\\client.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{44FDE9DF-A59B-4C3D-99E7-5FC44FB7CBA6}|Mural_001\\Server.csproj|c:\\users\\admin\\nt106\\mural_001\\room def.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{44FDE9DF-A59B-4C3D-99E7-5FC44FB7CBA6}|Mural_001\\Server.csproj|solutionrelative:mural_001\\room def.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{44FDE9DF-A59B-4C3D-99E7-5FC44FB7CBA6}|Mural_001\\Server.csproj|c:\\users\\admin\\nt106\\mural_001\\packet def.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{44FDE9DF-A59B-4C3D-99E7-5FC44FB7CBA6}|Mural_001\\Server.csproj|solutionrelative:mural_001\\packet def.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-=======
-      "AbsoluteMoniker": "D:0:0:{44FDE9DF-A59B-4C3D-99E7-5FC44FB7CBA6}|Mural_001\\Server.csproj|c:\\users\\admin\\nt106\\mural_001\\packet def.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{44FDE9DF-A59B-4C3D-99E7-5FC44FB7CBA6}|Mural_001\\Server.csproj|solutionrelative:mural_001\\packet def.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C1EE3B7A-C83B-4E16-9AC6-B38A3CF88D62}|Mural Client\\DoAnLon\\Client.csproj|C:\\Users\\ADMIN\\NT106\\mural client\\doanlon\\image.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C1EE3B7A-C83B-4E16-9AC6-B38A3CF88D62}|Mural Client\\DoAnLon\\Client.csproj|solutionrelative:mural client\\doanlon\\image.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
->>>>>>> a8a1ac975b3e868a28ac1a068fce7b4fae04ef57
->>>>>>> cebebfdffa300738317c2803191add47193785f2
     }
   ],
   "DocumentGroupContainers": [
@@ -105,16 +34,12 @@
       "DocumentGroups": [
         {
           "DockedWidth": 350,
-<<<<<<< HEAD
-          "SelectedChildIndex": 12,
-=======
-<<<<<<< HEAD
-          "SelectedChildIndex": 9,
-=======
-          "SelectedChildIndex": 15,
->>>>>>> a8a1ac975b3e868a28ac1a068fce7b4fae04ef57
->>>>>>> cebebfdffa300738317c2803191add47193785f2
+          "SelectedChildIndex": 8,
           "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
@@ -128,269 +53,88 @@
               "Name": "ST:1:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{e5c86464-96be-4d7c-9a8b-abcb3bbf5f92}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Home.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\NT106.P12-N25-DO-AN\\WindowsFormsApp1\\Home.Designer.cs",
+              "RelativeDocumentMoniker": "WindowsFormsApp1\\Home.Designer.cs",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\NT106.P12-N25-DO-AN\\WindowsFormsApp1\\Home.Designer.cs",
+              "RelativeToolTip": "WindowsFormsApp1\\Home.Designer.cs",
+              "ViewState": "AgIAAOAAAAAAAAAAAAAAAHIAAABQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-21T03:48:52.211Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-<<<<<<< HEAD
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "Server.cs",
-              "DocumentMoniker": "C:\\Users\\ADMIN\\NT106-DOAN\\Mural_001\\Server.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\NT106.P12-N25-DO-AN\\Mural_001\\Server.cs",
               "RelativeDocumentMoniker": "Mural_001\\Server.cs",
-              "ToolTip": "C:\\Users\\ADMIN\\NT106-DOAN\\Mural_001\\Server.cs",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\NT106.P12-N25-DO-AN\\Mural_001\\Server.cs",
               "RelativeToolTip": "Mural_001\\Server.cs",
               "ViewState": "AgIAALcBAAAAAAAAAAAAAAcBAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-21T02:06:40.661Z"
+              "WhenOpened": "2024-11-21T03:46:53.641Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "Packet DEF.cs",
-              "DocumentMoniker": "C:\\Users\\ADMIN\\NT106-DOAN\\Mural_001\\Packet DEF.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\NT106.P12-N25-DO-AN\\Mural_001\\Packet DEF.cs",
               "RelativeDocumentMoniker": "Mural_001\\Packet DEF.cs",
-              "ToolTip": "C:\\Users\\ADMIN\\NT106-DOAN\\Mural_001\\Packet DEF.cs",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\NT106.P12-N25-DO-AN\\Mural_001\\Packet DEF.cs",
               "RelativeToolTip": "Mural_001\\Packet DEF.cs",
               "ViewState": "AgIAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-21T02:05:05.676Z"
+              "WhenOpened": "2024-11-21T03:46:53.815Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "Home.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\ADMIN\\NT106-DOAN\\WindowsFormsApp1\\Home.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\NT106.P12-N25-DO-AN\\WindowsFormsApp1\\Home.cs",
               "RelativeDocumentMoniker": "WindowsFormsApp1\\Home.cs",
-              "ToolTip": "C:\\Users\\ADMIN\\NT106-DOAN\\WindowsFormsApp1\\Home.cs [Design]",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\NT106.P12-N25-DO-AN\\WindowsFormsApp1\\Home.cs [Design]",
               "RelativeToolTip": "WindowsFormsApp1\\Home.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-21T01:53:53.555Z",
+              "WhenOpened": "2024-11-21T03:46:53.831Z",
               "EditorCaption": " [Design]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Home.cs",
-              "DocumentMoniker": "C:\\Users\\ADMIN\\NT106-DOAN\\WindowsFormsApp1\\Home.cs",
-              "RelativeDocumentMoniker": "WindowsFormsApp1\\Home.cs",
-              "ToolTip": "C:\\Users\\ADMIN\\NT106-DOAN\\WindowsFormsApp1\\Home.cs",
-              "RelativeToolTip": "WindowsFormsApp1\\Home.cs",
-              "ViewState": "AgIAAFQAAAAAAAAAAAAAAH4AAAAtAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-21T01:36:24.229Z",
-=======
-              "DocumentIndex": 1,
-              "Title": "Home.cs",
-              "DocumentMoniker": "C:\\Users\\ADMIN\\NT106\\WindowsFormsApp1\\Home.cs",
-              "RelativeDocumentMoniker": "WindowsFormsApp1\\Home.cs",
-              "ToolTip": "C:\\Users\\ADMIN\\NT106\\WindowsFormsApp1\\Home.cs",
-              "RelativeToolTip": "WindowsFormsApp1\\Home.cs",
-<<<<<<< HEAD
-              "ViewState": "AgIAAAoAAAAAAAAAAAAAACIAAAAbAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-20T03:33:33.195Z",
->>>>>>> cebebfdffa300738317c2803191add47193785f2
-              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-<<<<<<< HEAD
-              "Title": "client.cs",
-              "DocumentMoniker": "C:\\Users\\ADMIN\\NT106-DOAN\\Mural Client\\DoAnLon\\client.cs",
-              "RelativeDocumentMoniker": "Mural Client\\DoAnLon\\client.cs",
-              "ToolTip": "C:\\Users\\ADMIN\\NT106-DOAN\\Mural Client\\DoAnLon\\client.cs",
-              "RelativeToolTip": "Mural Client\\DoAnLon\\client.cs",
-              "ViewState": "AgIAAEUAAAAAAAAAAAAhwFEAAAAiAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-16T14:55:55.35Z",
-              "EditorCaption": ""
-=======
-=======
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAADsAAAAkAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-19T17:17:16.656Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
->>>>>>> a8a1ac975b3e868a28ac1a068fce7b4fae04ef57
-              "Title": "Home.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\ADMIN\\NT106\\WindowsFormsApp1\\Home.cs",
+              "Title": "Home.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\NT106.P12-N25-DO-AN\\WindowsFormsApp1\\Home.cs",
               "RelativeDocumentMoniker": "WindowsFormsApp1\\Home.cs",
-              "ToolTip": "C:\\Users\\ADMIN\\NT106\\WindowsFormsApp1\\Home.cs [Design]",
-              "RelativeToolTip": "WindowsFormsApp1\\Home.cs [Design]",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\NT106.P12-N25-DO-AN\\WindowsFormsApp1\\Home.cs",
+              "RelativeToolTip": "WindowsFormsApp1\\Home.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAABEAAAAsAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-<<<<<<< HEAD
-              "WhenOpened": "2024-11-20T03:33:29.792Z",
-              "EditorCaption": " [Design]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "client.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\ADMIN\\NT106\\Mural Client\\DoAnLon\\client.cs",
-              "RelativeDocumentMoniker": "Mural Client\\DoAnLon\\client.cs",
-              "ToolTip": "C:\\Users\\ADMIN\\NT106\\Mural Client\\DoAnLon\\client.cs [Design]",
-              "RelativeToolTip": "Mural Client\\DoAnLon\\client.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-20T00:51:38.166Z",
-              "EditorCaption": " [Design]"
-=======
-              "WhenOpened": "2024-11-19T17:17:14.251Z"
->>>>>>> a8a1ac975b3e868a28ac1a068fce7b4fae04ef57
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-<<<<<<< HEAD
-=======
-              "Title": "Server",
-              "DocumentMoniker": "C:\\Users\\ADMIN\\NT106\\Mural_001\\Server.csproj",
-              "RelativeDocumentMoniker": "Mural_001\\Server.csproj",
-              "ToolTip": "C:\\Users\\ADMIN\\NT106\\Mural_001\\Server.csproj",
-              "RelativeToolTip": "Mural_001\\Server.csproj",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2024-11-19T16:53:33.736Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "Image.cs",
-              "DocumentMoniker": "C:\\Users\\ADMIN\\NT106\\Mural Client\\DoAnLon\\Image.cs",
-              "RelativeDocumentMoniker": "Mural Client\\DoAnLon\\Image.cs",
-              "ToolTip": "C:\\Users\\ADMIN\\NT106\\Mural Client\\DoAnLon\\Image.cs",
-              "RelativeToolTip": "Mural Client\\DoAnLon\\Image.cs",
-              "ViewState": "AgIAADIAAAAAAAAAAAAuwEEAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-18T12:55:54.166Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
->>>>>>> a8a1ac975b3e868a28ac1a068fce7b4fae04ef57
-              "Title": "sticky_note.cs",
-              "DocumentMoniker": "C:\\Users\\ADMIN\\NT106\\Mural Client\\DoAnLon\\sticky_note.cs",
-              "RelativeDocumentMoniker": "Mural Client\\DoAnLon\\sticky_note.cs",
-              "ToolTip": "C:\\Users\\ADMIN\\NT106\\Mural Client\\DoAnLon\\sticky_note.cs",
-              "RelativeToolTip": "Mural Client\\DoAnLon\\sticky_note.cs",
-<<<<<<< HEAD
-              "ViewState": "AgIAABkAAAAAAAAAAAA2wC8AAAAFAAAAAAAAAA==",
-=======
-              "ViewState": "AgIAAAgAAAAAAAAAAAAQwC8AAAAFAAAAAAAAAA==",
->>>>>>> a8a1ac975b3e868a28ac1a068fce7b4fae04ef57
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-18T01:42:11.606Z"
-            },
-            {
-              "$type": "Document",
-<<<<<<< HEAD
-              "DocumentIndex": 7,
-=======
-              "DocumentIndex": 6,
-              "Title": "Sticky_note.cs",
-              "DocumentMoniker": "C:\\Users\\ADMIN\\NT106\\Mural_001\\Sticky_note.cs",
-              "RelativeDocumentMoniker": "Mural_001\\Sticky_note.cs",
-              "ToolTip": "C:\\Users\\ADMIN\\NT106\\Mural_001\\Sticky_note.cs",
-              "RelativeToolTip": "Mural_001\\Sticky_note.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAkAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-17T15:16:08.709Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
->>>>>>> a8a1ac975b3e868a28ac1a068fce7b4fae04ef57
-              "Title": "Packet DEF.cs",
-              "DocumentMoniker": "C:\\Users\\ADMIN\\NT106\\Mural_001\\Packet DEF.cs",
-              "RelativeDocumentMoniker": "Mural_001\\Packet DEF.cs",
-              "ToolTip": "C:\\Users\\ADMIN\\NT106\\Mural_001\\Packet DEF.cs",
-              "RelativeToolTip": "Mural_001\\Packet DEF.cs",
-              "ViewState": "AgIAACMAAAAAAAAAAAAAABMAAAAIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-17T02:32:14.376Z"
-            },
-            {
-              "$type": "Document",
-<<<<<<< HEAD
-              "DocumentIndex": 3,
-=======
-              "DocumentIndex": 0,
->>>>>>> a8a1ac975b3e868a28ac1a068fce7b4fae04ef57
-              "Title": "Server.cs",
-              "DocumentMoniker": "C:\\Users\\ADMIN\\NT106\\Mural_001\\Server.cs",
-              "RelativeDocumentMoniker": "Mural_001\\Server.cs",
-              "ToolTip": "C:\\Users\\ADMIN\\NT106\\Mural_001\\Server.cs",
-              "RelativeToolTip": "Mural_001\\Server.cs",
-<<<<<<< HEAD
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAcAAAAAAAAAA==",
-=======
-              "ViewState": "AgIAAEcAAAAAAAAAAAAqwFYAAAARAAAAAAAAAA==",
->>>>>>> a8a1ac975b3e868a28ac1a068fce7b4fae04ef57
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-16T15:01:17.678Z",
+              "WhenOpened": "2024-11-21T03:46:53.834Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-<<<<<<< HEAD
-              "DocumentIndex": 6,
-=======
-              "DocumentIndex": 5,
->>>>>>> a8a1ac975b3e868a28ac1a068fce7b4fae04ef57
-              "Title": "Room DEF.cs",
-              "DocumentMoniker": "C:\\Users\\ADMIN\\NT106\\Mural_001\\Room DEF.cs",
-              "RelativeDocumentMoniker": "Mural_001\\Room DEF.cs",
-              "ToolTip": "C:\\Users\\ADMIN\\NT106\\Mural_001\\Room DEF.cs",
-              "RelativeToolTip": "Mural_001\\Room DEF.cs",
-<<<<<<< HEAD
-              "ViewState": "AgIAAA0AAAAAAAAAAAAgwBYAAAAfAAAAAAAAAA==",
-=======
-              "ViewState": "AgIAAE8AAAAAAAAAAAAIwIEAAAAjAAAAAAAAAA==",
->>>>>>> a8a1ac975b3e868a28ac1a068fce7b4fae04ef57
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-16T14:58:10.663Z"
-            },
-            {
-              "$type": "Document",
-<<<<<<< HEAD
-              "DocumentIndex": 2,
-=======
-              "DocumentIndex": 3,
->>>>>>> a8a1ac975b3e868a28ac1a068fce7b4fae04ef57
+              "DocumentIndex": 1,
               "Title": "client.cs",
-              "DocumentMoniker": "C:\\Users\\ADMIN\\NT106\\Mural Client\\DoAnLon\\client.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\NT106.P12-N25-DO-AN\\Mural Client\\DoAnLon\\client.cs",
               "RelativeDocumentMoniker": "Mural Client\\DoAnLon\\client.cs",
-              "ToolTip": "C:\\Users\\ADMIN\\NT106\\Mural Client\\DoAnLon\\client.cs",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\NT106.P12-N25-DO-AN\\Mural Client\\DoAnLon\\client.cs",
               "RelativeToolTip": "Mural Client\\DoAnLon\\client.cs",
-<<<<<<< HEAD
-              "ViewState": "AgIAABgEAAAAAAAAAAApwEIEAAAUAAAAAAAAAA==",
+              "ViewState": "AgIAAFkAAAAAAAAAAADwv6QGAABPAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-16T14:55:55.35Z",
-              "EditorCaption": ""
-=======
-              "ViewState": "AgIAAA0AAAAAAAAAAAAAALkAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-16T14:55:55.35Z"
->>>>>>> a8a1ac975b3e868a28ac1a068fce7b4fae04ef57
->>>>>>> cebebfdffa300738317c2803191add47193785f2
+              "WhenOpened": "2024-11-21T03:46:54.108Z"
+            }
+          ]
+        },
+        {
+          "DockedWidth": 109,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
             }
           ]
         }
