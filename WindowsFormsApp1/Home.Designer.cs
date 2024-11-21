@@ -63,6 +63,7 @@
             this.tbServerIP.Name = "tbServerIP";
             this.tbServerIP.Size = new System.Drawing.Size(201, 26);
             this.tbServerIP.TabIndex = 3;
+            this.tbServerIP.TextChanged += new System.EventHandler(this.tbServerIP_TextChanged);
             // 
             // btnCreate
             // 
@@ -113,10 +114,17 @@
             this.btnOffline.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnOffline.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnOffline.ForeColor = System.Drawing.SystemColors.ControlText;
+<<<<<<< HEAD
             this.btnOffline.Location = new System.Drawing.Point(684, 466);
             this.btnOffline.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnOffline.Name = "btnOffline";
             this.btnOffline.Size = new System.Drawing.Size(131, 71);
+=======
+            this.btnOffline.Location = new System.Drawing.Point(684, 311);
+            this.btnOffline.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnOffline.Name = "btnOffline";
+            this.btnOffline.Size = new System.Drawing.Size(131, 226);
+>>>>>>> cebebfdffa300738317c2803191add47193785f2
             this.btnOffline.TabIndex = 7;
             this.btnOffline.Text = "Start offline";
             this.btnOffline.UseVisualStyleBackColor = false;
@@ -143,6 +151,7 @@
             this.tbName.Name = "tbName";
             this.tbName.Size = new System.Drawing.Size(201, 26);
             this.tbName.TabIndex = 9;
+            this.tbName.TextChanged += new System.EventHandler(this.tbName_TextChanged);
             // 
             // tbRoomID
             // 
@@ -186,7 +195,10 @@
             this.BackgroundImage = global::WindowsFormsApp1.Properties.Resources.sunlight_colorful_digital_art_sky_blue_background_hexagon_105873_wallhere_com;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ClientSize = new System.Drawing.Size(1125, 586);
+<<<<<<< HEAD
             this.Controls.Add(this.button1);
+=======
+>>>>>>> cebebfdffa300738317c2803191add47193785f2
             this.Controls.Add(this.tbRoomID);
             this.Controls.Add(this.lbRoomID);
             this.Controls.Add(this.tbName);

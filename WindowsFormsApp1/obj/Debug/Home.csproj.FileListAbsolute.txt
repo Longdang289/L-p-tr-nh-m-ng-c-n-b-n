@@ -14,6 +14,25 @@ D:\Bai Tap UIT\Mural_001\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
 D:\Bai Tap UIT\Mural_001\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb
 D:\Bai Tap UIT\Mural_001\WindowsFormsApp1\bin\Debug\Newtonsoft.Json.dll
 D:\Bai Tap UIT\Mural_001\WindowsFormsApp1\bin\Debug\Newtonsoft.Json.xml
+<<<<<<< HEAD
 D:\Bai Tap UIT\Mural_001\WindowsFormsApp1\bin\Debug\DoAnNho.exe
 D:\Bai Tap UIT\Mural_001\WindowsFormsApp1\bin\Debug\DoAnNho.pdb
 D:\Bai Tap UIT\Mural_001\WindowsFormsApp1\bin\Debug\DoAnNho.exe.config
+=======
+C:\Users\ADMIN\NT106\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe.config
+C:\Users\ADMIN\NT106\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe
+C:\Users\ADMIN\NT106\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.pdb
+C:\Users\ADMIN\NT106\WindowsFormsApp1\bin\Debug\DoAnLon.exe
+C:\Users\ADMIN\NT106\WindowsFormsApp1\bin\Debug\Newtonsoft.Json.dll
+C:\Users\ADMIN\NT106\WindowsFormsApp1\bin\Debug\DoAnLon.pdb
+C:\Users\ADMIN\NT106\WindowsFormsApp1\bin\Debug\DoAnLon.exe.config
+C:\Users\ADMIN\NT106\WindowsFormsApp1\bin\Debug\Newtonsoft.Json.xml
+C:\Users\ADMIN\NT106\WindowsFormsApp1\obj\Debug\Home.csproj.AssemblyReference.cache
+C:\Users\ADMIN\NT106\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Home.resources
+C:\Users\ADMIN\NT106\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Properties.Resources.resources
+C:\Users\ADMIN\NT106\WindowsFormsApp1\obj\Debug\Home.csproj.GenerateResource.cache
+C:\Users\ADMIN\NT106\WindowsFormsApp1\obj\Debug\Home.csproj.CoreCompileInputs.cache
+C:\Users\ADMIN\NT106\WindowsFormsApp1\obj\Debug\Home.csproj.Up2Date
+C:\Users\ADMIN\NT106\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
+C:\Users\ADMIN\NT106\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb
+>>>>>>> cebebfdffa300738317c2803191add47193785f2

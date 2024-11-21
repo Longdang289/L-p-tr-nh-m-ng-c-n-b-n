@@ -78,7 +78,7 @@ namespace Mural_001
                     TcpClient client = await listener.AcceptTcpClientAsync();
 
                     // Ghi log khi có client kết nối thành công
-                    Manager.WriteToLog("Co client moi tham gia");
+                    Manager.WriteToLog("Client mới đã tham gia");
 
                     // Bắt đầu một tác vụ mới để xử lý từng client.
                     _ = Task.Run(() => ReceiveAsync(client));
@@ -87,7 +87,7 @@ namespace Mural_001
             catch
             {
                 // Trong trường hợp gặp lỗi, khởi động lại listener.
-                Manager.WriteToLog("Try to hear again");
+                Manager.WriteToLog("Ready to hear again");
                 listener = new TcpListener(IPAddress.Any, 9999);
                 listener.Start();
             }

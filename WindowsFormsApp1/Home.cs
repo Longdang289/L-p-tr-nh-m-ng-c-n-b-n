@@ -15,7 +15,7 @@ namespace WindowsFormsApp1
     {
         private bool worked = true;
         private string name; // Tên từ tbName
-        private string serverIP; // Địa chỉ IP từ tbServerIP
+        private string serverIP = "13.76.28.212"; // Địa chỉ IP từ Server
         private int controlCode = 0; // Mã điều khiển, cố định là 1
         private string roomID = null;//Mã phòng mặc định là NULL
         public Home()
@@ -31,8 +31,12 @@ namespace WindowsFormsApp1
             lbRoomID.Visible = false;
             tbName.Visible = false;
             tbRoomID.Visible = false;
+<<<<<<< HEAD
             // Đặt giá trị mặc định cho tbServerIP là localhost IP
-            tbServerIP.Text = "127.0.0.1";
+            tbServerIP.Text = serverIP;
+=======
+            tbServerIP.Text = "13.76.28.212"; //Địa chỉ IP của Server
+>>>>>>> a8a1ac975b3e868a28ac1a068fce7b4fae04ef57
             //picMain.Image = Properties.Resources.picMain; 
             //picMain.SizeMode = PictureBoxSizeMode.Normal;
         }
@@ -122,9 +126,19 @@ namespace WindowsFormsApp1
             this.Show();
         }
 
+<<<<<<< HEAD
         private void button1_Click(object sender, EventArgs e)
         {
             tbServerIP.Text = "13.76.28.212";
+=======
+<<<<<<< HEAD
+        private void tbServerIP_TextChanged(object sender, EventArgs e)
+=======
+        private void tbName_TextChanged(object sender, EventArgs e)
+>>>>>>> a8a1ac975b3e868a28ac1a068fce7b4fae04ef57
+        {
+
+>>>>>>> cebebfdffa300738317c2803191add47193785f2
         }
     }
 }

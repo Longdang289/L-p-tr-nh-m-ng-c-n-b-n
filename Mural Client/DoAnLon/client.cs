@@ -21,7 +21,7 @@ namespace DoAnLon
         //
         private readonly Action reopenHomeForm;//Cái này để dùng delegate mở lại home
         private string clientName="";
-        private string serverIP="";
+        private string serverIP= "13.76.28.212";
         private int controlStartCode=0;
         private string clientIP = "127.0.0.1";
         private string roomID;
@@ -106,7 +106,7 @@ namespace DoAnLon
 
             // Kết quả cuối cùng trong biến IP sẽ là địa chỉ LAN hoặc localhost
             // Hiển thị thông tin để kiểm tra
-            MessageBox.Show($"Client Name: {clientName}, Server IP: {serverIP}, Control Code: {controlStartCode}, Room ID: {roomID}" );
+            MessageBox.Show($"Name: {clientName}, Server IP: {serverIP}, Control Code: {controlStartCode}, Room ID: {roomID}" );
             // Thử kết nối TCP đến server khi form được khởi tạo
             ConnectToServer();
             #region Load Vẽ
