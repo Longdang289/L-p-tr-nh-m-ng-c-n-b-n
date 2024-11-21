@@ -1,0 +1,10 @@
+C:\Users\Admin\source\repos\DoAnLon\DoAnLon\obj\Debug\DoAnLon.csproj.AssemblyReference.cache
+C:\Users\Admin\source\repos\DoAnLon\DoAnLon\obj\Debug\DoAnLon.client.resources
+C:\Users\Admin\source\repos\DoAnLon\DoAnLon\obj\Debug\DoAnLon.Properties.Resources.resources
+C:\Users\Admin\source\repos\DoAnLon\DoAnLon\obj\Debug\DoAnLon.csproj.GenerateResource.cache
+C:\Users\Admin\source\repos\DoAnLon\DoAnLon\obj\Debug\DoAnLon.csproj.CoreCompileInputs.cache
+C:\Users\Admin\source\repos\DoAnLon\DoAnLon\bin\Debug\DoAnLon.exe.config
+C:\Users\Admin\source\repos\DoAnLon\DoAnLon\bin\Debug\DoAnLon.exe
+C:\Users\Admin\source\repos\DoAnLon\DoAnLon\bin\Debug\DoAnLon.pdb
+C:\Users\Admin\source\repos\DoAnLon\DoAnLon\obj\Debug\DoAnLon.exe
+C:\Users\Admin\source\repos\DoAnLon\DoAnLon\obj\Debug\DoAnLon.pdb

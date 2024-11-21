@@ -72,7 +72,7 @@ namespace WindowsFormsApp1
         private void btnOffline_Click(object sender, EventArgs e)
         {
             // Tạo một instance của form ClientOffline
-            client clientOfflineForm = new client();
+            clientOffline clientOfflineForm = new clientOffline();
 
             // Hiển thị form ClientOffline
             this.Hide();
