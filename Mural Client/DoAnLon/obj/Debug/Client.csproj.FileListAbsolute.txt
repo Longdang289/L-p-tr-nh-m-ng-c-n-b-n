@@ -23,3 +23,15 @@ D:\Bai Tap UIT\Mural_001\Mural Client\DoAnLon\obj\Debug\Client.csproj.CoreCompil
 D:\Bai Tap UIT\Mural_001\Mural Client\DoAnLon\obj\Debug\Client.csproj.Up2Date
 D:\Bai Tap UIT\Mural_001\Mural Client\DoAnLon\obj\Debug\DoAnLon.exe
 D:\Bai Tap UIT\Mural_001\Mural Client\DoAnLon\obj\Debug\DoAnLon.pdb
+C:\Users\ADMIN\NT106\Mural Client\DoAnLon\bin\Debug\DoAnLon.exe.config
+C:\Users\ADMIN\NT106\Mural Client\DoAnLon\bin\Debug\DoAnLon.exe
+C:\Users\ADMIN\NT106\Mural Client\DoAnLon\bin\Debug\DoAnLon.pdb
+C:\Users\ADMIN\NT106\Mural Client\DoAnLon\bin\Debug\Newtonsoft.Json.dll
+C:\Users\ADMIN\NT106\Mural Client\DoAnLon\obj\Debug\Client.csproj.AssemblyReference.cache
+C:\Users\ADMIN\NT106\Mural Client\DoAnLon\obj\Debug\DoAnLon.client.resources
+C:\Users\ADMIN\NT106\Mural Client\DoAnLon\obj\Debug\DoAnLon.Properties.Resources.resources
+C:\Users\ADMIN\NT106\Mural Client\DoAnLon\obj\Debug\Client.csproj.GenerateResource.cache
+C:\Users\ADMIN\NT106\Mural Client\DoAnLon\obj\Debug\Client.csproj.CoreCompileInputs.cache
+C:\Users\ADMIN\NT106\Mural Client\DoAnLon\obj\Debug\Client.csproj.Up2Date
+C:\Users\ADMIN\NT106\Mural Client\DoAnLon\obj\Debug\DoAnLon.exe
+C:\Users\ADMIN\NT106\Mural Client\DoAnLon\obj\Debug\DoAnLon.pdb
