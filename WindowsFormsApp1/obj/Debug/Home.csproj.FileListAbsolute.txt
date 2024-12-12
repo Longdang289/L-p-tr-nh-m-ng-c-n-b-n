@@ -18,14 +18,26 @@ D:\Bai Tap UIT\Mural_001\WindowsFormsApp1\bin\Debug\Newtonsoft.Json.xml
 D:\Bai Tap UIT\Mural_001\WindowsFormsApp1\bin\Debug\DoAnNho.exe
 D:\Bai Tap UIT\Mural_001\WindowsFormsApp1\bin\Debug\DoAnNho.pdb
 D:\Bai Tap UIT\Mural_001\WindowsFormsApp1\bin\Debug\DoAnNho.exe.config
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> dbfe5e8 (Dự án hoàn tất)
 C:\Users\ADMIN\NT106\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe.config
 C:\Users\ADMIN\NT106\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe
 C:\Users\ADMIN\NT106\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.pdb
 C:\Users\ADMIN\NT106\WindowsFormsApp1\bin\Debug\DoAnLon.exe
+<<<<<<< HEAD
 C:\Users\ADMIN\NT106\WindowsFormsApp1\bin\Debug\Newtonsoft.Json.dll
 C:\Users\ADMIN\NT106\WindowsFormsApp1\bin\Debug\DoAnLon.pdb
 C:\Users\ADMIN\NT106\WindowsFormsApp1\bin\Debug\DoAnLon.exe.config
+=======
+C:\Users\ADMIN\NT106\WindowsFormsApp1\bin\Debug\DoAnNho.exe
+C:\Users\ADMIN\NT106\WindowsFormsApp1\bin\Debug\Newtonsoft.Json.dll
+C:\Users\ADMIN\NT106\WindowsFormsApp1\bin\Debug\DoAnLon.pdb
+C:\Users\ADMIN\NT106\WindowsFormsApp1\bin\Debug\DoAnLon.exe.config
+C:\Users\ADMIN\NT106\WindowsFormsApp1\bin\Debug\DoAnNho.pdb
+C:\Users\ADMIN\NT106\WindowsFormsApp1\bin\Debug\DoAnNho.exe.config
+>>>>>>> dbfe5e8 (Dự án hoàn tất)
 C:\Users\ADMIN\NT106\WindowsFormsApp1\bin\Debug\Newtonsoft.Json.xml
 C:\Users\ADMIN\NT106\WindowsFormsApp1\obj\Debug\Home.csproj.AssemblyReference.cache
 C:\Users\ADMIN\NT106\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Home.resources
@@ -35,6 +47,7 @@ C:\Users\ADMIN\NT106\WindowsFormsApp1\obj\Debug\Home.csproj.CoreCompileInputs.ca
 C:\Users\ADMIN\NT106\WindowsFormsApp1\obj\Debug\Home.csproj.Up2Date
 C:\Users\ADMIN\NT106\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
 C:\Users\ADMIN\NT106\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb
+<<<<<<< HEAD
 >>>>>>> cebebfdffa300738317c2803191add47193785f2
 C:\Users\Admin\source\repos\NT106.P12-N25-DO-AN\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe.config
 C:\Users\Admin\source\repos\NT106.P12-N25-DO-AN\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe
@@ -55,3 +68,5 @@ C:\Users\Admin\source\repos\NT106.P12-N25-DO-AN\WindowsFormsApp1\obj\Debug\Home.
 C:\Users\Admin\source\repos\NT106.P12-N25-DO-AN\WindowsFormsApp1\obj\Debug\Home.csproj.Up2Date
 C:\Users\Admin\source\repos\NT106.P12-N25-DO-AN\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
 C:\Users\Admin\source\repos\NT106.P12-N25-DO-AN\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb
+=======
+>>>>>>> dbfe5e8 (Dự án hoàn tất)

@@ -14,7 +14,11 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Server")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
+<<<<<<< HEAD
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9bc4209bbb14bf690d80277d5b6f69a335e3d987")]
+=======
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4541cc8343416ecc60345a7d8d4c52739b00e249")]
+>>>>>>> dbfe5e8 (Dự án hoàn tất)
 [assembly: System.Reflection.AssemblyProductAttribute("Server")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Server")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

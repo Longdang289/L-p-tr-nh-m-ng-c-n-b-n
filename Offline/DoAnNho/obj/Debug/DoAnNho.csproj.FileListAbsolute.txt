@@ -8,6 +8,7 @@ D:\Bai Tap UIT\Mural_001\Offline\DoAnNho\obj\Debug\DoAnNho.Properties.Resources.
 D:\Bai Tap UIT\Mural_001\Offline\DoAnNho\obj\Debug\DoAnNho.exe
 D:\Bai Tap UIT\Mural_001\Offline\DoAnNho\obj\Debug\DoAnNho.pdb
 D:\Bai Tap UIT\Mural_001\Offline\DoAnNho\obj\Debug\DoAnLon.clientOffline.resources
+<<<<<<< HEAD
 C:\Users\Admin\source\repos\NT106.P12-N25-DO-AN\Offline\DoAnNho\bin\Debug\DoAnNho.exe.config
 C:\Users\Admin\source\repos\NT106.P12-N25-DO-AN\Offline\DoAnNho\bin\Debug\DoAnNho.exe
 C:\Users\Admin\source\repos\NT106.P12-N25-DO-AN\Offline\DoAnNho\bin\Debug\DoAnNho.pdb
@@ -18,3 +19,15 @@ C:\Users\Admin\source\repos\NT106.P12-N25-DO-AN\Offline\DoAnNho\obj\Debug\DoAnNh
 C:\Users\Admin\source\repos\NT106.P12-N25-DO-AN\Offline\DoAnNho\obj\Debug\DoAnNho.csproj.CoreCompileInputs.cache
 C:\Users\Admin\source\repos\NT106.P12-N25-DO-AN\Offline\DoAnNho\obj\Debug\DoAnNho.exe
 C:\Users\Admin\source\repos\NT106.P12-N25-DO-AN\Offline\DoAnNho\obj\Debug\DoAnNho.pdb
+=======
+C:\Users\ADMIN\NT106\Offline\DoAnNho\bin\Debug\DoAnNho.exe.config
+C:\Users\ADMIN\NT106\Offline\DoAnNho\bin\Debug\DoAnNho.exe
+C:\Users\ADMIN\NT106\Offline\DoAnNho\bin\Debug\DoAnNho.pdb
+C:\Users\ADMIN\NT106\Offline\DoAnNho\obj\Debug\DoAnNho.csproj.AssemblyReference.cache
+C:\Users\ADMIN\NT106\Offline\DoAnNho\obj\Debug\DoAnLon.clientOffline.resources
+C:\Users\ADMIN\NT106\Offline\DoAnNho\obj\Debug\DoAnNho.Properties.Resources.resources
+C:\Users\ADMIN\NT106\Offline\DoAnNho\obj\Debug\DoAnNho.csproj.GenerateResource.cache
+C:\Users\ADMIN\NT106\Offline\DoAnNho\obj\Debug\DoAnNho.csproj.CoreCompileInputs.cache
+C:\Users\ADMIN\NT106\Offline\DoAnNho\obj\Debug\DoAnNho.exe
+C:\Users\ADMIN\NT106\Offline\DoAnNho\obj\Debug\DoAnNho.pdb
+>>>>>>> dbfe5e8 (Dự án hoàn tất)

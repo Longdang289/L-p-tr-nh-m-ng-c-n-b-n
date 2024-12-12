@@ -35,6 +35,7 @@ C:\Users\ADMIN\NT106\Mural Client\DoAnLon\obj\Debug\Client.csproj.CoreCompileInp
 C:\Users\ADMIN\NT106\Mural Client\DoAnLon\obj\Debug\Client.csproj.Up2Date
 C:\Users\ADMIN\NT106\Mural Client\DoAnLon\obj\Debug\DoAnLon.exe
 C:\Users\ADMIN\NT106\Mural Client\DoAnLon\obj\Debug\DoAnLon.pdb
+<<<<<<< HEAD
 C:\Users\Admin\source\repos\NT106.P12-N25-DO-AN\Mural Client\DoAnLon\bin\Debug\DoAnLon.exe.config
 C:\Users\Admin\source\repos\NT106.P12-N25-DO-AN\Mural Client\DoAnLon\bin\Debug\DoAnLon.exe
 C:\Users\Admin\source\repos\NT106.P12-N25-DO-AN\Mural Client\DoAnLon\bin\Debug\DoAnLon.pdb
@@ -47,3 +48,5 @@ C:\Users\Admin\source\repos\NT106.P12-N25-DO-AN\Mural Client\DoAnLon\obj\Debug\C
 C:\Users\Admin\source\repos\NT106.P12-N25-DO-AN\Mural Client\DoAnLon\obj\Debug\Client.csproj.Up2Date
 C:\Users\Admin\source\repos\NT106.P12-N25-DO-AN\Mural Client\DoAnLon\obj\Debug\DoAnLon.exe
 C:\Users\Admin\source\repos\NT106.P12-N25-DO-AN\Mural Client\DoAnLon\obj\Debug\DoAnLon.pdb
+=======
+>>>>>>> dbfe5e8 (Dự án hoàn tất)
